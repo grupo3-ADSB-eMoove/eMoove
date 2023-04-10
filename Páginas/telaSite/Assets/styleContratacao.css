@@ -1,0 +1,35 @@
+@font-face{
+    font-family:'Inter';
+    src: url(./Assets/Fontes/Inter-VariableFont_slnt\,wght.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Montserrat';
+    src: url(./Assets/Fontes/Montserrat-VariableFont_wght.ttf) format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.btnVoltar{
+    background-color: crimson;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    padding: 10px;
+}
+
+.spanVoltar{
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
