@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eMoove</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="website icon" type="png" href="">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3 "></div>
+    </div>
+    <header>
+        <div class="container">
+            <div class="headerLogo">
+                <img src="./assets/imagens/eMoove.png" alt="Logo eMoove">
+            </div>
+            <div class="headerBotoes">
+                <button class="botaoRegistrar" onclick="abrirModal()">Registrar</button>
+                <button class="botaoLogin" onclick="abrirModal2()">Login</button>
+            </div>
+        </div>
+    </header>
+    <section class="sectionInicio">
+        <div class="container">
+            <img src="./assets/imagens/img_inicio.png" alt="Imagem Inicio">
+            <div class="textoInicio">
+                <p>
+                    eMoove<span>, monitoramento de tráfego <br>
+                        de pessoas em comércios, que <br>
+                        permite análises precisas e tomadas <br>
+                        de decisões estratégicas.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+    <div class="bagulinho">
+        <img src="./assets/imagens/Bagulinho_cima.png" alt="">
+        <img src="./assets/imagens/Bagulinho_baixo.png" alt="">
+    </div>
+
+    <div id="fade" class="hide"></div>
+    <div id="modal" class="hide">
+        <div class="modal-header">
+            <h2>Login</h2>
+            <button id="close-modal"><img src="./assets/Imagens/X.png" alt=""></button>
+        </div>
+        <div class="modal-body">
+            <input id="ipt_loginEmail" placeholder="E-mail">
+            <input id="ipt_loginSenha" placeholder="Senha">
+            <div id="btnConfirmar">
+                <img src="./assets/Imagens/botao_entrar.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="fadeReg" class="hideReg"></div>
+    <div id="modalReg" class="hideReg">
+        <div class="modal-headerReg">
+            <h2>Cadastre-se</h2>
+            <button id="close-modalReg"><img src="./assets/Imagens/X.png" alt=""></button>
+        </div>
+        <div class="modal-bodyReg">
+            <input id="ipt_usuario" placeholder="Usuário">
+            <input id="ipt_email" placeholder="E-mail">
+            <input id="ipt_senha" placeholder="Senha">
+            <input id="ipt_confirmarSenha" placeholder="Confirmar Senha">
+
+            <div id="btnConfirmar">
+                <img src="./assets/Imagens/botao_entrar.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+        const openModalButtonReg = document.querySelector(".botaoRegistrar");
+        const closeModalButtonReg = document.querySelector("#close-modalReg");
+        const modalReg = document.querySelector("#modalReg");
+        const fadeReg = document.querySelector("#fadeReg");
+
+        const toggleModalReg = () => {
+            [modalReg, fadeReg].forEach((el) => el.classList.toggle("hideReg"));
+        }
+
+        [openModalButtonReg, closeModalButtonReg, fadeReg].forEach((el) => {
+            el.addEventListener("click", () => toggleModalReg());
+        });
+    
+        const openModalButtonLogin = document.querySelector(".botaoLogin");
+        const closeModalButton = document.querySelector("#close-modal");
+        const modal = document.querySelector("#modal");
+        const fade = document.querySelector("#fade");
+
+        const toggleModal = () => {
+            [modal, fade].forEach((el) => el.classList.toggle("hide"));
+        }
+        [openModalButtonLogin, closeModalButton, fade].forEach((el) => {
+            el.addEventListener("click", () => toggleModal());
+        });
+    
+</script>
