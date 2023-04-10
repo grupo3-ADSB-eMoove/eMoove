@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora eMoove</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="calculadoraicone.ico" type="image/x-icon">
+</head>
+
+<script src="https://kit.fontawesome.com/b5a0e31380.js" crossorigin="anonymous"></script>
+
+
+<body  id="bodyId">
+ 
+  <div class="spanVoltar">
+    <a href="fontes.html"><img class="imagem" src="homeicon.png" alt=""></a>
+    <a class="homePaizao" href="fontes.html"> 
+      Veja nossas fontes</a>
+  </div>
+
+   
+
+
+    <div class="backColors">
+
+      <div class="cor1" onclick="cor1()"></div>
+      <div class="cor2" onclick="cor2()"></div>
+      <div class="cor3" onclick="cor3()"></div>
+      <div class="cor4" onclick="cor4()"></div>
+
+  </div>
+   
+  <div class="wrapper">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3 "></div>
+</div>
+
+<div class="container">
+  
+    <div class="form">
+      <div class="subtitle">
+        <div class="">Calcule sua solução
+        </div>
+        <img src="calculadoraicone.ico"width=32px height="32px" style="margin-left: 40% ;" alt="">
+      </div>
+        
+        <div class="input-container ic1">
+          <input id="inputEntradas" class="input" type="text" placeholder="">
+          <div class="cut"></div>
+          <label for="inputEntradas" class="placeholder">Quantidade de Entradas</label>
+        </div>
+        <div class="input-container ic2">
+          <input id="inputVendas" class="input" type="text" placeholder="">
+          <div class="cut"></div>
+          <label for="inputVendas" class="placeholder">Quantidade de Vendas</label>
+        </div>
+        <div class="input-container ic2">
+          <input id="inputRenda" class="input" type="text" placeholder="">
+          <div class="cut cut-short"></div>
+          <label for="inputRenda" class="placeholder">Renda Bruta Mensal
+        </label></div>
+        <div class="radioGroup">
+            <div>
+
+                <label class="rad-label">
+                  <input type="radio" class="rad-input" name="rad" id="inputSP">
+                  <div class="rad-design"></div>
+                  <div class="rad-text">Sem problemas com filas</div>
+                </label>
+              
+                <label class="rad-label">
+                  <input type="radio" class="rad-input" name="rad" id="inputPP">
+                  <div class="rad-design"></div>
+                  <div class="rad-text">Poucos problemas com filas</div>
+                </label>
+              
+                <label class="rad-label">
+                  <input type="radio" class="rad-input" name="rad" id="inputAP">
+                  <div class="rad-design"></div>
+                  <div class="rad-text">Alguns problemas com filas</div>
+                </label>
+              
+                <label class="rad-label">
+                  <input type="radio" class="rad-input" name="rad" id="inputMP">
+                  <div class="rad-design"></div>
+                  <div class="rad-text">Muitos problemas com filas</div>
+                </label>
+              
+              </div>
+              
+        </div>
+              <div class="submitDiv">
+                <button type="text" class="submit" onclick="calcular()">Calcular</button>
+              </div>
+        
+
+      </div>
+      <div class="linha">
+
+      </div>
+
+      <div class="resposta">
+            <div class="tituloResposta">Nossas Considerações</div>
+
+            <div class="respostaFixa" id="respostaFixaId">
+            
+                
+            </div>
+                    <hr>
+                    <div class="respostaVariavel" id="respostaVariavel">
+
+                        <div class="respostaVariavelTitulo">Sobre suas filas</div>
+
+                        <div class="respostaFilas" id="respostaFilasId">
+
+                        </div>
+
+                    </div>
+
+       
+      </div>
+
+</div>    
+</body>
+
+
+</html>
+
+<script>
+
+function calcular(){
+
+
+    var valorVendas = Number(inputRenda.value)
+    var entradasTotais = Number(inputEntradas.value)
+    var qtdVendas = Number(inputVendas.value)
+
+    var mediaPorComprador = valorVendas/ qtdVendas;
+
+        var inpSemProblemas = inputSP   // Mensagem apenas de aviso para melhorar taxa de conversão7
+        var inpPoucosProblemas = inputPP // Mensagem dizendo que o cliente está começando a perder clientes
+        var inpAlgunsProblemas = inputAP // Perdendo 1/3 dos clientes
+        var inpMuitosProblemas = inputMP // Perdendo de 1/2 dos clientes
+      
+        var taxaConversao = (qtdVendas/entradasTotais) * 100   // Taxa de conversão da loja
+
+        var qtdVendasPosFilas = qtdVendas;      // Usarei essa váriavel mais tarde pra atribuir o valor de aumento das vendas e renda após a melhora nas filas
+        var qtdVendasPosConversao = qtdVendas + (qtdVendas*0.35) // Após um aumento nas vendas de 35% que foi a melhor hipótese segundo pesquisas
+        var qtdVendasCombinando = qtdVendasPosConversao   // Isso é contado após a taxa de conversão ser aumentada em 35% resultando na melhor hipótese
+
+
+        var respostaFixa = respostaFixaId
+        var respostaFilas = respostaFilasId
+
+        if (valorVendas == '' || entradasTotais == '' || qtdVendas == ''){
+            alert('Preencha os campos antes de fazer seu calculo')
+        }else
+{
+        respostaFixa.innerHTML =
+        `
+        <span class="spanConversao">Com esses números oferecidos sua taxa de conversão é: <b style="color: red;">${taxaConversao.toFixed(0)}%</b></span>
+
+            <br> Aplicando nossa solução e utilizando nossos serviços de maneira correta suas vendas podem aumentar em
+                 <b style="color: red;">35%</b> ou mais <br><br>
+            
+                E nessa hipótese a quantidade de vendas mensais seriam de ${(qtdVendasPosConversao).toFixed(0)}
+                e se sua renda acompanhasse proporcionalmente seria de  <b style="color: red;">R$:${(qtdVendasPosConversao *mediaPorComprador).toFixed(0)}</b> <br>
+                
+
+        `
+
+
+        // RESPOSTA FILAS
+
+        if(inpSemProblemas.checked) {
+            respostaFilas.innerHTML = `É bom que seu estabelecimento não tenha problemas com filas mas ainda podemos melhorar sua conversão`
+       }
+       if(inpPoucosProblemas.checked){
+            respostaFilas.innerHTML = `Segundo pesquisas depois de 2 minutos em filas, seus clientes começarão a ficar frustrados e você está começando a perde-los`
+       }
+       if(inpAlgunsProblemas.checked){
+        //operação inversa porcentagem
+        qtdVendasCombinando = qtdVendasCombinando /(1-(33/100))
+        qtdVendasPosFilas = qtdVendas / (1-(33/100))
+
+        respostaFilas.innerHTML = `Segundo a "Retail Costumer Experience" 1/3 
+        dos clientes que esperam até 5 minutos nas filas abandonam a mesma logo em seguida.<br><br>
+                                                             
+        Portanto, é possível dizer que seu estabelecimento deixou de fazer 1/3 das vendas. Caso não 
+        houvesse problemas com as filas seu total de vendas seria de  ${qtdVendasPosFilas.toFixed(0)} 
+        vendas e você teria arrecadado <b style="color: red">R$:${(qtdVendasPosFilas*mediaPorComprador).toFixed(0)}</b><br><br>
+
+        E se combinassemos tudo seu estabelecimento teria <b>${qtdVendasCombinando.toFixed(0)}</b> vendas mensais e uma renda de 
+        <b style="color: red;">R$:${(qtdVendasCombinando *mediaPorComprador).toFixed(0)}</b> 
+        `
+       }
+       if(inpMuitosProblemas.checked){
+
+qtdVendasCombinando = qtdVendasCombinando /(1-(50/100))
+
+qtdVendasPosFilas = qtdVendas/(1-(50/100))
+respostaFilas.innerHTML = `
+       50% dos seus clientes vão desistir de comprar se esperarem mais do que cinco minutos na fila segundo pesquisas<br><br>
+
+Então é possível que seus problemas com filas estejam diminuindo pela metade as suas vendas 
+e se não houvessem problemas com filas seu total de vendas seria de <b>${qtdVendasPosFilas.toFixed(0)}</b> 
+e você teria arrecadado <b style="color: red">R$:${(qtdVendasPosFilas*mediaPorComprador).toFixed(0)}</b><br><br>
+
+
+E se combinassemos tudo seu estabelecimento teria <b>${qtdVendasCombinando.toFixed(0)}</b> vendas mensais e uma renda de 
+<b style="color: red;">R$:${(qtdVendasCombinando *mediaPorComprador).toFixed(0)}</b> 
+`
+}
+
+}   
+
+
+}
+
+
+
+
+
+
+
+function cor1()
+{
+    bodyId.innerHTML += `<style>body{background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+      
+
+        margin: 0;
+    padding: 0;
+      }
+        
+        
+        .input:focus ~ .placeholder {
+    color: rgb(226,176,207);
+  }
+  
+  .submit {
+    background-color: rgb(226,176,207);
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 18px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  
+  .submit:active {
+    background-color: rgb(154,186,231);
+    transform: scale(0.95);
+  }
+  .submit:hover {
+   background-color: rgb(154,186,231) ; 
+   transition: 1s;
+   transform: scale(1.03);
+   
+   }
+   .rad-design {
+    width: 14px;
+    height: 14px;
+    border-radius: 100px;
+    background: linear-gradient(to right bottom, rgb(226,176,207), rgb(154,186,231));
+    position: relative;
+  }
+.rad-input:checked~.rad-text {
+    color: rgb(226,176,207);
+  }
+
+
+        
+
+        </style>`
+} 
+function cor2()
+{
+    bodyId.innerHTML += `<style>body{
+      background: #1f4037; 
+    background: -webkit-linear-gradient(to right, #1f4037, #99f2c8);
+    background: linear-gradient(to right, #1f4037, #99f2c8);
+    
+  
+    margin: 0;
+    padding: 0;
+  }
+
+    .input:focus ~ .placeholder {
+    color: rgb(138,220,182);
+  }
+  
+  .submit {
+    background-color: rgb(86,145,121);
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 18px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  
+  .submit:active {
+    background-color: rgb(86,145,121);
+    transform: scale(0.95);
+  }
+  .submit:hover {
+   background-color: rgb(138,220,182) ; 
+   transition: 1s;
+   transform: scale(1.03);
+   
+   }
+   .rad-design {
+    width: 14px;
+    height: 14px;
+    border-radius: 100px;
+    background: linear-gradient(to right bottom, rgb(86,145,121), rgb(138,220,182));
+    position: relative;
+  }
+.rad-input:checked~.rad-text {
+    color: rgb(86,145,121);
+  }
+
+
+
+
+    
+    
+    
+    
+    </style>`
+}
+function cor3(){
+    bodyId.innerHTML += `<style>
+        body{background: rgb(232,255,107);
+        background: radial-gradient(circle, rgba(232,255,107,1) 0%, rgba(255,106,7,1) 49%, rgba(255,0,0,1) 100%); 
+
+        margin: 0;
+    padding: 0;
+      }
+.submit {
+    background-color: rgba(255,106,7,1);
+    border-radius: rgb(232,255,107);
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 18px;
+    text-align: center;
+    width: 100%;
+  }
+  .submit:active {
+    background-color: rgba(232,255,107,1);
+    transform: scale(0.95);
+  }
+  .submit:hover {
+   background-color: red ; 
+   transition: 1s;
+   transform: scale(1.03);
+   
+   }
+   .input:focus ~ .placeholder {
+    color: rgba(255,106,7,1);
+  }
+
+   .rad-input:checked~.rad-text {
+    color: rgba(255,106,7,1);
+  }
+  .rad-design {
+    width: 14px;
+    height: 14px;
+    border-radius: 100px;
+    background: linear-gradient(to right bottom, rgba(232,255,107,1), red );
+    position: relative;
+  }
+  
+  
+
+</style>`
+}
+function cor4(){
+    bodyId.innerHTML += `<style>body{
+      background: hsla(217, 100%, 50%, 1);
+
+background: linear-gradient(45deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+background: -moz-linear-gradient(45deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+background: -webkit-linear-gradient(45deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+    margin: 0;
+    padding: 0;
+  }
+  .input:focus ~ .placeholder {
+    color: hsl(192, 100%, 50%);
+  }
+  
+  .submit {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 18px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  
+  .submit:active {
+    background-color: #06b;
+    transform: scale(0.95);
+  }
+  .submit:hover {
+   background-color: rgba(0,202,255,1) ; 
+   transition: 1s;
+   transform: scale(1.03);
+   
+   }
+   .rad-design {
+    width: 14px;
+    height: 14px;
+    border-radius: 100px;
+    background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
+    position: relative;
+  }
+.rad-input:checked~.rad-text {
+    color: hsl(192, 100%, 50%);
+  }
+
+
+
+  
+  </style>`
+}
+</script>
