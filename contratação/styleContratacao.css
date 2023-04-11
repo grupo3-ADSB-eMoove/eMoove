@@ -97,7 +97,7 @@ input{
     width: 100%;
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
-    border-radius: 27px;
+    border-radius: 10px;
     border: none;
     padding: 10px;
     outline-color: #ED893E;
@@ -107,11 +107,28 @@ input{
     width: 45%;
 }
 
+.inputNome{
+    width: 100%;
+}
+
 .input label{
     color: #ED893E;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 500;
+    margin-left: 8px;
+}
+
+.inputNome label{
+    color: #ED893E;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.input :focus{
+    background-color: #dbdbdb;;
 }
 
 
