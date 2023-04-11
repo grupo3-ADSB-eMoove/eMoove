@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+
 body{
     margin: 0;
     padding: 0;
@@ -18,7 +21,7 @@ body{
   .svg-icon path,
   .svg-icon polygon,
   .svg-icon rect {
-    fill: #FA7D09;
+    fill: #ffffff;
   }
   
   .svg-icon circle {
@@ -41,30 +44,31 @@ body{
 
 .span{
   text-align: center;
-  font-size: 26px;
+  font-size: 24px;
   color: #eee;
-  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
   margin-bottom: 5px;
   text-decoration: none;
-  text-shadow: #FA7D09 2px 0px 0px, #FA7D09 1.75517px 0.958851px 0px, #FA7D09 1.0806px 1.68294px 0px, #FA7D09 0.141474px 1.99499px 0px, #FA7D09 -0.832294px 1.81859px 0px, #FA7D09 -1.60229px 1.19694px 0px, #FA7D09 -1.97998px 0.28224px 0px, #FA7D09 -1.87291px -0.701566px 0px, #FA7D09 -1.30729px -1.5136px 0px, #FA7D09 -0.421592px -1.95506px 0px, #FA7D09 0.567324px -1.91785px 0px, #FA7D09 1.41734px -1.41108px 0px, #FA7D09 1.92034px -0.558831px 0px;  
+  
+}
+.span:hover{
+  text-decoration: underline;
 }
 
 
-.calmaAi{
+.divVoltarCalculadora{
   display: flex;
   justify-content: start;
   align-items: center;
   width: 400px;
   height: 50px;
   margin-left: .3%;
+ 
 
   
 }
 
-.calmaAi:hover{
-  transition: 0.3s;
-  transform: scale(1.1);
-}
 
 .container{
     margin: 20px;
@@ -78,7 +82,7 @@ body{
     box-sizing: border-box;
     width: 400px;
     height: 520px;
-    background: rgba(217, 217, 217, 0.58);
+    background: rgba(240, 240, 240, 0.897);
     border: 1px solid white;
     box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(6px);
@@ -99,7 +103,6 @@ body{
   .card:hover {
     border: 1px solid black;
     transform: translateY(-20px) ;
-    background-color:  rgba(217, 217, 217, 0.80);
     transition: .2s;
   }
   
