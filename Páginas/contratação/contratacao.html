@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contratação</title>
     <link rel="stylesheet" href="styleContratacao.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.js"></script>
   </head>
 
   <body>
@@ -36,29 +38,29 @@
           <div class="inputsHorizontal">
             <div class="input">
               <label for="CEP">CEP</label>
-              <input type="text" name="CEP" id="" />
+              <input type="text" name="CEP" id="input_CEP" maxlength="9"/>
             </div>
             <div class="input">
               <label for="bairro">Bairro</label>
-              <input type="text" name="bairro" id="" />
+              <input type="text" name="bairro" id="input_bairro" />
             </div>
           </div>
 
           <div class="inputsHorizontal">
             <div class="input">
               <label for="endereco">Endereço</label>
-              <input type="text" name="endereco" id="" />
+              <input type="text" name="endereco" id="input_endereco" />
             </div>
             <div class="input">
               <label for="numero">Número</label>
-              <input type="text" name="numero" id="" />
+              <input type="text" name="numero" id="input_numero" />
             </div>
           </div>
 
           <div class="inputsHorizontal">
             <div class="inputNome">
               <label for="nome">Nome</label>
-              <input type="text" name="nome" id="" />
+              <input type="text" name="nome" id="input_nome" />
             </div>
           </div>
           <div class="textoEstabelecimento">
@@ -68,19 +70,90 @@
           <div class="inputsHorizontal">
             <div class="input">
               <label for="email">Email</label>
-              <input type="text" name="email" id="" />
+              <input type="text" name="email" id="input_email" />
             </div>
             <div class="input">
               <label for="telefone">Telefone</label>
-              <input type="text" name="telefone" id="" />
+              <input type="text" name="telefone" id="input_tel" maxlength="14s"/>
             </div>
           </div>
         </div>
 
         <div class="divBtnContratar">
-          <button class="btnContratar">Contrate</button>
+          <button class="btnContratar" onclick="validarContrato()">Contrate</button>
         </div>
       </div>
     </section>
   </body>
 </html>
+
+<script>
+
+    const cep = document.querySelector('#input_CEP');
+    const tel = document.querySelector('#input_tel');
+    const email = document.querySelector('#input_email');
+    const nomeEst = document.querySelector('#input_nome');
+    const numero = document.querySelector('#input_numero');
+    const bairro = document.querySelector('#input_bairro');
+    const endereco = document.querySelector('#input_endereco');
+  
+    cep.addEventListener('keypress', () => {
+      let cepLength = cep.value.length;
+  
+      if (cepLength === 5) {
+        cep.value += '-';
+      }
+    })
+  
+    tel.addEventListener('keypress', () => {
+      let telLength = tel.value.length;
+      telBanco = tel.value;
+  
+      if (telLength === 0) {
+        tel.value += '(';
+      }
+      if (telLength === 3) {
+        tel.value += ') ';
+      }
+      if (telLength === 9) {
+        tel.value += '-';
+      }
+      telBanco = telBanco.replace('(', '').replace(') ', '').replace('-', '');
+    })
+  
+    function validarEmail(email) {
+      let padraoEmail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      return padraoEmail.test(email);
+    }
+  
+    function validarContrato() {
+      if(cep.value.length != 9 && cep.value != ''){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Seu CEP não foi preenchido corretamente, tente novamente!'
+        })
+      }else if (validarEmail(email.value) !== true && email.value != '') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Seu email é invalido, por favor, tente novamente!'
+        })
+      } else if(tel.value.length != 14 && tel.value != '' || (/^[0-9]+$/.test((tel.value.replaceAll('(', '').replaceAll(') ', '').replace('-', '')))) == false && tel.value != ''){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Seu número de telefone é invalido, por favor, tente novamente!'
+        })
+      } else if (cep.value == '' || tel.value == '' || email.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Por favor, preencha todos os campos!'
+        })
+      }
+    }
+  
+  
+  
+  </script>
