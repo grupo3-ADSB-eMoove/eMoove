@@ -1,110 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-body{
-    background-color: #FA7D09;
-    font-family: 'Montserrat',sans-serif;
-    
+body {
+  background-color: #fa7d09;
+  font-family: "Montserrat", sans-serif;
 }
-.container{
-    display: flex;
-  
+.container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  min-height: 100vh;
 }
-.divNavbar{
-    height: 100vh;
-    width: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+.divNavbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.navbarVertical{
-background-color: white;
-height: 90vh;
-width: 100px;
-border-radius: 25px;
-padding: 30px;
-
+.navbarVertical {
+  background-color: white;
+  height: 100%;
+  border-radius: 25px;
+  padding: 30px;
 }
-.navbarContent{
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.navbarContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-.navbarContent img{
-    margin-top: 10px;
-    margin-bottom: 30px;
+.navbarContent {
+  gap: 20px;
 }
-.conteudoBox{
-    width: 80vw;
-    display: flex;
-    flex-direction: column;
+.conteudoBox {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.conteudoCima{
-    display: flex;
-    width: 100%;
-    height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.conteudoCima {
+  display: flex;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.conteudoCima h1{
-    color: white;
+.conteudoCima h1 {
+  color: white;
 }
-.blocoEntradas{
-    width: 50%;
-    height: fit-content;
-    margin-top: 3%;
-    margin-right: 5%;
-}
-
-.divTotalEntradas{
-    width: 100%;
-    height: 150px;
-    background-color: white;
-    border-radius: 25px;
-    padding: 25px;
-    margin-bottom: 20px;
-}
-.divPico{
-    height: 100px;
-    width: 45%;
-    background-color: white;
-    border-radius: 25px;
-
+.blocoEntradas {
+  width: 50%;
+  height: fit-content;
+  margin-top: 3%;
+  margin-right: 5%;
 }
 
-.divVale{
-    height: 100px;
-    width: 45%;
-    background-color: white;
-    border-radius: 25px;
-    
+.divTotalEntradas {
+  width: 100%;
+  height: 150px;
+  background-color: white;
+  border-radius: 25px;
+  padding: 25px;
+  margin-bottom: 20px;
 }
-.horizontal{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+.divPico {
+  height: 100px;
+  width: 45%;
+  background-color: white;
+  border-radius: 25px;
 }
 
-.blocoGraficos{
-    width: 100%;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+.divVale {
+  height: 100px;
+  width: 45%;
+  background-color: white;
+  border-radius: 25px;
+}
+.horizontal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blocoGraficos {
+  width: 100%;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .grafico {
