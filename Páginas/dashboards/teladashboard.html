@@ -9,6 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
+    <header>
+      <h2><span style="color: #FA7D09;">e</span>Moove</h2>
+    </header>
     <div class="container">
       <div class="divNavbar">
         <div class="navbarVertical">
@@ -25,12 +28,25 @@
 
       <div class="conteudoBox">
         <div class="conteudoCima">
-          <h1>Olá, este é seu <br />resumo do dia:</h1>
+          <h1>
+            Olá ${nomeUsuario}<br/>
+            este é seu <br />
+            resumo do dia:
+          </h1>
           <div class="blocoEntradas">
-            <div class="divTotalEntradas"></div>
-            <div class="horizontal">
-              <div class="divPico"></div>
-              <div class="divVale"></div>
+            <div class="kpi">
+              <h4>Total de entradas</h4>
+              <h2>203</h2>
+            </div>
+            <div class="horizontal" style="gap: 20px;">
+              <div class="kpi">
+                <h4>Pico de entradas</h4>
+                <h2>45</h2>
+              </div>
+              <div class="kpi">
+                <h4>Vale de entradas</h4>
+                <h2>6</h2>
+              </div>
             </div>
           </div>
         </div>

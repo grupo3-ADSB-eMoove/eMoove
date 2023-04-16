@@ -9,12 +9,28 @@
 body {
   background-color: #fa7d09;
   font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
 }
+
+header {
+  min-height: 10% !important;
+  padding: 20px;
+
+  background-color: white;
+}
+
+header h2 {
+  color: #ff4501;
+}
+
 .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 20px;
-  min-height: 100vh;
+  flex: 1;
 }
 .divNavbar {
   display: flex;
@@ -56,32 +72,29 @@ body {
 }
 .blocoEntradas {
   width: 50%;
-  height: fit-content;
-  margin-top: 3%;
-  margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.divTotalEntradas {
-  width: 100%;
-  height: 150px;
+.kpi {
+  flex: 1;
   background-color: white;
-  border-radius: 25px;
-  padding: 25px;
-  margin-bottom: 20px;
-}
-.divPico {
-  height: 100px;
-  width: 45%;
-  background-color: white;
-  border-radius: 25px;
+
+  padding: 20px 10px;
+  text-align: center;
+
+  border-radius: 15px;
+
+  text-transform: uppercase;
+
+  font-weight: 700;
 }
 
-.divVale {
-  height: 100px;
-  width: 45%;
-  background-color: white;
-  border-radius: 25px;
+.kpi h2 {
+  color: #FF4301;
 }
+
 .horizontal {
   width: 100%;
   display: flex;
@@ -99,6 +112,6 @@ body {
 .grafico {
   background-color: white;
   padding: 10px;
-  border-radius: 27px;
+  border-radius: 18px;
   flex: 1;
 }
