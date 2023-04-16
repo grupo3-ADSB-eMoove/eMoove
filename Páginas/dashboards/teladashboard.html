@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div class="container">
@@ -24,7 +25,7 @@
 
       <div class="conteudoBox">
         <div class="conteudoCima">
-            <h1>Olá, este é seu <br />resumo do dia:</h1>
+          <h1>Olá, este é seu <br />resumo do dia:</h1>
           <div class="blocoEntradas">
             <div class="divTotalEntradas"></div>
             <div class="horizontal">
@@ -33,14 +34,16 @@
             </div>
           </div>
         </div>
-        <div class="blocoGraficos"></div>
+        <div class="blocoGraficos">
+          <div class="grafico">
+            <canvas id="grafico_1"></canvas> 
+          </div>
+          <div class="grafico">
+            <canvas id="grafico_2"></canvas>
+          </div>
+        </div>
       </div>
-      
-   
-</div>
-    
-    
-  
-    
+    </div>
+    <script src="./script.js"></script>
   </body>
 </html>
