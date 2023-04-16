@@ -82,6 +82,11 @@
         <div class="divBtnContratar">
           <button class="btnContratar" onclick="validarContrato()">Contrate</button>
         </div>
+
+        <div id="resultado">
+
+        </div>
+
       </div>
     </section>
   </body>
@@ -96,19 +101,19 @@
     const numero = document.querySelector('#input_numero');
     const bairro = document.querySelector('#input_bairro');
     const endereco = document.querySelector('#input_endereco');
-  
+    
     cep.addEventListener('keypress', () => {
       let cepLength = cep.value.length;
-  
+      
       if (cepLength === 5) {
         cep.value += '-';
       }
     })
-  
+    
     tel.addEventListener('keypress', () => {
       let telLength = tel.value.length;
       telBanco = tel.value;
-  
+      
       if (telLength === 0) {
         tel.value += '(';
       }
@@ -125,7 +130,7 @@
       let padraoEmail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
       return padraoEmail.test(email);
     }
-  
+    
     function validarContrato() {
       if(cep.value.length != 9 && cep.value != ''){
         Swal.fire({
@@ -153,7 +158,27 @@
         })
       }
     }
-  
-  
+    
+    document.getElementById('input_CEP').addEventListener('focusout',exibirEndereco)
+    function exibirEndereco() {
+      let cep = document.querySelector(`#input_CEP`).value;
+      if (cep.length !== 9) {
+            alert(`CEP inválid!`);
+            return;
+        }
+        let url = `https://viacep.com.br/ws/${cep}/json/`;
+        fetch(url).then(function(response){
+            response.json().then(mostrarEndereco);
+            });
+        }
+
+        function mostrarEndereco(dados) {
+            if (dados.erro){
+                resultado.innerHTML = "Não foi possível localizar endereço!";
+            } else{
+              document.getElementById('input_endereco').value = dados.logradouro
+              document.getElementById('input_bairro').value = dados.bairro
+            }
+        }
   
   </script>
