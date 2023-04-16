@@ -8,8 +8,9 @@
     <title>eMoove</title>
     <link rel="stylesheet" href="style.css">
     <link rel="website icon" type="png" href="">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.js"></script>
 </head>
-
 <body>
     <div class="wrapper">
         <div id="stars"></div>
@@ -22,8 +23,8 @@
                 <img src="./assets/imagens/eMoove.png" alt="Logo eMoove">
             </div>
             <div class="headerBotoes">
-                <button class="botaoRegistrar" onclick="abrirModal()">Registrar</button>
-                <button class="botaoLogin" onclick="abrirModal2()">Login</button>
+                <button class="botaoRegistrar">Registrar</button>
+                <button class="botaoLogin">Login</button>
             </div>
         </div>
     </header>
@@ -40,9 +41,8 @@
             </div>
         </div>
     </section>
-    <div class="bagulinho">
+    <div class="footer">
         <img src="./assets/imagens/Bagulinho_cima.png" alt="">
-        <img src="./assets/imagens/Bagulinho_baixo.png" alt="">
     </div>
 
     <div id="fade" class="hide"></div>
@@ -54,7 +54,7 @@
         <div class="modal-body">
             <input id="ipt_loginEmail" placeholder="E-mail">
             <input type="password" id="ipt_loginSenha" placeholder="Senha">
-            <div id="btnConfirmar">
+            <div id="btnConfirmar" onclick="efetuarLogin()">
                 <img src="./assets/Imagens/botao_entrar.png" alt="">
             </div>
         </div>
@@ -72,38 +72,13 @@
             <input type="password" id="ipt_senha" placeholder="Senha">
             <input type="password" id="ipt_confirmarSenha" placeholder="Confirmar Senha">
 
-            <div id="btnConfirmar">
+            <div id="btnConfirmar" onclick="efetuarCadastro()">
                 <img src="./assets/Imagens/botao_entrar.png" alt="">
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="modal.js"></script>
+    <script type="text/javascript" src="validacaoLogin.js"></script>
+    <script type="text/javascript" src="validacaoCadastro.js"></script>
 </body>
-
 </html>
-<script>
-        const openModalButtonReg = document.querySelector(".botaoRegistrar");
-        const closeModalButtonReg = document.querySelector("#close-modalReg");
-        const modalReg = document.querySelector("#modalReg");
-        const fadeReg = document.querySelector("#fadeReg");
-
-        const toggleModalReg = () => {
-            [modalReg, fadeReg].forEach((el) => el.classList.toggle("hideReg"));
-        }
-
-        [openModalButtonReg, closeModalButtonReg, fadeReg].forEach((el) => {
-            el.addEventListener("click", () => toggleModalReg());
-        });
-    
-        const openModalButtonLogin = document.querySelector(".botaoLogin");
-        const closeModalButton = document.querySelector("#close-modal");
-        const modal = document.querySelector("#modal");
-        const fade = document.querySelector("#fade");
-
-        const toggleModal = () => {
-            [modal, fade].forEach((el) => el.classList.toggle("hide"));
-        }
-        [openModalButtonLogin, closeModalButton, fade].forEach((el) => {
-            el.addEventListener("click", () => toggleModal());
-        });
-    
-</script>
