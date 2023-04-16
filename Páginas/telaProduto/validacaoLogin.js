@@ -36,12 +36,15 @@ function efetuarLogin() {
             title: 'Oops...',
             text: 'Senha inválida!',
         })
-    } else if(email.value == 'admin@gmail.com' && senha.value == "Admin@123"){
+    } else if (email.value == 'admin@gmail.com' && senha.value == "Admin@123") {
         Swal.fire(
             'Login efetuado!',
             'Redirecionando para página do usuário!',
             'success'
         )
+        setTimeout(() => {
+            window.location.href = "../dashboards/teladashboard.html"
+        }, 3000)
     } else {
         Swal.fire({
             icon: 'error',
