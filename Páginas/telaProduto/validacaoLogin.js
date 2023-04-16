@@ -36,7 +36,17 @@ function efetuarLogin() {
             title: 'Oops...',
             text: 'Senha inválida!',
         })
+    } else if(email.value == 'admin@gmail.com' && senha.value == "Admin@123"){
+        Swal.fire(
+            'Login efetuado!',
+            'Redirecionando para página do usuário!',
+            'success'
+        )
     } else {
-
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Conta não cadastrada!',
+        })
     }
 }
