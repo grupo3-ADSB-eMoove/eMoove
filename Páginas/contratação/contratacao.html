@@ -83,10 +83,6 @@
           <button class="btnContratar" onclick="validarContrato()">Contrate</button>
         </div>
 
-        <div id="resultado">
-
-        </div>
-
       </div>
     </section>
   </body>
@@ -159,11 +155,11 @@
       }
     }
     
-    document.getElementById('input_CEP').addEventListener('focusout',exibirEndereco)
+
+        document.getElementById('input_CEP').addEventListener('keyup',exibirEndereco)
     function exibirEndereco() {
       let cep = document.querySelector(`#input_CEP`).value;
       if (cep.length !== 9) {
-            alert(`CEP inválid!`);
             return;
         }
         let url = `https://viacep.com.br/ws/${cep}/json/`;
@@ -174,11 +170,10 @@
 
         function mostrarEndereco(dados) {
             if (dados.erro){
-                resultado.innerHTML = "Não foi possível localizar endereço!";
+                alert('Não foi possível localizar endereço!');
             } else{
               document.getElementById('input_endereco').value = dados.logradouro
               document.getElementById('input_bairro').value = dados.bairro
             }
         }
-  
   </script>

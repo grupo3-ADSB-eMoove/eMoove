@@ -2,75 +2,53 @@ CREATE DATABASE emoove;
 
 USE emoove;
 
+
+
 -- CREATE DA TABELA DO USUARIO QUE VAI CONTRATAR
 CREATE TABLE usuario(
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50) NOT NULL,
+	nomeUsuario VARCHAR(50) NOT NULL,
     sobrenome VARCHAR(50) NOT NULL,
-    cpf CHAR(14),
+    cpf CHAR(14) NOT NULL,
     email VARCHAR(100) NOT NULL,
 	senha VARCHAR(50) NOT NULL,
-	telefone CHAR(12)
+    cargo_funcionario VARCHAR(30),
+    fk_estabelecimento INT,
+    FOREIGN KEY (fk_estabelecimento) REFERENCES estabelecimento (idEstabelecimento)
+);
+
+
+CREATE TABLE telefoneUsuario(
+	idTelefone INT PRIMARY KEY AUTO_INCREMENT,
+    telefoneFixo CHAR(12),
+    celular CHAR(13) NOT NULL,
+    fk_usuario INT,
+    FOREIGN KEY (fk_usuario) REFERENCES Usuario (idUsuario)
 );
 
 -- CREATE DA TABELA DO ESTABELECIMENTO DO 
 CREATE TABLE estabelecimento(
     idEstabelecimento INT PRIMARY KEY auto_increment,
-    nome VARCHAR(100),
-    logradouro VARCHAR(100) not null,
+    nomeEstabelecimento VARCHAR(100),
+    logradouro VARCHAR(100) NOT NULL,
     numeroEndereco VARCHAR (5) NOT NULL,
-    bairroEndereco VARCHAR (200) not null,
+    bairroEndereco VARCHAR (200) NOT NULL,
     cidadeEndereco VARCHAR (200) NOT NULL,
     cepEndereco char(9),
-    telefone VARCHAR(14),
-	fk_usuario INT,
-    FOREIGN KEY (fk_usuario) REFERENCES Usuario (idUsuario)
+    cnpj char(14) 
 );
 
--- INSERT TABELA USUARIO
-INSERT INTO usuario values
-(null, 'Guilherme', 'Scarabelli', '55555555555', 'gui@gmail.com', '123', '1111111111'),
-(null, 'Leonardo', 'Bento', '44444444444', 'leo@gmail.com', '123', '2222222222'),
-(null, 'Renan', 'Santos', '33333333333', 'renan@gmail.com', '123', '3333333333');
-
--- INSERT TABELA 
-INSERT INTO estabelecimento VALUES 
-(null,'MacLovinPadaria', 'Rua Irmão Deodoro', 659, 'Guaianases', 'São Paulo', '08410-410', '11 25522861', 1),
-(null,'MacRestaurante', 'Rua haddock lobo', 756, 'Paulista', 'São Paulo', '08410-410', '11 25522861', 1),
-(null,'Leo do hortifruti', 'Rua Timboco Fumo', 11, 'Sacomã', 'São Paulo', '08410-410', '11 27687798', 2),
-(null,'Churrascaria do Renan', 'Rua Kuh xaixange', 78, 'Cidade Tiradentes', 'São Paulo', '08410-410', '11 20028922', 3);
-
-
--- SELECT APENAS DO NOME DO ESTABELECIMENTO E DO USUARIO QUE É DONO
-SELECT estabelecimento.nome, usuario.nome FROM Estabelecimento JOIN Usuario
-	ON Estabelecimento.fk_usuario = usuario.idUsuario;
-
--- CREATE DA TABELA CONTRATO, GUARDA OS DADOS DA CONTRATAÇÃO
-CREATE TABLE contrato(
-	idContrato INT PRIMARY KEY AUTO_INCREMENT,
-    inicio date not null,
-    fim date not null,
-	 fk_estabelecimento INT, 
-     FOREIGN KEY (fk_estabelecimento) REFERENCES estabelecimento (idEstabelecimento)
-); 
-
--- INSERT NA TABELA CONTRATO
-INSERT INTO contrato (inicio, fim, fk_estabelecimento)VALUES 
-('2022-04-05', '2024-04-05', 1),
-('2022-04-05', '2028-04-05', 2),
-('2022-04-05', '2032-04-05', 3);
-
--- Aqui é um select "bruto" onde mostra todos os dados puxados por dois
--- joins, sendo que um é puxando os dados da tabela usuario e os dados do estabelecimento sendo puxado pelo fk_usuario
-
-SELECT * FROM contrato
-	JOIN estabelecimento
-		on contrato.fk_estabelecimento = estabelecimento.idestabelecimento
-			join Usuario on Estabelecimento.fk_usuario = Usuario.idUsuario;
-
+CREATE TABLE telefoneEstabelecimento(
+	idTelefone INT PRIMARY KEY AUTO_INCREMENT,
+    telefoneAtendimento CHAR(12) NOT NULL,
+    telefoneSAQ CHAR(12),
+    celular CHAR(12),
+    fk_estabelecimento INT,
+    FOREIGN KEY (fk_estabelecimento) REFERENCES Estabelecimento (idEstabelecimento)
+);
 
 -- CREATE DA TABELA SENSOR ONDE GUARDA AS INFOS DO SENSOR
-CREATE TABLE sensor(
+CREATE TABLE Sensor(
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
     dtInstalacao DATE not null,
     status VARCHAR(10),
@@ -82,25 +60,64 @@ CREATE TABLE sensor(
 -- Possivelmente vai de comes
 CREATE TABLE LocalInstalado (
     idLocal INT PRIMARY KEY AUTO_INCREMENT,
-    LocalInstalado VARCHAR (10),
+    LocalInstalado varchar (10),
     fk_estabelecimento INT,
     FOREIGN KEY (fk_estabelecimento) REFERENCES estabelecimento (idEstabelecimento)
 );
 
+CREATE TABLE Funcionario(
+	idFuncionario INT ,
+    nomeFuncionario VARCHAR(100) NOT NULL,
+    sobrenome VARCHAR(100) NOT NULL,
+    emailFuncionario VARCHAR(100) NOT NULL,
+    cpf CHAR(14) NOT NULL,
+    fk_estabelecimento INT,
+    FOREIGN KEY (fk_estabelecimento) REFERENCES estabelecimento (idEstabelecimento),
+    CONSTRAINT pkCompostaFuncionario PRIMARY KEY (idFuncionario, fk_estabelecimento)
+);
+
 -- CREATE DA TABELA QUE VAI ARMAZENAR OS DADOS CAPTURADOS PELO SENSOR
-CREATE TABLE capturaDados(
-	idCaptura INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE CapturaDados(
+	idCaptura INT,
 	valor BOOLEAN,   
 	dtHora  DATETIME DEFAULT current_timestamp,
 	fk_sensor INT,
-	FOREIGN KEY (fk_sensor) REFERENCES Sensor(idSensor)
+	FOREIGN KEY (fk_Sensor) REFERENCES Sensor(idSensor),
+    constraint pkComposta PRIMARY KEY (idCaptura, fk_sensor)
 );
+
+-- INSERT TABELA USUARIO
+INSERT INTO usuario values
+	(null, 'Guilherme', 'Scarabelli', '55555555555', 'gui@gmail.com', '123', null, 1),
+    (null, 'Vivian', 'Silva', '22222222222', 'vivian@gmail.com', '123', 'Funcionario', 1),
+	(null, 'Leonardo', 'Bento', '44444444444', 'leo@gmail.com', '123', null,  2),
+	(null, 'Renan', 'Santos', '33333333333', 'renan@gmail.com', '123',null, 3);
+    
+INSERT INTO  telefoneUsuario values
+	(null, null, '11 91111-1111', 1),
+	(null, '11 2266-7842', '11 92222-2222', 2),
+	(null, '11 2462-3485', '11 93333-3333', 3),
+	(null, '11 2214-6458', '11 94444-4444', 4);
+
+-- INSERT TABELA 
+INSERT INTO estabelecimento VALUES 
+	(null,'MacLovinPadaria', 'Rua Irmão Deodoro', 659, 'Guaianases', 'São Paulo', '08410-410','11492439000103' ),
+	(null,'MacRestaurante', 'Rua haddock lobo', 756, 'Paulista', 'São Paulo', '08410-410', '61050965000183'),
+	(null,'Churrascaria do Renan', 'Rua Kuh xaixange', 78, 'Cidade Tiradentes', 'São Paulo', '08410-410', '62368641000150');
+    
+INSERT INTO  telefoneEstabelecimento values
+	(null, '11 2266-7842', null, '11 91111-1111', 1),
+	(null, '11 2266-7842', null, '11 92222-2222', 2),
+	(null, '11 2462-3485', null, '11 93333-3333', 3);
+
+
+
 
 -- Insert do local
 INSERT INTO LocalInstalado VALUES
-(null, 'Caixa'),
-(null, 'Entrada'),
-(null, 'Corredor');
+(null, 'Caixa', 1),
+(null, 'Entrada', 1),
+(null, 'Corredor', 1);
 
 -- insert do sensor
 INSERT INTO Sensor VALUES
@@ -112,32 +129,25 @@ select * from Sensor;
 
 -- insert dos dados
 INSERT INTO CapturaDados VALUES
-(NULL, 1, '2023-10-20 08:00:00', 1),
-(NULL, 1, '2023-10-20 08:00:00', 2),
-(NULL, 1, '2023-10-20 08:00:00', 3);
+(1, 1, '2023-10-20 10:00:00', 1),
+(1, 1, '2023-10-20 08:00:00', 2),
+(2, 1, '2023-10-20 10:00:00', 2);
 
 -- Aqui está acontecendo um select mais "refinado", peguei para puxar apenas o id, valor da captura, o id do sensor
 -- e o local em q ele foi instalado, eu fiz um join na tabela sensor e por la, eu pego o local em que o sensor foi instalado.
 
-
-SELECT idCaptura, valor, dtHora, idSensor, localInstalado FROM CapturaDados 
+SELECT idCaptura, valor, dtHora, idSensor, localInstalado, nomeestabelecimento FROM CapturaDados 
 	JOIN Sensor
 		ON CapturaDados.fk_sensor = Sensor.idSensor
-			JOIN LocalInstalado ON sensor.fk_local_instalado = LocalInstalado.idLocal;
+			JOIN LocalInstalado ON sensor.fk_local_instalado = LocalInstalado.idLocal
+				JOIN estabelecimento ON estabelecimento.idEstabelecimento = LocalInstalado.fk_estabelecimento;
             
-            
--- Aqui eu fiz a mesma coisa, puxei os dados do usuario e do estabelecimento usando dois joins, usando um join para puxar as infos do usuario
--- pela tabela do estabelecimento e depois as infos do contrato usando um join no usuario e contrato 
 
--- eu devo ter explicado todo torto mas amanha eu desenrolo na explicação.
+-- AQUI TEMOS UM SELECT DOS USUARIOS, OS SEUS CARGOSOS E SEUS RESPECTIVOS ESTABELECIMENTOS 
+SELECT nomeusuario as Usuario, ifnull(cargo_funcionario, 'Representante') as cargo, nomeEstabelecimento as Estabelecimento FROM Estabelecimento 
+	JOIN Usuario ON usuario.fk_estabelecimento = estabelecimento.idEstabelecimento;
+	
 
-SELECT idContrato, inicio, fim, nomeUsuario, sobrenomeUsuario, nome FROM Contrato
-	JOIN Estabelecimento on Contrato.fk_Estabelecimento = Estabelecimento.idEstabelecimento
-		JOIN Usuario on Estabelecimento.fk_usuario = Usuario.idUsuario;
-        
-
-alter table Sensor
- add constraint chkStatus CHECK (status IN('Ativo','inativo'));
  
 
 
