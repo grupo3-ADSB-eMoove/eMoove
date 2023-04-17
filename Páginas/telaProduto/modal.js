@@ -1,24 +1,24 @@
-const openModalButtonReg = document.querySelector(".botaoRegistrar");
-const closeModalButtonReg = document.querySelector("#close-modalReg");
-const modalReg = document.querySelector("#modalReg");
-const fadeReg = document.querySelector("#fadeReg");
+// const openModalButtonReg = document.querySelector(".botaoRegistrar");
+// const closeModalButtonReg = document.querySelector("#close-modalReg");
+// const modalReg = document.querySelector("#modalReg");
+// const fadeReg = document.querySelector("#fadeReg");
 
-emailCadastro = document.querySelector("#ipt_email");
-senhaCadastro = document.querySelector("#ipt_senha");
-usuario = document.querySelector("#ipt_usuario");
-confirmarSenha = document.querySelector("#ipt_confirmarSenha");
+// emailCadastro = document.querySelector("#ipt_email");
+// senhaCadastro = document.querySelector("#ipt_senha");
+// usuario = document.querySelector("#ipt_usuario");
+// confirmarSenha = document.querySelector("#ipt_confirmarSenha");
 
-const toggleModalReg = () => {
-    [modalReg, fadeReg].forEach((el) => el.classList.toggle("hideReg"));
-    emailCadastro.value = "";
-    senhaCadastro.value = "";
-    usuario.value = "";
-    confirmarSenha.value = "";
-}
+// const toggleModalReg = () => {
+//     [modalReg, fadeReg].forEach((el) => el.classList.toggle("hideReg"));
+//     emailCadastro.value = "";
+//     senhaCadastro.value = "";
+//     usuario.value = "";
+//     confirmarSenha.value = "";
+// }
 
-[openModalButtonReg, closeModalButtonReg, fadeReg].forEach((el) => {
-    el.addEventListener("click", () => toggleModalReg());
-});
+// [openModalButtonReg, closeModalButtonReg, fadeReg].forEach((el) => {
+//     el.addEventListener("click", () => toggleModalReg());
+// });
 
 const openModalButtonLogin = document.querySelector(".botaoLogin");
 const closeModalButton = document.querySelector("#close-modal");

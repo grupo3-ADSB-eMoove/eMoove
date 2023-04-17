@@ -1,179 +1,194 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contratação</title>
-    <link rel="stylesheet" href="styleContratacao.css" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.js"></script>
-  </head>
 
-  <body>
-    <header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contratação</title>
+  <link rel="stylesheet" href="styleContratacao.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <a href="../telaProduto/index.html" style="text-decoration: none;">
       <div class="btnVoltar">
-        <img
-          class="iconVoltar"
-          src="./assets/left-chevron.svg"
-          alt="voltarIcon"
-        />
+        <img class="iconVoltar" src="./assets/left-chevron.svg" alt="voltarIcon" />
         <span class="spanVoltar">Voltar</span>
       </div>
+    </a>
 
-      <div class="divTitulo">
-        <h1>FAÇA SUA CONTRATAÇÃO</h1>
+    <div class="divTitulo">
+      <h1>FAÇA SUA CONTRATAÇÃO</h1>
+    </div>
+
+    <span class="space"></span>
+  </header>
+
+  <section class="sectionForm">
+    <div class="divForm">
+      <div class="textoEstabelecimento">
+        <h2>Estabelecimento</h2>
       </div>
 
-      <span class="space"></span>
-    </header>
-
-    <section class="sectionForm">
-      <div class="divForm">
-        <div class="textoEstabelecimento">
-          <h2>Estabelecimento</h2>
-        </div>
-
-        <div class="divInputs">
-          <div class="inputsHorizontal">
-            <div class="input">
+      <div class="divInputs">
+        <div class="inputsHorizontal">
+          <div class="input">
+            <div class="separar">
               <label for="CEP">CEP</label>
-              <input type="text" name="CEP" id="input_CEP" maxlength="9"/>
+              <span class="erroCEP" id="mensagemErroCEP">CEP Inválido</span>
             </div>
-            <div class="input">
-              <label for="bairro">Bairro</label>
-              <input type="text" name="bairro" id="input_bairro" />
-            </div>
+            <input type="text" name="CEP" id="input_CEP" maxlength="9" />
           </div>
-
-          <div class="inputsHorizontal">
-            <div class="input">
-              <label for="endereco">Endereço</label>
-              <input type="text" name="endereco" id="input_endereco" />
-            </div>
-            <div class="input">
-              <label for="numero">Número</label>
-              <input type="text" name="numero" id="input_numero" />
-            </div>
-          </div>
-
-          <div class="inputsHorizontal">
-            <div class="inputNome">
-              <label for="nome">Nome</label>
-              <input type="text" name="nome" id="input_nome" />
-            </div>
-          </div>
-          <div class="textoEstabelecimento">
-            <h3>Contato</h3>
-          </div>
-
-          <div class="inputsHorizontal">
-            <div class="input">
-              <label for="email">Email</label>
-              <input type="text" name="email" id="input_email" />
-            </div>
-            <div class="input">
-              <label for="telefone">Telefone</label>
-              <input type="text" name="telefone" id="input_tel" maxlength="15"/>
-            </div>
+          <div class="input">
+            <label for="bairro">Bairro</label>
+            <input type="text" name="bairro" id="input_bairro" />
           </div>
         </div>
 
-        <div class="divBtnContratar">
-          <button class="btnContratar" onclick="validarContrato()">Contrate</button>
+        <div class="inputsHorizontal">
+          <div class="input">
+            <label for="endereco">Endereço</label>
+            <input type="text" name="endereco" id="input_endereco" />
+          </div>
+          <div class="input">
+            <label for="numero">Número</label>
+            <input type="text" name="numero" id="input_numero" />
+          </div>
         </div>
 
+        <div class="inputsHorizontal">
+          <div class="inputNome">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="input_nome" />
+          </div>
+        </div>
+        <div class="textoEstabelecimento">
+          <h3>Contato</h3>
+        </div>
+
+        <div class="inputsHorizontal">
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="input_email" />
+          </div>
+          <div class="input">
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="input_tel" maxlength="15" />
+          </div>
+        </div>
       </div>
-    </section>
-  </body>
+
+      <div class="divBtnContratar">
+        <button class="btnContratar" onclick="validarContrato()">Contrate</button>
+      </div>
+
+    </div>
+  </section>
+</body>
+
 </html>
 
 <script>
 
-    const cep = document.querySelector('#input_CEP');
-    const tel = document.querySelector('#input_tel');
-    const email = document.querySelector('#input_email');
-    const nomeEst = document.querySelector('#input_nome');
-    const numero = document.querySelector('#input_numero');
-    const bairro = document.querySelector('#input_bairro');
-    const endereco = document.querySelector('#input_endereco');
-    
-    cep.addEventListener('keypress', () => {
-      let cepLength = cep.value.length;
-      
-      if (cepLength === 5) {
-        cep.value += '-';
-      }
-    })
-    
-    tel.addEventListener('keypress', () => {
-      let telLength = tel.value.length;
-      telBanco = tel.value;
-      
-      if (telLength === 0) {
-        tel.value += '(';
-      }
-      if (telLength === 3) {
-        tel.value += ') ';
-      }
-      if (telLength === 10) {
-        tel.value += '-';
-      }
-      telBanco = telBanco.replace('(', '').replace(') ', '').replace('-', '');
-    })
-  
-    function validarEmail(email) {
-      let padraoEmail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-      return padraoEmail.test(email);
-    }
-    
-    function validarContrato() {
-      if(cep.value.length != 9 && cep.value != ''){
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Seu CEP não foi preenchido corretamente, tente novamente!'
-        })
-      }else if (validarEmail(email.value) !== true && email.value != '') {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Seu email é invalido, por favor, tente novamente!'
-        })
-      } else if(tel.value.length != 14 && tel.value != '' || (/^[0-9]+$/.test((tel.value.replaceAll('(', '').replaceAll(') ', '').replace('-', '')))) == false && tel.value != ''){
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Seu número de telefone é invalido, por favor, tente novamente!'
-        })
-      } else if (cep.value == '' || tel.value == '' || email.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '') {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Por favor, preencha todos os campos!'
-        })
-      }
-    }
-    
-    document.getElementById('input_CEP').addEventListener('keyup',exibirEndereco)
-    function exibirEndereco() {
-      let cep = document.querySelector(`#input_CEP`).value;
-      if (cep.length !== 9) {
-            // alert(`CEP inválido!`);
-            return;
-        }
-        let url = `https://viacep.com.br/ws/${cep}/json/`;
-        fetch(url).then(function(response){
-            response.json().then(mostrarEndereco);
-            });
-        }
+  const cep = document.querySelector('#input_CEP');
+  const tel = document.querySelector('#input_tel');
+  const email = document.querySelector('#input_email');
+  const nomeEst = document.querySelector('#input_nome');
+  const numero = document.querySelector('#input_numero');
+  const bairro = document.querySelector('#input_bairro');
+  const endereco = document.querySelector('#input_endereco');
 
-        function mostrarEndereco(dados) {
-            if (dados.erro){
-                alert('Não foi possível localizar endereço!');
-            } else{
-              document.getElementById('input_endereco').value = dados.logradouro
-              document.getElementById('input_bairro').value = dados.bairro
-            }
-        }
-  </script>
+  cep.addEventListener('keypress', () => {
+    let cepLength = cep.value.length;
+
+    if (cepLength === 5) {
+      cep.value += '-';
+    }
+  })
+
+  tel.addEventListener('keypress', () => {
+    let telLength = tel.value.length;
+    telBanco = tel.value;
+
+    if (telLength === 0) {
+      tel.value += '(';
+    }
+    if (telLength === 3) {
+      tel.value += ') ';
+    }
+    if (telLength === 10) {
+      tel.value += '-';
+    }
+    telBanco = telBanco.replace('(', '').replace(') ', '').replace('-', '');
+  })
+
+  function validarEmail(email) {
+    let padraoEmail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return padraoEmail.test(email);
+  }
+
+  function validarContrato() {
+    if (cep.value.length != 9 && cep.value != '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Seu CEP não foi preenchido corretamente, tente novamente!'
+      })
+    } else if (validarEmail(email.value) !== true && email.value != '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Seu email é invalido, por favor, tente novamente!'
+      })
+    } else if (tel.value.length != 14 && tel.value != '' || (/^[0-9]+$/.test((tel.value.replaceAll('(', '').replaceAll(') ', '').replace('-', '')))) == false && tel.value != '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Seu número de telefone é invalido, por favor, tente novamente!'
+      })
+    } else if (cep.value == '' || tel.value == '' || email.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Por favor, preencha todos os campos!'
+      })
+    }
+  }
+
+  document.getElementById('input_CEP').addEventListener('keyup', exibirEndereco)
+  function exibirEndereco() {
+    let cep = document.querySelector(`#input_CEP`).value;
+    if (cep.length != 9) {
+      // alert(`CEP inválido!`);
+    
+      return;
+    }
+    let url = `https://viacep.com.br/ws/${cep}/json/`;
+    fetch(url).then(function (response) {
+      response.json().then(mostrarEndereco);
+    });
+  }
+
+  function mostrarEndereco(dados) {
+    let cep = document.querySelector(`#input_CEP`).value;
+    if (dados.erro) {
+      // alert('Não foi possível localizar endereço!');
+      const spanErro = document.getElementById('mensagemErroCEP')
+
+      if(cep.length == 9){
+        spanErro.style.display = 'block'
+      }else{
+        spanErro.style.display = 'none'
+      }
+     
+    } else {
+      document.getElementById('input_endereco').value = dados.logradouro
+      document.getElementById('input_bairro').value = dados.bairro
+    }
+  }
+
+
+</script>
