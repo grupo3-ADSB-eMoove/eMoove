@@ -83,10 +83,6 @@
           <button class="btnContratar" onclick="validarContrato()">Contrate</button>
         </div>
 
-        <div id="resultado">
-
-        </div>
-
       </div>
     </section>
   </body>
@@ -174,11 +170,10 @@
 
         function mostrarEndereco(dados) {
             if (dados.erro){
-                resultado.innerHTML = "Não foi possível localizar endereço!";
+                alert('Não foi possível localizar endereço!');
             } else{
               document.getElementById('input_endereco').value = dados.logradouro
               document.getElementById('input_bairro').value = dados.bairro
             }
         }
-  
   </script>
