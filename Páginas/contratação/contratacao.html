@@ -74,7 +74,7 @@
             </div>
             <div class="input">
               <label for="telefone">Telefone</label>
-              <input type="text" name="telefone" id="input_tel" maxlength="14s"/>
+              <input type="text" name="telefone" id="input_tel" maxlength="15"/>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@
       if (telLength === 3) {
         tel.value += ') ';
       }
-      if (telLength === 9) {
+      if (telLength === 10) {
         tel.value += '-';
       }
       telBanco = telBanco.replace('(', '').replace(') ', '').replace('-', '');
@@ -159,11 +159,11 @@
       }
     }
     
-    document.getElementById('input_CEP').addEventListener('focusout',exibirEndereco)
+    document.getElementById('input_CEP').addEventListener('keyup',exibirEndereco)
     function exibirEndereco() {
       let cep = document.querySelector(`#input_CEP`).value;
       if (cep.length !== 9) {
-            alert(`CEP inválid!`);
+            // alert(`CEP inválido!`);
             return;
         }
         let url = `https://viacep.com.br/ws/${cep}/json/`;

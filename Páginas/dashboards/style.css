@@ -18,8 +18,11 @@ body {
 header {
   min-height: 10% !important;
   padding: 20px;
-
   background-color: white;
+
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+  
 }
 
 header h2 {
@@ -28,8 +31,8 @@ header h2 {
 
 .container {
   display: flex;
-  justify-content: space-between;
   padding: 20px;
+  gap: 20px;
   flex: 1;
 }
 .divNavbar {
@@ -37,6 +40,11 @@ header h2 {
   align-items: center;
   justify-content: center;
 }
+
+.nav-icon {
+  cursor: pointer;
+}
+
 .navbarVertical {
   background-color: white;
   height: 100%;
@@ -48,15 +56,16 @@ header h2 {
   display: flex;
   align-items: center;
   flex-direction: column;
+  list-style: none;
 }
 .navbarContent {
   gap: 20px;
 }
 .conteudoBox {
-  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 
 .conteudoCima {
@@ -89,6 +98,8 @@ header h2 {
   text-transform: uppercase;
 
   font-weight: 700;
+
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .kpi h2 {
@@ -114,4 +125,5 @@ header h2 {
   padding: 10px;
   border-radius: 18px;
   flex: 1;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }

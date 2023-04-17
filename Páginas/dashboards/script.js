@@ -9,7 +9,8 @@ const dataGrafico1 = {
     pointBackgroundColor: 'rgba(255, 69, 1, 0.5)',
     borderWidth: 2,
     borderColor: '#FF4301',
-    tension: .1
+    tension: .1,
+    fill: true
   }]
 }
 
