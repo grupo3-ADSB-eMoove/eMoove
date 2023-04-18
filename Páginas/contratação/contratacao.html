@@ -161,9 +161,7 @@
   document.getElementById('input_CEP').addEventListener('keyup', exibirEndereco)
   function exibirEndereco() {
     let cep = document.querySelector(`#input_CEP`).value;
-    if (cep.length != 9) {
-      // alert(`CEP inválido!`);
-    
+    if (cep.length != 9) { 
       return;
     }
     let url = `https://viacep.com.br/ws/${cep}/json/`;
@@ -174,19 +172,16 @@
 
   function mostrarEndereco(dados) {
     let cep = document.querySelector(`#input_CEP`).value;
+    const spanErro = document.getElementById('mensagemErroCEP')
     if (dados.erro) {
       // alert('Não foi possível localizar endereço!');
-      const spanErro = document.getElementById('mensagemErroCEP')
 
-      if(cep.length == 9){
         spanErro.style.display = 'block'
-      }else{
-        spanErro.style.display = 'none'
-      }
-     
+  
     } else {
       document.getElementById('input_endereco').value = dados.logradouro
       document.getElementById('input_bairro').value = dados.bairro
+      spanErro.style.display = 'none'
     }
   }
 

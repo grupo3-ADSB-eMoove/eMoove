@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 10px;
+    background: radial-gradient(100% 100% at 49.96% 100%, #ED893E 0%, #FA7D09 100%);
+    background-repeat: no-repeat;
+   
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.btnVoltar{
+    padding: 10px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.btnVoltar:hover{
+    /* transform: scale(1.1); */
+    text-decoration: underline;
+    text-decoration-color: white;
+    cursor: pointer;
+}
+
+.spanVoltar{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 24px;
+}
+
+.space {
+    width: 127.06px;
+}
+
+.divTitulo{
+    background-color: white;
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 27px;
+    
+}
+
+.divTitulo h1 {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sectionForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.divForm{
+    height: fit-content;
+    width: 615px;
+    background-color: white;
+    border-radius: 27px;
+    padding: 30px 50px;
+   
+}
+
+.textoEstabelecimento{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+.inputsHorizontal{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+input{
+    background-color: #E5E5E5;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    outline-color: #ED893E;
+}
+
+.input{
+    width: 45%;
+}
+
+.inputNome{
+    width: 100%;
+}
+
+.input label{
+    color: #ED893E;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.inputNome label{
+    color: #ED893E;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.input :focus{
+    background-color: #dbdbdb;;
+}
+
+
+.divBtnContratar{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.btnContratar{
+    padding: 10px;
+    background-color: #ED893E;
+    border: none;
+    border-radius: 15px;
+    font-size: 22px;
+    color: white;
+    width: 180px;
+    height: 45px;
+    font-family: 'Montserrat' sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnContratar:hover{
+background-color: #dc7424;
+}
+
+.btnContratar:active{
+    transform: scale(1.05);
+    transition: .05s;
+}
+
+    
