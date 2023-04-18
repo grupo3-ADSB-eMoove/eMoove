@@ -6,18 +6,18 @@ body{
   padding: 0;
   height: 100vh;
   font-family: 'Montserrat', sans-serif;
- 
 }
   
 
 
 .container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 80%;
-    margin-left: 8%;
-    height:  82vh;
+    margin-left: 10%;
+    height:  80vh;
     align-items: center;
+    margin-top: 2%;
 }
 
 .linha{
@@ -366,17 +366,11 @@ color: #eee;
     color: hsla(0, 0%, 0%, .5);
     font-size: 16px;
   }
-  .imagem{
-  position: absolute;
-  padding: 5px;
-  }
-
+  
   .divFontes{
-    
-    margin-top: 10px;
-    width: 200px;
-    height: 50px;
-    position: absolute;
+    width: 300px;
+    height: fit-content;
+    padding: 10px;
     margin-left: 1px;
     font-family: 'Montserrat', sans-serif;
   }
@@ -387,13 +381,11 @@ color: #eee;
 
   .anchorFontes{
     color: #eee;
-    
-    margin-left: 10%;
+    margin-left: 5%;
     margin-top: 3%;
-    position: absolute;
     text-decoration: none;
     cursor: pointer;
-    width: 230px;
+    width: fit-content;
     height: fit-content;
     font-weight: 600;
     font-size: 24px;
@@ -405,29 +397,6 @@ color: #eee;
     border-bottom: 3px solid #dbdbdb;
     transition: .5s;
   }
-
-  
-  .backColors{
-    padding: 6px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: end;
-    height: fit-content;
-  
-  }
-  .cor1{
-        margin-top: 1%;
-        margin-right: 10px;
-        width: 30px;
-        height: 30px;
-      
-        
-  }
-  
-  
-
-
-
 
   .wrapper{
     position: fixed;
