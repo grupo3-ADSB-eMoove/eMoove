@@ -1,34 +1,20 @@
 const cep = document.querySelector('#input_CEP');
-const tel = document.querySelector('#input_tel');
 const email = document.querySelector('#input_email');
 const nomeEst = document.querySelector('#input_nome');
 const numero = document.querySelector('#input_numero');
 const bairro = document.querySelector('#input_bairro');
 const endereco = document.querySelector('#input_endereco');
-
-cep.addEventListener('keypress', () => {
+const nome = document.querySelector('#input_nomeUsuario')
+const sobrenome = document.querySelector('#input_sobrenome')
+const senha = document.querySelector('#input_senha')
+cep.addEventListener('keydown', () => {
   let cepLength = cep.value.length;
-
+ 
   if (cepLength === 5) {
     cep.value += '-';
   }
 })
 
-tel.addEventListener('keypress', () => {
-  let telLength = tel.value.length;
-  telBanco = tel.value;
-
-  if (telLength === 0) {
-    tel.value += '(';
-  }
-  if (telLength === 3) {
-    tel.value += ') ';
-  }
-  if (telLength === 10) {
-    tel.value += '-';
-  }
-  telBanco = telBanco.replace('(', '').replace(') ', '').replace('-', '');
-})
 
 function validarEmail(email) {
   let padraoEmail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -48,18 +34,14 @@ function validarContrato() {
       title: 'Oops...',
       text: 'Seu email é invalido, por favor, tente novamente!'
     })
-  } else if (tel.value.length != 14 && tel.value != '' || (/^[0-9]+$/.test((tel.value.replaceAll('(', '').replaceAll(') ', '').replace('-', '')))) == false && tel.value != '') {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Seu número de telefone é invalido, por favor, tente novamente!'
-    })
-  } else if (cep.value == '' || tel.value == '' || email.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '') {
+  } else if (cep.value == ''  || email.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '' || senha.value == '') {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
       text: 'Por favor, preencha todos os campos!'
     })
+  }else{
+    alert('contratado')
   }
 }
 
