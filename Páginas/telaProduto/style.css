@@ -7,6 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "montSerrat";
 }
 
 header {
@@ -16,10 +17,6 @@ header {
     align-items: center;
     margin-top: 8px;
     position: relative;
-}
-
-body {
-    overflow: hidden;
 }
 
 .container {
@@ -94,11 +91,11 @@ header .container {
 .sectionInicio .container {
     justify-content: space-between;
     align-items: center;
-    height: 400px;
+    height: 500px;
 }
 
 .sectionInicio img {
-    width: 400px;
+    width: 500px;
 }
 
 .textoInicio {
@@ -129,7 +126,7 @@ header .container {
     color: rgb(60, 60, 60);
 }
 
-.footer {
+.sectionImg {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -335,6 +332,106 @@ header .container {
     outline: none;
     font-family: "montSerrat";
     font-size: 16px;
+}
+
+.sectionPlanos{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    position: relative;
+}
+.sectionPlanos .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 72vw;
+    height: 440px;
+    margin-bottom: 50px;
+    background-color: rgb(27, 27, 27);
+    border-radius: 20px;
+    padding: 30px;
+}
+.planosTitulo{
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #ff5315;
+    font-weight: bold;
+}
+.planosDesc{
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #ff733f;
+    font-weight: 500;
+}
+.planosArea{
+    width: 70vw;
+    height: 200px;
+}
+.planosCards{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    height: 100%;
+    min-height: 280px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(43, 43, 43);
+    
+    transition: all 1s;
+}
+.cards h1{
+    font-size: 28px;
+}
+.cards h1 p{
+    display: inline-block;
+    font-size: 15px;
+}
+.cards p {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 15px;
+}
+.cards p span{
+    font-size: 50px;
+}
+.cards .button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 160px;
+    margin-top: 20px;
+    background-color: rgb(46, 46, 46);
+    font-size: 13px;
+    color: white;
+    transition: all 2s;
+    border-radius: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.cards:nth-child(3){
+    color: #ff5315;
+}
+.cards:nth-child(3) span{
+    color: #ff5315;
+    font-size: 55px;
+}
+.cards:nth-child(3) .button{
+    background-color: #FF4301;
+}
+
+.cards:hover{
+    transform: scale(1.1);
+    z-index: 1.5;
 }
 
 .wrapper {
