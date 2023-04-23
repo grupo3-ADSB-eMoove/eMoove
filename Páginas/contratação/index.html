@@ -34,6 +34,15 @@
       </div>
 
       <div class="divInputs">
+
+        <div class="inputsHorizontal">
+          <div class="inputNome">
+            <label for="nome">Nome do Estabelecimento</label>
+            <input type="text" name="nome" id="input_nome" />
+          </div>
+        </div>
+
+
         <div class="inputsHorizontal">
           <div class="input">
             <div class="separar">
@@ -59,31 +68,43 @@
           </div>
         </div>
 
-        <div class="inputsHorizontal">
-          <div class="inputNome">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="input_nome" />
-          </div>
-        </div>
+        
         <div class="textoEstabelecimento">
-          <h3>Contato</h3>
+          <h3>Cadastro</h3>
         </div>
 
         <div class="inputsHorizontal">
           <div class="input">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="input_email" />
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="input_nomeUsuario" />
           </div>
+
           <div class="input">
-            <label for="telefone">Telefone</label>
-            <input type="text" name="telefone" id="input_tel" maxlength="15" />
+            <label for="senha">Sobrenome</label>
+            <input type="text" name="sobrenome" id="input_sobrenome" />
           </div>
+          
         </div>
       </div>
 
+      <div class="inputsHorizontal">
+        <div class="input">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="input_email" />
+        </div>
+
+        <div class="input">
+          <label for="senha">Senha</label>
+          <input type="text" name="senha" id="input_senha" />
+        </div>
+        
+      </div>
       <div class="divBtnContratar">
         <button class="btnContratar" onclick="validarContrato()">Contrate</button>
       </div>
+    </div>
+
+      
 
     </div>
   </section>
@@ -91,3 +112,6 @@
 </body>
 
 </html>
+
+
+
