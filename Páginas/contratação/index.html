@@ -68,7 +68,7 @@
           </div>
         </div>
 
-        
+
         <div class="textoEstabelecimento">
           <h3>Cadastro</h3>
         </div>
@@ -83,7 +83,7 @@
             <label for="senha">Sobrenome</label>
             <input type="text" name="sobrenome" id="input_sobrenome" />
           </div>
-          
+
         </div>
       </div>
 
@@ -95,16 +95,20 @@
 
         <div class="input">
           <label for="senha">Senha</label>
-          <input type="text" name="senha" id="input_senha" />
+          <div class="iconSenha"> 
+            <input type="password" name="senha" id="input_senha" />
+            <div onclick="showHide()" id="icone"></div>
+          </div>
+
         </div>
-        
+
       </div>
       <div class="divBtnContratar">
         <button class="btnContratar" onclick="validarContrato()">Contrate</button>
       </div>
     </div>
 
-      
+
 
     </div>
   </section>
@@ -112,6 +116,3 @@
 </body>
 
 </html>
-
-
-

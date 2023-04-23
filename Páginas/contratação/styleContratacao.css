@@ -181,4 +181,26 @@ background-color: #dc7424;
     margin-right: 10px;
     display: none;
 }
+    /* esconder senha */
+    .iconSenha{
+        display: flex;
+        justify-content: flex-end;
+    }
+    #icone{
+        margin-right: 10px;
+        align-self: center;
+        z-index: 10;
+        position: absolute;
+        background: url('./assets/show.png');
+        background-size: cover;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        transition: 225ms;
+    }
+    #icone.hide{
+        transition: 225ms;
+        background: url('./assets/hide.png');
+        background-size: cover;
+    }
     

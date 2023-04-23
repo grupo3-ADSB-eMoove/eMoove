@@ -73,3 +73,17 @@ function mostrarEndereco(dados) {
     spanErro.style.display = 'none'
   }
 }
+const password = document.getElementById("input_senha")
+const icone = document.getElementById("icone")
+
+function showHide(){
+    if(password.type === 'password'){
+        password.setAttribute('type', 'text');
+        icone.classList.add("hide")
+
+    }else{
+    password.setAttribute('type', 'password');
+    icone.classList.remove('hide')
+    }
+
+}
