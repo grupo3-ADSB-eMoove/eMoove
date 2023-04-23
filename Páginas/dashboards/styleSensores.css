@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap%27');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "montSerrat";
+}
+
+.tela {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: #fa7d09;
+    padding: 20px;
+}
+
+.navbar {
+    width: 100px;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.iconeCima {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconeCima a {
+    width: 40px;
+    margin-top: 40px;
+}
+
+.iconeCima img {
+    width: 35px;
+}
+
+.iconeBaixo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.iconeBaixo a {
+    width: 40px;
+    margin-bottom: 40px;
+}
+
+.iconeBaixo img {
+    width: 35px;
+}
+
+.sectionSensores {
+    width: 80%;
+    margin-left: 50px;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionSensores .tituloHora {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sectionSensores .tituloHora h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.sectionSensores .tituloHora h2 {
+    color: white;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.cardsSensores {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    height: 100%;
+}
+
+.disposicaoCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card {
+    min-width: 350px;
+    padding: 20px;
+    background-color: white; 
+    border-radius: 20px;
+}
+
+.card .tituloCard {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(15, 168, 23);
+    font-weight: 600;
+}
+
+.card h3 {
+    color: black;
+}
+
+.card p {
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.card span {
+    color: #fa7d09;
+}
+
+.inativo {
+    color: red;
+}

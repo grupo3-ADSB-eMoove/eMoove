@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - sensores</title>
+    <link rel="stylesheet" href="styleSensores.css">
+</head>
+
+<body>
+    <div class="tela">
+        <div class="navbar">
+            <div class="iconeCima">
+                <a href=""><img src="./assets/img_menu.png" alt="Imagem menu"></a>
+                <a href=""><img src="./assets/img_home.png" alt="Imagem home"></a>
+                <a href=""><img src="./assets/img_dashboard.png" alt="Imagem dashboard"></a>
+                <a href=""><img src="./assets/img_usuario.png" alt="Imagem usuário"></a>
+            </div>
+            <div class="iconeBaixo">
+                <a href=""><img src="./assets/img_config.png" alt="Imagem config"></a>
+                <a href="../telaProduto/index.html"><img src="./assets/img_sair.png" alt="Imagem sair"></a>
+            </div>
+        </div>
+
+        <div class="sectionSensores">
+            <div class="tituloHora">
+                <h1>Sensores</h1>
+                <h2>22/04 23:00</h2>
+            </div>
+
+            <div class="cardsSensores">
+                <div class="disposicaoCard">
+                    <div class="card">
+                        <span class="tituloCard">
+                            <h3>Sensor 1</h3><h5>Ativo</h5>
+                        </span> <br>
+                        <p>Local: <span>${localInstalado}</span></p>
+                        <p>Última captura: <span>${dtUltimaCaptura}</span></p>
+                        <p>Total de capturas no dia: <span>${totalCaptura}</span></p>
+                    </div>
+
+                    <div class="card">
+                        <span class="tituloCard">
+                            <h3>Sensor 2</h3><h5>Ativo</h5>
+                        </span> <br>
+                        <p>Local: <span>${localInstalado}</span></p>
+                        <p>Última captura: <span>${dtUltimaCaptura}</span></p>
+                        <p>Total de capturas no dia: <span>${totalCaptura}</span></p>
+                    </div>
+
+                    <div class="card">
+                        <span class="tituloCard">
+                            <h3>Sensor 3</h3><h5>Ativo</h5>
+                        </span> <br>
+                        <p>Local: <span>${localInstalado}</span></p>
+                        <p>Última captura: <span>${dtUltimaCaptura}</span></p>
+                        <p>Total de capturas no dia: <span>${totalCaptura}</span></p>
+                    </div>
+                </div>
+                <div class="disposicaoCard">
+                    <div class="card">
+                        <span class="tituloCard">
+                            <h3>Sensor 4</h3><h5>Ativo</h5>
+                        </span> <br>
+                        <p>Local: <span>${localInstalado}</span></p>
+                        <p>Última captura: <span>${dtUltimaCaptura}</span></p>
+                        <p>Total de capturas no dia: <span>${totalCaptura}</span></p>
+                    </div>
+                    <div class="card">
+                        <span class="tituloCard">
+                            <h3>Sensor 5</h3><h5>Ativo</h5>
+                        </span> <br>
+                        <p>Local: <span>${localInstalado}</span></p>
+                        <p>Última captura: <span>${dtUltimaCaptura}</span></p>
+                        <p>Total de capturas no dia: <span>${totalCaptura}</span></p>
+                    </div>
+                    <div class="card">
+                        <span class="tituloCard">
+                            <h3>Sensor 6</h3><h5 class="inativo">Inativo</h5>
+                        </span> <br>
+                        <p>Local: <span>${localInstalado}</span></p>
+                        <p>Última captura: <span>${dtUltimaCaptura}</span></p>
+                        <p>Total de capturas no dia: <span>${totalCaptura}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

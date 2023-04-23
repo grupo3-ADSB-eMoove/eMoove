@@ -79,11 +79,13 @@ header h2 {
 .conteudoCima h1 {
   color: white;
 }
+
 .blocoEntradas {
-  width: 50%;
+  width: 52.5%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-left: 300px;
 }
 
 .kpi {
