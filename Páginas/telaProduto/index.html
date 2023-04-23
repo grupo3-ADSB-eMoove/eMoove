@@ -89,7 +89,10 @@
         </div>
         <div class="modal-body">
             <input id="ipt_loginEmail" placeholder="E-mail">
-            <input type="password" id="ipt_loginSenha" placeholder="Senha">
+            <div class="iconSenha"> 
+                <input type="password" id="ipt_loginSenha" placeholder="Senha">
+                <div onclick="showHide()" id="icone"></div>
+            </div>
             <div id="btnConfirmar" onclick="efetuarLogin()">
                 <img src="./assets/Imagens/botao_entrar.png" alt="">
             </div>

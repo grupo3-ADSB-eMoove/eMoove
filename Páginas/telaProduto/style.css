@@ -433,6 +433,32 @@ header .container {
     transform: scale(1.1);
     z-index: 1.5;
 }
+.iconSenha{
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconSenha input{
+    z-index: 2;
+}
+#icone{
+    z-index: 3;
+    background: url('./assets/Imagens/show.png');
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: 225ms;
+    position: absolute;
+    right: 75px;
+    margin-bottom: 15px;
+}
+#icone.hide{
+    transition: 225ms;
+    background: url('./assets/Imagens/hide.png');
+    background-size: cover;
+}
 
 .wrapper {
     position: fixed;
