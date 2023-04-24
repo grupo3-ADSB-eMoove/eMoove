@@ -7,6 +7,7 @@ drop database emoove;
 CREATE TABLE estabelecimento(
     idEstabelecimento INT PRIMARY KEY auto_increment,
     nomeEstabelecimento VARCHAR(100),
+    area FLOAT,
 	telefoneEstabelecimento VARCHAR(20) NOT NULL,
     logradouro VARCHAR(100) NOT NULL,
     numeroEndereco VARCHAR (5) NOT NULL,
@@ -70,10 +71,10 @@ CREATE TABLE CapturaDados(
 -- INSERT TABELA ESTABELECIMENTO
 desc estabelecimento;
 INSERT INTO estabelecimento VALUES 
-	(null,'MacLovinPadaria','119617074234' ,'Rua Irmão Deodoro', 659, 'Guaianases',  '08410-410' ),
-	(null,'MacRestaurante', '119617074234','Rua haddock lobo', 756, 'Paulista', '08410-410'),
-	(null,'Churrascaria do Renan', '119617074234','Rua Valdivia Jackson', 78, 'Cidade Tiradentes',  '08410-410'),
-	(null,'Bancaria de dados da vivian','119617074234' ,'Rua banco de dados', 93, 'Av Paulista',  '08410-410');
+	(null,'MacLovinPadaria',92,'119617074234' ,'Rua Irmão Deodoro', 659, 'Guaianases',  '08410-410' ),
+	(null,'MacRestaurante',52, '119617074234','Rua haddock lobo', 756, 'Paulista', '08410-410'),
+	(null,'Churrascaria do Renan',200.20, '119617074234','Rua Valdivia Jackson', 78, 'Cidade Tiradentes',  '08410-410'),
+	(null,'Bancaria de dados da vivian',172.89,'119617074234' ,'Rua banco de dados', 93, 'Av Paulista',  '08410-410');
 
 -- INSERT TABELA USUARIO
 desc usuario;

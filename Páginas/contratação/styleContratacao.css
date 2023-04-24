@@ -72,7 +72,7 @@ header{
 .sectionForm{
     display: flex;
     justify-content: center;
-    align-items: center;
+   
     
 }
 
@@ -115,7 +115,12 @@ input{
 }
 
 .inputNome{
-    width: 100%;
+    width: 80%;
+    
+}
+
+.inputArea{
+    width: 20%;
 }
 
 .input label{
@@ -207,12 +212,13 @@ background-color: #dc7424;
     .container{
         position: relative;
         width: 98.3%;
-        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         transition: 0.5s;
         padding: 10px;
+        
+        
       }
       
         .header#blur.active{
@@ -258,6 +264,7 @@ background-color: #dc7424;
         margin-top: 100px;
         position: relative;
         font-family:'Montserrat';
+        
     }
     .sectionPlanos .container{
         background-color: #0000008f;
@@ -267,7 +274,7 @@ background-color: #dc7424;
         width: 75vw;
         height: 440px;
         border-radius: 20px;
-        padding: 10px;
+        padding: 30px;
     }
     
     .planosTitulo{
