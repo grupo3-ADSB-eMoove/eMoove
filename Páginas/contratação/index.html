@@ -12,21 +12,23 @@
 </head>
 
 <body>
-  <header>
-    <a href="../telaProduto/index.html" style="text-decoration: none;">
-      <div class="btnVoltar">
-        <img class="iconVoltar" src="./assets/left-chevron.svg" alt="voltarIcon" />
-        <span class="spanVoltar">Voltar</span>
+  <div class="header" id="blur">
+    <header>
+      <a href="../telaProduto/index.html" style="text-decoration: none;">
+        <div class="btnVoltar">
+          <img class="iconVoltar" src="./assets/left-chevron.svg" alt="voltarIcon" />
+          <span class="spanVoltar">Voltar</span>
+        </div>
+      </a>
+  
+      <div class="divTitulo">
+        <h1>FAÇA SUA CONTRATAÇÃO</h1>
       </div>
-    </a>
-
-    <div class="divTitulo">
-      <h1>FAÇA SUA CONTRATAÇÃO</h1>
-    </div>
-
-    <span class="space"></span>
-  </header>
-
+  
+      <span class="space"></span>
+    </header>
+  
+  <div class= "container" id="blur">
   <section class="sectionForm">
     <div class="divForm">
       <div class="textoEstabelecimento">
@@ -56,7 +58,7 @@
             <input type="text" name="bairro" id="input_bairro" />
           </div>
         </div>
-
+        
         <div class="inputsHorizontal">
           <div class="input">
             <label for="endereco">Endereço</label>
@@ -68,7 +70,7 @@
           </div>
         </div>
 
-
+        
         <div class="textoEstabelecimento">
           <h3>Cadastro</h3>
         </div>
@@ -83,36 +85,80 @@
             <label for="senha">Sobrenome</label>
             <input type="text" name="sobrenome" id="input_sobrenome" />
           </div>
-
+          
         </div>
       </div>
 
       <div class="inputsHorizontal">
         <div class="input">
           <label for="email">Email</label>
-          <input type="text" name="email" id="input_email" />
+          <input type="text" namen="email" id="input_email" />
         </div>
-
+        
+        
+        
         <div class="input">
           <label for="senha">Senha</label>
           <div class="iconSenha"> 
             <input type="password" name="senha" id="input_senha" />
             <div onclick="showHide()" id="icone"></div>
           </div>
-
-        </div>
-
+          </div>
       </div>
       <div class="divBtnContratar">
-        <button class="btnContratar" onclick="validarContrato()">Contrate</button>
+      <button class="btnContratar" onclick="validarContrato()">Contrate</button>
+
+     </div>
       </div>
     </div>
-
-
-
-    </div>
-  </section>
-  <script src="./script.js"></script>
+     </div>
+</section>
+<script src="./script.js"></script>
+<div id="popup">
+  <section class="sectionPlanos">
+    <div class="container">
+          <a href="#" onclick="validarContrato()" class="fecharModal">Fechar</a>
+            <div class="planosTitulo">PLANOS</div>
+            <div class="planosDesc">Tamanho do Estabelecimento</div>
+            <div class="planosArea">
+                <div class="planosCards">
+                    <div class="cards">
+                        <h4>Pequeno</h4>
+                        <h1>
+                            <p>R$</p>14.99<br>
+                        </h1>
+                        <h5>Taxa de Inst. - R$100,00</h5>
+                        <p>Até <span> 5</span> sensores</p>
+                        <a class="button" href="">Escolher Plano</a>
+                    </div>
+                    <div class="cards">
+                        <h4>Médio</h4>
+                        <h1>
+                            <p>R$</p>19.99
+                        </h1>
+                        <h5>Taxa de Inst. - R$100,00</h5>
+                        <p>Até <span>10</span> sensores</p>
+                        <a class="button" href="">Escolher Plano</a>
+                    </div>
+                    <div class="cards">
+                        <h4>Grande</h4>
+                        <h1>
+                            <p>R$</p>24.99
+                        </h1>
+                        <h5>Taxa de Inst. - R$100,00</h5>
+                        <p>Até <span>30</span> sensores</p>
+                        <a class="button active" href="">Escolher Plano</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
 </body>
 
 </html>
+
+
+
+

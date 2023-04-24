@@ -41,7 +41,10 @@ function validarContrato() {
       text: 'Por favor, preencha todos os campos!'
     })
   }else{
-    alert('contratado')
+    var blur = document.getElementById('blur')
+    blur.classList.toggle('active')
+    var popup = document.getElementById('popup')
+    popup.classList.toggle('active')
   }
 }
 

@@ -204,3 +204,162 @@ background-color: #dc7424;
         background-size: cover;
     }
     
+    .container{
+        position: relative;
+        width: 98.3%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        padding: 10px;
+      }
+      
+        .header#blur.active{
+          filter: blur(10px);
+    
+        }
+      
+      .container#blur.active{
+        filter: blur(10px);
+      }
+    
+      
+      .container #content{
+        position: relative;
+        max-width: 800px;
+      }
+    
+    
+    #popup{
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      padding: 50px;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.5s;
+     
+    }
+    
+    #popup.active{
+      visibility: visible;
+      opacity: 52;
+      transition: 0.5s;
+      margin-top: 69px;
+    }
+    
+    
+    .sectionPlanos{
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+        position: relative;
+        font-family:'Montserrat';
+    }
+    .sectionPlanos .container{
+        background-color: #0000008f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 75vw;
+        height: 440px;
+        border-radius: 20px;
+        padding: 10px;
+    }
+    
+    .planosTitulo{
+        font-size: 26px;
+        margin-bottom: 15px;
+        color: #fff7f7;
+        font-weight: bold;
+    }
+    .planosDesc{
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #ffffff;
+        font-weight: 500;
+    }
+    .planosArea{
+        width: 70vw;
+        height: 250px;
+    }
+    .planosCards{
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+    }
+    .cards{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        height: 100%;
+        min-height: 280px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        color: rgb(43, 43, 43);
+        transition: all 1s;
+        -webkit-box-shadow: 10px 7px 0px 1px rgba(0,0,0,0.49);
+        -moz-box-shadow: 10px 7px 0px 1px rgba(0,0,0,0.49);
+        box-shadow: 10px 7px 0px 1px rgba(0,0,0,0.49);
+    }
+    .cards h1{
+        font-size: 28px;
+    }
+    .cards h1 p{
+        display: inline-block;
+        font-size: 15px;
+    }
+    .cards p {
+        text-align: center;
+        font-size: 22px;
+        margin-top: 15px;
+    }
+    .cards p span{
+        font-size: 50px;
+    }
+    .cards .button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 160px;
+        margin-top: 20px;
+        background-color: rgb(46, 46, 46);
+        font-size: 13px;
+        color: white;
+        transition: all 2s;
+        border-radius: 20px;
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+    
+    .cards:nth-child(3){
+        color: #ff5315;
+    }
+    .cards:nth-child(3) span{
+        color: #ff5315;
+        font-size: 55px;
+    }
+    .cards:nth-child(3) .button{
+        background-color: #FF4301;
+    }
+    
+    .cards:hover{
+        transform: scale(1.05);
+        z-index: 1.5;
+    }
+
+    .sectionPlanos .fecharModal{
+        text-align: end;
+        align-self: flex-end;
+        margin-top: -105px;
+        margin-right: 35px;
+        text-decoration: none;
+        color: #fff7f7;
+    }
