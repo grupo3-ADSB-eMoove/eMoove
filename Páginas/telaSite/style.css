@@ -33,11 +33,13 @@
     padding: 0px;
     font-family: 'Montserrat' ,sans-serif;
     box-sizing: border-box;
+    scroll-behavior:smooth;
 }
 
 body{
     min-height: 100vh;
-    background: radial-gradient(ellipse at bottom, #35221b 0%, #0f0a09 100%)
+    background: radial-gradient(ellipse at bottom, #35221b 0%, #0f0a09 100%);
+    
 }
 
 
@@ -130,6 +132,13 @@ header{
     cursor: pointer;
     color: #ffab5c;
 }
+
+.navOptions ul li a{
+   text-decoration: none;
+    color: inherit;
+}
+
+
 
 .buttonProjeto{
     background-color: black;
