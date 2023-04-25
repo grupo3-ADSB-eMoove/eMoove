@@ -43,3 +43,16 @@ new Chart(ctxGrafico2, {
   type: 'bar',
   data: dataGrafico2
 })
+
+
+const menuButton = document.getElementById('menu-toggle')
+
+menuButton.addEventListener('click', () => {
+  const navBar = document.getElementsByClassName('navbar')[0]
+  const navBarTexts = document.querySelectorAll('.nav-row-text')
+
+  navBar.classList.toggle('open')
+  navBarTexts.forEach(element => {
+    element.classList.toggle('hidden')
+  })
+})

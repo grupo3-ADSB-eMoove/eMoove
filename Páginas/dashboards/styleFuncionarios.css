@@ -14,45 +14,21 @@
     padding: 20px;
 }
 
-.navbar {
-    width: 100px;
-    height: 100%;
-    background-color: #ffffff;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.iconeCima {
+.icones {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 40px;
 }
 
-.iconeCima a {
-    width: 40px;
-    margin-top: 40px;
-}
-
-.iconeCima img {
+.icones a,
+.icones #menu-toggle {
     width: 35px;
+    cursor: pointer;
 }
 
-.iconeBaixo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.iconeBaixo a {
-    width: 40px;
-    margin-bottom: 40px;
-}
-
-.iconeBaixo img {
-    width: 35px;
+.icones img {
+    width: 100%;
 }
 
 .sectionSensores {
