@@ -2,119 +2,125 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - sensores</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - sensores</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="tela">
-      <div class="navbar" id="navbar">
-        <div class="icones">
-          <div class="nav-row" style="align-items: flex-start;">
-            <span id="menu-toggle"><img src="../../assets/img_menu.png" alt="Imagem menu"></span>
-          </div>
-          <div class="nav-row">
-            <a href="../../index.html">
-              <img src="../../assets/img_home.png" alt="Imagem home">
-              <span class="nav-row-text hidden">Inicio</span>
-            </a>
-          </div>
-          <div class="nav-row">
-            <a href="#">
-              <img src="../../assets/img_dashboard.png" alt="Im-agem dashboard">
-              <span class="nav-row-text hidden">Sensores</span>
-            </a>
-          </div>
-          <div class="nav-row">
-            <a href="../funcionarios/index.html">
-              <img src="../../assets/img_usuario.png" alt="Imagem clientes">
-              <span class="nav-row-text hidden">Funcionarios</span>
-            </a>
-          </div>          
+  <div class="tela">
+    <div class="navbar" id="navbar">
+      <div class="icones">
+        <div class="nav-row" style="align-items: flex-start;">
+          <span id="menu-toggle"><img src="../../assets/img_menu.png" alt="Imagem menu"></span>
         </div>
-        <div class="icones">
-          <div class="nav-row">
-            <a href="#">
-              <img src="../../assets/img_config.png" alt="Imagem config">
-              <span class="nav-row-text hidden">Configurações</span>
-            </a>
+        <div class="nav-row">
+          <a href="../../index.html">
+            <img src="../../assets/img_home.png" alt="Imagem home">
+            <span class="nav-row-text hidden">Inicio</span>
+          </a>
+        </div>
+        <div class="nav-row">
+          <a href="#">
+            <img src="../../assets/img_dashboard.png" alt="Im-agem dashboard">
+            <span class="nav-row-text hidden">Sensores</span>
+          </a>
+        </div>
+        <div class="nav-row">
+          <a href="../funcionarios/index.html">
+            <img src="../../assets/img_usuario.png" alt="Imagem clientes">
+            <span class="nav-row-text hidden">Funcionarios</span>
+          </a>
+        </div>
+      </div>
+      <div class="icones">
+        <div class="nav-row">
+          <a href="#">
+            <img src="../../assets/img_config.png" alt="Imagem config">
+            <span class="nav-row-text hidden">Configurações</span>
+          </a>
+        </div>
+        <div class="nav-row">
+          <a href="../../../telaProduto/index.html">
+            <img src="../../assets/img_sair.png" alt="Imagem sair">
+            <span class="nav-row-text hidden">Sair</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sectionSensores">
+      <div class="tituloHora">
+        <h1>Sensores</h1>
+      </div>
+
+      <div class="cardsSensores">
+        <div class="disposicaoCard">
+          <div class="card">
+            <span class="tituloCard">
+              <h3>Sensor 1</h3>
+              <h5>Ativo</h5>
+            </span> <br>
+            <p>Local: <span>Corredor 01</span></p>
+            <p>Última captura: <span>20/03 - 16:30</span></p>
+            <p>Total de capturas no dia: <span>172</span></p>
           </div>
-          <div class="nav-row">
-            <a href="../../../telaProduto/index.html">
-              <img src="../../assets/img_sair.png" alt="Imagem sair">
-              <span class="nav-row-text hidden">Sair</span>
-            </a>
+
+          <div class="card">
+            <span class="tituloCard">
+              <h3>Sensor 2</h3>
+              <h5>Ativo</h5>
+            </span> <br>
+            <p>Local: <span>Corredor 02</span></p>
+            <p>Última captura: <span>10/08 - 17:23</span></p>
+            <p>Total de capturas no dia: <span>278</span></p>
+          </div>
+
+          <div class="card">
+            <span class="tituloCard">
+              <h3>Sensor 3</h3>
+              <h5>Ativo</h5>
+            </span> <br>
+            <p>Local: <span>Corredor 03</span></p>
+            <p>Última captura: <span>09/10 - 19:00</span></p>
+            <p>Total de capturas no dia: <span>187</span></p>
+          </div>
+        </div>
+        <div class="disposicaoCard">
+          <div class="card">
+            <span class="tituloCard">
+              <h3>Sensor 4</h3>
+              <h5>Ativo</h5>
+            </span> <br>
+            <p>Local: <span>Corredor 04</span></p>
+            <p>Última captura: <span>29/09 - 18:15</span></p>
+            <p>Total de capturas no dia: <span>207</span></p>
+          </div>
+          <div class="card">
+            <span class="tituloCard">
+              <h3>Sensor 5</h3>
+              <h5>Ativo</h5>
+            </span> <br>
+            <p>Local: <span>Corredor 05</span></p>
+            <p>Última captura: <span>19/02 - 16:55</span></p>
+            <p>Total de capturas no dia: <span>312</span></p>
+          </div>
+          <div class="card">
+            <span class="tituloCard">
+              <h3>Sensor 6</h3>
+              <h5 class="inativo">Inativo</h5>
+            </span> <br>
+            <p>Local: <span>Corredor 06</span></p>
+            <p>Última captura: <span>10/08 - 20:00</span></p>
+            <p>Total de capturas no dia: <span>479</span></p>
           </div>
         </div>
       </div>
-
-        <div class="sectionSensores">
-            <div class="tituloHora">
-                <h1>Sensores</h1>
-            </div>
-
-            <div class="cardsSensores">
-                <div class="disposicaoCard">
-                    <div class="card">
-                        <span class="tituloCard">
-                            <h3>Sensor 1</h3><h5>Ativo</h5>
-                        </span> <br>
-                        <p>Local: <span>Corredor 01</span></p>
-                        <p>Última captura: <span>20/03 - 16:30</span></p>
-                        <p>Total de capturas no dia: <span>172</span></p>
-                    </div>
-
-                    <div class="card">
-                        <span class="tituloCard">
-                            <h3>Sensor 2</h3><h5>Ativo</h5>
-                        </span> <br>
-                        <p>Local: <span>Corredor 02</span></p>
-                        <p>Última captura: <span>10/08 - 17:23</span></p>
-                        <p>Total de capturas no dia: <span>278</span></p>
-                    </div>
-
-                    <div class="card">
-                        <span class="tituloCard">
-                            <h3>Sensor 3</h3><h5>Ativo</h5>
-                        </span> <br>
-                        <p>Local: <span>Corredor 03</span></p>
-                        <p>Última captura: <span>09/10 - 19:00</span></p>
-                        <p>Total de capturas no dia: <span>187</span></p>
-                    </div>
-                </div>
-                <div class="disposicaoCard">
-                    <div class="card">
-                        <span class="tituloCard">
-                            <h3>Sensor 4</h3><h5>Ativo</h5>
-                        </span> <br>
-                        <p>Local: <span>Corredor 04</span></p>
-                        <p>Última captura: <span>29/09 - 18:15</span></p>
-                        <p>Total de capturas no dia: <span>207</span></p>
-                    </div>
-                    <div class="card">
-                        <span class="tituloCard">
-                            <h3>Sensor 5</h3><h5>Ativo</h5>
-                        </span> <br>
-                        <p>Local: <span>Corredor 05</span></p>
-                        <p>Última captura: <span>19/02 - 16:55</span></p>
-                        <p>Total de capturas no dia: <span>312</span></p>
-                    </div>
-                    <div class="card">
-                        <span class="tituloCard">
-                            <h3>Sensor 6</h3><h5 class="inativo">Inativo</h5>
-                        </span> <br>
-                        <p>Local: <span>Corredor 06</span></p>
-                        <p>Última captura: <span>10/08 - 20:00</span></p>
-                        <p>Total de capturas no dia: <span>479</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <script src="../../scripts/navbar.js"></script>
+  </div>
+  <script src="../../scripts/navbar.js"></script>
 </body>
 
 </html>

@@ -1,90 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="./style.css"/>
-    <link rel="stylesheet" href="./styleFuncionarios.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="navbar" id="navbar">
-        <div class="icones">
-          <div class="nav-row" style="align-items: flex-start;">
-            <span id="menu-toggle"><img src="./assets/img_menu.png" alt="Imagem menu"></span>
-          </div>
-          <div class="nav-row">
-            <a href="#">
-              <img src="./assets/img_home.png" alt="Imagem home">
-              <span class="nav-row-text hidden">Inicio</span>
-            </a>
-          </div>
-          <div class="nav-row">
-            <a href="./pages/sensores/index.html">
-              <img src="./assets/img_dashboard.png" alt="Im-agem dashboard">
-              <span class="nav-row-text hidden">Sensores</span>
-            </a>
-          </div>
-          <div class="nav-row">
-            <a href="./pages/funcionarios/index.html">
-              <img src="./assets/img_usuario.png" alt="Imagem clientes">
-              <span class="nav-row-text hidden">Funcionarios</span>
-            </a>
-          </div>          
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./styleFuncionarios.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="navbar" id="navbar">
+      <div class="icones">
+        <div class="nav-row" style="align-items: flex-start;">
+          <span id="menu-toggle"><img src="./assets/img_menu.png" alt="Imagem menu"></span>
         </div>
-        <div class="icones">
-          <div class="nav-row">
-            <a href="#">
-              <img src="./assets/img_config.png" alt="Imagem config">
-              <span class="nav-row-text hidden">Configurações</span>
-            </a>
-          </div>
-          <div class="nav-row">
-            <a href="../telaProduto/index.html">
-              <img src="./assets/img_sair.png" alt="Imagem sair">
-              <span class="nav-row-text hidden">Sair</span>
-            </a>
-          </div>
+        <div class="nav-row">
+          <a href="#">
+            <img src="./assets/img_home.png" alt="Imagem home">
+            <span class="nav-row-text hidden">Inicio</span>
+          </a>
+        </div>
+        <div class="nav-row">
+          <a href="./pages/sensores/index.html">
+            <img src="./assets/img_dashboard.png" alt="Im-agem dashboard">
+            <span class="nav-row-text hidden">Sensores</span>
+          </a>
+        </div>
+        <div class="nav-row">
+          <a href="./pages/funcionarios/index.html">
+            <img src="./assets/img_usuario.png" alt="Imagem clientes">
+            <span class="nav-row-text hidden">Funcionarios</span>
+          </a>
         </div>
       </div>
-      <div class="conteudoBox">
-        <div class="conteudoCima">
-          <h1>
-            Olá ${nomeUsuario}<br/>
-            este é seu <br />
-            resumo do dia:
-          </h1>
-          <div class="blocoEntradas">
-            <div class="kpi">
-              <h4>Total de entradas</h4>
-              <h2>203</h2>
-            </div>
-            <div class="horizontal" style="gap: 20px;">
-              <div class="kpi">
-                <h4>Vale de entradas</h4>
-                <h2>6</h2>
-              </div>
-              <div class="kpi">
-                <h4>Pico de entradas</h4>
-                <h2>45</h2>
-              </div>
-            </div>
-          </div>
+      <div class="icones">
+        <div class="nav-row">
+          <a href="#">
+            <img src="./assets/img_config.png" alt="Imagem config">
+            <span class="nav-row-text hidden">Configurações</span>
+          </a>
         </div>
-        <div class="blocoGraficos">
-          <div class="grafico">
-            <canvas id="grafico_1"></canvas> 
-          </div>
-          <div class="grafico">
-            <canvas id="grafico_2"></canvas>
-          </div>
+        <div class="nav-row">
+          <a href="../telaProduto/index.html">
+            <img src="./assets/img_sair.png" alt="Imagem sair">
+            <span class="nav-row-text hidden">Sair</span>
+          </a>
         </div>
       </div>
     </div>
-    <script src="./script.js"></script>
-    <script src="./scripts/navbar.js"></script>
-  </body>
+    <div class="conteudoBox">
+      <div class="conteudoCima">
+        <h1>
+          Olá ${nomeUsuario}<br />
+          este é seu <br />
+          resumo do dia:
+        </h1>
+        <div class="blocoEntradas">
+          <div class="kpi">
+            <h4>Total de entradas</h4>
+            <h2>203</h2>
+          </div>
+          <div class="horizontal" style="gap: 20px;">
+            <div class="kpi">
+              <h4>Vale de entradas</h4>
+              <h2>6</h2>
+            </div>
+            <div class="kpi">
+              <h4>Pico de entradas</h4>
+              <h2>45</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blocoGraficos">
+        <div class="grafico">
+          <canvas id="grafico_1"></canvas>
+        </div>
+        <div class="grafico">
+          <canvas id="grafico_2"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+  <script src="./scripts/navbar.js"></script>
+</body>
+
 </html>
