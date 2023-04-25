@@ -39,7 +39,7 @@
 body{
     min-height: 100vh;
     background: radial-gradient(ellipse at bottom, #35221b 0%, #0f0a09 100%);
-    
+    scroll-behavior: smooth;
 }
 
 
@@ -778,7 +778,7 @@ footer .container{
     animation: animStar 50s linear infinite;
     position: relative;
     z-index: 1;
-    box-shadow: 779px 1331px orange, 324px 42px #FA7D09, 303px 586px #FA7D09,
+    box-shadow: 779px 1331px #FA7D09, 324px 42px #FA7D09, 303px 586px #FA7D09,
     1312px 276px #FA7D09, 451px 625px #FA7D09, 521px 1931px #FA7D09, 1087px 1871px #FA7D09,
     36px 1546px #FA7D09, 132px 934px #FA7D09, 1698px 901px #FA7D09, 1418px 664px #FA7D09,
     1448px 1157px #FA7D09, 1084px 232px #FA7D09, 347px 1776px #FA7D09, 1722px 243px #FA7D09,

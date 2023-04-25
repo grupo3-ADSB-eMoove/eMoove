@@ -93,29 +93,14 @@
                 <input type="password" id="ipt_loginSenha" placeholder="Senha">
                 <div onclick="showHide()" id="icone"></div>
             </div>
+            <div id="mensagemErro"></div>
             <div id="btnConfirmar" onclick="efetuarLogin()">
                 <img src="./assets/Imagens/botao_entrar.png" alt="">
             </div>
         </div>
+        
     </div>
 
-    <div id="fadeReg" class="hideReg"></div>
-    <div id="modalReg" class="hideReg">
-        <div class="modal-headerReg">
-            <h2>Cadastre-se</h2>
-            <button id="close-modalReg"><img src="./assets/Imagens/X.png" alt=""></button>
-        </div>
-        <div class="modal-bodyReg">
-            <input id="ipt_usuario" placeholder="Usuário">
-            <input id="ipt_email" placeholder="E-mail">
-            <input type="password" id="ipt_senha" placeholder="Senha">
-            <input type="password" id="ipt_confirmarSenha" placeholder="Confirmar Senha">
-
-            <div id="btnConfirmar" onclick="efetuarCadastro()">
-                <img src="./assets/Imagens/botao_entrar.png" alt="">
-            </div>
-        </div>
-    </div>
     <script type="text/javascript" src="modal.js"></script>
     <script type="text/javascript" src="validacaoLogin.js"></script>
     <script type="text/javascript" src="validacaoCadastro.js"></script>
