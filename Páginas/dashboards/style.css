@@ -65,16 +65,41 @@ header h2 {
   transition: all .2s ease-in;
 }
 
+#menu-toggle {
+  cursor: pointer;
+}
+
 .nav-row {
+  width: 100%;
+}
+
+.nav-row img {
+  width: 35px;
+}
+
+.nav-row a {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  width: 100%;
   gap: 20px;
+
+  text-decoration: none;
+  color: black;
+}
+
+.nav-row a:visited {
+  color: black;
 }
 
 .nav-row-text {
   font-size: 24px;
   transition: display .2s ease-in;
+}
+
+.icones {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .hidden {

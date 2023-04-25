@@ -14,26 +14,69 @@
     padding: 20px;
 }
 
+.navbar {
+  padding: 40px 30px;
+  flex: 1;
+  background-color: #fff;
+  border-radius: 25px;
+
+  width: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .2s ease-in;
+}
+
+.open {
+  align-items: flex-start;
+  transition: all .2s ease-in;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.nav-row {
+  width: 100%;
+}
+
+.nav-row img {
+  width: 35px;
+}
+
+.nav-row a {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  text-decoration: none;
+  color: black;
+}
+
+.nav-row a:visited {
+  color: black;
+}
+
+.nav-row-text {
+  font-size: 24px;
+  transition: display .2s ease-in;
+}
+
 .icones {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.icones a,
-.icones #menu-toggle {
-    width: 35px;
-    cursor: pointer;
-}
-
-.icones img {
-    width: 100%;
+.hidden {
+  display: none;
 }
 
 .sectionSensores {
-    width: 80%;
-    margin-left: 50px;
+    width: 100%;
     padding: 0px 20px;
     display: flex;
     flex-direction: column;
@@ -58,7 +101,7 @@
 
 .cardsSensores {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 30px;
     height: 100%;
 }
@@ -66,25 +109,26 @@
 .disposicaoCard {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 100%;
 }
 
 .card {
     min-width: 350px;
-    padding: 25px;
+    padding: 20px;
     background-color: white; 
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .card .tituloCard {
     display: flex;
     justify-content: space-between;
+    color: rgb(15, 168, 23);
+    font-weight: 600;
 }
 
 .card h3 {
     color: black;
-    font-size: 22px;
 }
 
 .card p {
@@ -96,11 +140,6 @@
     color: #fa7d09;
 }
 
-.card .tituloCard button {
-    background-color: #fa7d09;
-    border: none;
-    border-radius: 10px;
-    padding: 7px 10px;
-    color: white;
-    cursor: pointer;
+.inativo {
+    color: red;
 }

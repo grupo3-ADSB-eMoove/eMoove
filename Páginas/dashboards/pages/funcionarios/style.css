@@ -15,49 +15,67 @@
 }
 
 .navbar {
-    width: 100px;
-    height: 100%;
-    background-color: #ffffff;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  padding: 40px 30px;
+  flex: 1;
+  background-color: #fff;
+  border-radius: 25px;
+
+  width: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .2s ease-in;
 }
 
-.iconeCima {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.open {
+  align-items: flex-start;
+  transition: all .2s ease-in;
 }
 
-.iconeCima a {
-    width: 40px;
-    margin-top: 40px;
+#menu-toggle {
+  cursor: pointer;
 }
 
-.iconeCima img {
-    width: 35px;
+.nav-row {
+  width: 100%;
 }
 
-.iconeBaixo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+.nav-row img {
+  width: 35px;
 }
 
-.iconeBaixo a {
-    width: 40px;
-    margin-bottom: 40px;
+.nav-row a {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  text-decoration: none;
+  color: black;
 }
 
-.iconeBaixo img {
-    width: 35px;
+.nav-row a:visited {
+  color: black;
 }
 
+.nav-row-text {
+  font-size: 24px;
+  transition: display .2s ease-in;
+}
+
+.icones {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hidden {
+  display: none;
+}
 .sectionSensores {
-    width: 80%;
-    margin-left: 50px;
+    width: 100%;
     padding: 0px 20px;
     display: flex;
     flex-direction: column;
@@ -82,7 +100,7 @@
 
 .cardsSensores {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 30px;
     height: 100%;
 }
@@ -90,26 +108,25 @@
 .disposicaoCard {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 100%;
 }
 
 .card {
     min-width: 350px;
-    padding: 20px;
+    padding: 25px;
     background-color: white; 
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .card .tituloCard {
     display: flex;
     justify-content: space-between;
-    color: rgb(15, 168, 23);
-    font-weight: 600;
 }
 
 .card h3 {
     color: black;
+    font-size: 22px;
 }
 
 .card p {
@@ -121,6 +138,11 @@
     color: #fa7d09;
 }
 
-.inativo {
-    color: red;
+.card .tituloCard button {
+    background-color: #fa7d09;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 10px;
+    color: white;
+    cursor: pointer;
 }

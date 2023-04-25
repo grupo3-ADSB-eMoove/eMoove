@@ -11,32 +11,42 @@
   </head>
   <body>
     <div class="container">
-      <div class="navbar">
+      <div class="navbar" id="navbar">
         <div class="icones">
           <div class="nav-row" style="align-items: flex-start;">
             <span id="menu-toggle"><img src="./assets/img_menu.png" alt="Imagem menu"></span>
           </div>
           <div class="nav-row">
-            <a href="#"><img src="./assets/img_home.png" alt="Imagem home"></a>
-            <span class="nav-row-text hidden">Inicio</span>
+            <a href="#">
+              <img src="./assets/img_home.png" alt="Imagem home">
+              <span class="nav-row-text hidden">Inicio</span>
+            </a>
           </div>
           <div class="nav-row">
-            <a href="./dashboardsSensores.html"><img src="./assets/img_dashboard.png" alt="Im-agem dashboard"></a>
-            <span class="nav-row-text hidden">Sensores</span>
+            <a href="./pages/sensores/index.html">
+              <img src="./assets/img_dashboard.png" alt="Im-agem dashboard">
+              <span class="nav-row-text hidden">Sensores</span>
+            </a>
           </div>
           <div class="nav-row">
-            <a href="./dashboardsFuncionarios.html"><img src="./assets/img_usuario.png" alt="Imagem clientes"></a>
-            <span class="nav-row-text hidden">Funcionarios</span>
+            <a href="./pages/funcionarios/index.html">
+              <img src="./assets/img_usuario.png" alt="Imagem clientes">
+              <span class="nav-row-text hidden">Funcionarios</span>
+            </a>
           </div>          
         </div>
         <div class="icones">
           <div class="nav-row">
-            <a href=""><img src="./assets/img_config.png" alt="Imagem config"></a>
-            <span class="nav-row-text hidden">Configurações</span>
+            <a href="#">
+              <img src="./assets/img_config.png" alt="Imagem config">
+              <span class="nav-row-text hidden">Configurações</span>
+            </a>
           </div>
           <div class="nav-row">
-            <a href="../telaProduto/index.html"><img src="./assets/img_sair.png" alt="Imagem sair"></a>
-            <span class="nav-row-text hidden">Sair</span>
+            <a href="../telaProduto/index.html">
+              <img src="./assets/img_sair.png" alt="Imagem sair">
+              <span class="nav-row-text hidden">Sair</span>
+            </a>
           </div>
         </div>
       </div>
@@ -75,5 +85,6 @@
       </div>
     </div>
     <script src="./script.js"></script>
+    <script src="./scripts/navbar.js"></script>
   </body>
 </html>
