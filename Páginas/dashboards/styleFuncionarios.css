@@ -82,7 +82,7 @@
 
 .cardsSensores {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 30px;
     height: 100%;
 }
@@ -90,15 +90,15 @@
 .disposicaoCard {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 100%;
 }
 
 .card {
     min-width: 350px;
-    padding: 20px;
+    padding: 25px;
     background-color: white; 
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .card .tituloCard {
