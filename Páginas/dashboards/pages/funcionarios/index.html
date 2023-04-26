@@ -140,8 +140,11 @@
               <input type="text" namen="email" id="input_email"/>
             </div>
             <div class="input">
+              <div class="separar">
               <label for="cpf">CPF</label>
-                <input type="text" name="cpf" id="input_cpf"/>
+              <span class="erro" id="mensagemErroCpf">CPF inválido</span>
+            </div>  
+              <input type="text" name="cpf" id="input_cpf" maxlength="14"/>
               </div>
           </div>
           <div class="divBtnCadastrar">

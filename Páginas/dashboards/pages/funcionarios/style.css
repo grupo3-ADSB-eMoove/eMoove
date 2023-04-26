@@ -14,6 +14,20 @@
     padding: 20px;
 }
 
+.separar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.erro{
+  font-family: 'Montserrat' ,sans-serif;
+  color: red;
+  font-weight: 500;
+  font-size: 14px;
+  margin-right: 10px;
+  display: none;
+}
+
 .navbar {
   padding: 40px 30px;
   flex: 1;
@@ -191,7 +205,7 @@
 
 .btnCadastrar{
   padding: 10px;
-  background-color: #ED893E;
+  background-color: #fa7d09;
   border: none;
   border-radius: 15px;
   font-size: 22px;
