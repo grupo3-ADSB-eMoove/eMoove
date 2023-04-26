@@ -149,15 +149,7 @@
 
 
 /* Styles do modal */
-/* .container{
-  position: relative;
-  width: 98.3%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
-  padding: 10px;
-} */
+
 
 .tela#blur.active {
   filter: blur(10px);
@@ -226,6 +218,13 @@ background-color: #dc7424;
   border-radius: 27px;
   padding: 0px 30px 15px;
 }
+.texto #fechar{
+  width: 20px;
+  margin-left: 450px;
+  margin: 5px 9px 6px 411px;
+  font-family: 'Montserrat', sans-serif;
+}
+
 
 .texto{
   text-align: center;
@@ -241,6 +240,7 @@ background-color: #dc7424;
   margin-bottom: 20px;
 }
 
+
 input{
   background-color: #E5E5E5;
   width: 100%;
@@ -252,13 +252,16 @@ input{
   outline-color: #ED893E;
 }
 
+
 .input{
   width: 45%;
 }
 
+
 .inputNome{
   width: 80%;
 }
+
 
 .input label{
   color: #ED893E;
@@ -268,6 +271,7 @@ input{
   margin-left: 8px;
 }
 
+
 .inputNome label{
   color: #ED893E;
   font-family: 'Montserrat', sans-serif;
@@ -275,6 +279,7 @@ input{
   font-weight: 500;
   margin-left: 8px;
 }
+
 
 .input :focus{
   background-color: #dbdbdb;
@@ -301,4 +306,6 @@ input{
   display: flex;
   justify-content: center;
 }
+
+
 
