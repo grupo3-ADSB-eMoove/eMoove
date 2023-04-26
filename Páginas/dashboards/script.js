@@ -43,3 +43,11 @@ new Chart(ctxGrafico2, {
   type: 'bar',
   data: dataGrafico2
 })
+
+// Função para borrar o fundo do modal
+function cadastrarFuncionario(){
+  var blur = document.getElementById('blur')
+   blur.classList.toggle('active')
+  var popup = document.getElementById('popup')
+  popup.classList.toggle('active')
+}

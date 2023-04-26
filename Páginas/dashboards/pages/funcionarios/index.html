@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="tela">
+  <div class="tela"  id="blur">
     <div class="navbar" id="navbar">
       <div class="icones">
         <div class="nav-row" style="align-items: flex-start;">
@@ -106,9 +106,52 @@
           </div>
         </div>
       </div>
+      <div class="divBtnCadastrar">
+        <button class="btnCadastrar" onclick="cadastrarFuncionario()">Cadastrar</button>
+       </div>
     </div>
   </div>
-  <script src="../../scripts/navbar.js"></script>
+  <div id="popup">
+    <section class="sectionForm">
+        <div class="divForm">
+          <div class="texto">
+            <h2>Cadastro funcionario</h2>
+          </div>
+    
+          <div class="divInputs">
+            <div class="inputsHorizontal">
+              <div class="input">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="input_nomeUsuario" />
+              </div>
+    
+              <div class="input">
+                <label for="senha">Sobrenome</label>
+                <input type="text" name="sobrenome" id="input_sobrenome"/>
+              </div>
+              
+            </div>
+          </div>
+    
+          <div class="inputsHorizontal">
+            <div class="input">
+              <label for="email">Email</label>
+              <input type="text" namen="email" id="input_email"/>
+            </div>
+            <div class="input">
+              <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="input_cpf"/>
+              </div>
+          </div>
+          <div class="divBtnCadastrar">
+          <button class="btnCadastrar" onclick="cadastrarFuncionario()">Cadastrar</button>
+         </div>
+          </div>
+        </div>
+         </div>
+    </section>
+  </div>
 </body>
-
+<script src="../../scripts/navbar.js"></script>
+<script src="../../script.js"></script>
 </html>

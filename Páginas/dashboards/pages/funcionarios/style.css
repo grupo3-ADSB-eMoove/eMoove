@@ -146,3 +146,159 @@
     color: white;
     cursor: pointer;
 }
+
+
+/* Styles do modal */
+/* .container{
+  position: relative;
+  width: 98.3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  padding: 10px;
+} */
+
+.tela#blur.active {
+  filter: blur(10px);
+}
+
+#popup {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  padding: 50px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#popup.active {
+  visibility: visible;
+  opacity: 52;
+  transition: 0.5s;
+  margin-top: 69px;
+}
+
+/* Style do botão de cadastrar */
+.divBtnCadastrar{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.btnCadastrar{
+  padding: 10px;
+  background-color: #ED893E;
+  border: none;
+  border-radius: 15px;
+  font-size: 22px;
+  color: white;
+  width: 180px;
+  height: 45px;
+  font-family: 'Montserrat' sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnCadastrar:hover{
+background-color: #dc7424;
+}
+
+.btnCadastrar:active{
+  transform: scale(1.05);
+  transition: .05s;
+}
+
+
+/* Style do modal para cadastrar */
+.sectionForm{
+  display: flex;
+  justify-content: center;
+}
+
+.divForm{
+  height: fit-content;
+  width: 615px;
+  background-color: white;
+  border-radius: 27px;
+  padding: 0px 30px 15px;
+}
+
+.texto{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.inputsHorizontal{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input{
+  background-color: #E5E5E5;
+  width: 100%;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  outline-color: #ED893E;
+}
+
+.input{
+  width: 45%;
+}
+
+.inputNome{
+  width: 80%;
+}
+
+.input label{
+  color: #ED893E;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.inputNome label{
+  color: #ED893E;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.input :focus{
+  background-color: #dbdbdb;
+}
+
+
+.btnCadastrar{
+  padding: 10px;
+  background-color: #ED893E;
+  border: none;
+  border-radius: 15px;
+  font-size: 22px;
+  color: white;
+  width: 180px;
+  height: 45px;
+  font-family: 'Montserrat' sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.divBtnCadastrar{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
