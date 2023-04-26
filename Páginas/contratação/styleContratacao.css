@@ -373,6 +373,9 @@ input{
     z-index: 1.5;
 }
 
+
+
+
 .sectionPlanos .fecharModal{
     text-align: end;
     align-self: flex-end;
@@ -381,6 +384,8 @@ input{
     text-decoration: none;
     color: #fff7f7;
 }
+
+
 
 /* Style do icone para fechar o modal */
 .container #fechar {
