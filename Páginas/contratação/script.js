@@ -62,15 +62,14 @@ function validarContrato() {
   if (cep.value.length != 9 && cep.value != '') {
    spanErroCep.style.display = 'block'
   } 
+  else if (cep.value == ''  || email.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '' || senha.value == '' || area.value <= 0) {
+   alert("Os campos não podem ser vazios")}
   else if (!validacaoEmail) {
     spanErroEmail.style.display = 'block'
     }else if(validacaoSenha){
       spanErroSenha.style.display = 'block'
     }
-     else if (cep.value == ''  || email.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '' || senha.value == '' || area.value <= 0) {
-    
-    
-    }else{
+      else{
     var blur = document.getElementById('blur')
     blur.classList.toggle('active')
     var popup = document.getElementById('popup')
