@@ -48,6 +48,19 @@ new Chart(ctxGrafico2, {
 function cadastrarFuncionario(){
   var cpf = document.querySelector('#input_cpf');
   const spanErroCpf = document.getElementById('mensagemErroCpf')
+  
+  // Mascara do cpf
+  cpf.addEventListener('keypress', () => {
+    let cpfLength = cpf.value.length;
+    if (cpfLength == 3) {
+      cpf.value += '.';
+    } else if (cpfLength == 7){
+      cpf.value += '.';
+    } else if(cpfLength == 11){
+      cpf.value += '-';
+    }
+  })
+
 
   // Validação de cpf
   if (cpf.value.length != 14 && cpf.value != '') {
