@@ -63,13 +63,24 @@ function cadastrarFuncionario(){
 
 
   // Validação de cpf
-  if (cpf.value.length != 14 && cpf.value != '') {
-    spanErroCpf.style.display = 'block'
-    } else {
-      spanErroCpf.style.display = 'none'
-      var blur = document.getElementById('blur')
-      blur.classList.toggle('active')
-      var popup = document.getElementById('popup')
-      popup.classList.toggle('active')
+  spanErroCpf.style.display = 'none'
+    var blur = document.getElementById('blur')
+    blur.classList.toggle('active')
+    var popup = document.getElementById('popup')
+    popup.classList.toggle('active')
+}
+
+function validarCadastro() {
+  var cpf = document.querySelector('#input_cpf');
+  const spanErroCpf = document.getElementById('mensagemErroCpf')
+  if (cpf.value.length = 14) {
+    spanErroCpf.style.display = 'none'
+    var blur = document.getElementById('blur')
+    blur.classList.toggle('active')
+    var popup = document.getElementById('popup')
+    popup.classList.toggle('active')
+    alert("foi")
+  } else {
+      spanErroCpf.style.display = 'block'
   }
 }
