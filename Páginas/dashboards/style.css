@@ -9,31 +9,17 @@
 body {
   background-color: #fa7d09;
   font-family: "Montserrat", sans-serif;
-  min-height: 100vh;
 
   display: flex;
   flex-direction: column;
-}
-
-header {
-  min-height: 10% !important;
-  padding: 20px;
-  background-color: white;
-
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
-
-}
-
-header h2 {
-  color: #ff4501;
+  overflow-y: hidden;
 }
 
 .container {
+  min-height: 100vh;
   display: flex;
   padding: 20px;
   gap: 20px;
-  flex: 1;
 }
 .divNavbar {
   display: flex;
@@ -47,10 +33,10 @@ header h2 {
 
 .navbar {
   padding: 40px 30px;
-  flex: 1;
   background-color: #fff;
   border-radius: 25px;
 
+  height: 97vh;
   width: fit-content;
 
   display: flex;
@@ -124,10 +110,9 @@ header h2 {
 }
 
 .conteudoCima {
-  display: flex;
   width: 100%;
+  height: 50%;
   display: flex;
-  align-items: center;
   justify-content: space-around;
 }
 
@@ -136,11 +121,17 @@ header h2 {
 }
 
 .blocoEntradas {
-  width: 52.5%;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.flex{
+  width: 48%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-left: 300px;
+  gap: 10%;
+  margin-bottom: 20px;
 }
 
 .kpi {
@@ -159,7 +150,18 @@ header h2 {
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.kpi h4{
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.kpi h3{
+  font-size: 22px;
+  margin-top: 8px;
+}
+
 .kpi h2 {
+  font-size: 38px;
   color: #FF4301;
 }
 
@@ -167,6 +169,22 @@ header h2 {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.alerta{
+  width: 48%;
+  height: 280px;
+  background-color: #fff;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
 }
 
 .blocoGraficos {
@@ -183,4 +201,31 @@ header h2 {
   border-radius: 18px;
   flex: 1;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.alerta-titulo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 280px;
+  width: 100%;
+}
+
+.alerta-titulo h4{
+  margin-bottom: 40px;
+  font-size: 20px;
+  justify-content: flex-start;
+}
+
+.alerta h2{
+  font-size: 30px;
+}
+
+.alerta-titulo h1{
+  color: #00db30;
+  font-size: 60px;
+}
+
+.alerta-historico{
+  height: 100px;
 }
