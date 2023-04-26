@@ -149,7 +149,15 @@
 
 
 /* Styles do modal */
-
+/* .container{
+  position: relative;
+  width: 98.3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  padding: 10px;
+} */
 
 .tela#blur.active {
   filter: blur(10px);
@@ -218,11 +226,13 @@ background-color: #dc7424;
   border-radius: 27px;
   padding: 0px 30px 15px;
 }
+
 .texto #fechar{
   width: 20px;
   margin-left: 450px;
   margin: 5px 9px 6px 411px;
   font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
 }
 
 
@@ -306,6 +316,4 @@ input{
   display: flex;
   justify-content: center;
 }
-
-
 
