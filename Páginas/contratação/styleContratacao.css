@@ -293,6 +293,7 @@ input{
     color: #ffffff;
     font-weight: 500;
 }
+
 .planosArea{
     width: 70vw;
     height: 250px;
@@ -326,16 +327,19 @@ input{
     font-size: 28px;
 }
 
+
 .cards h1 p{
     display: inline-block;
     font-size: 15px;
 }
+
 
 .cards p {
     text-align: center;
     font-size: 22px;
     margin-top: 15px;
 }
+
 
 .cards p span{
     font-size: 50px;
@@ -360,10 +364,14 @@ input{
 .cards:nth-child(3){
     color: #ff5315;
 }
+
+
 .cards:nth-child(3) span{
     color: #ff5315;
     font-size: 55px;
 }
+
+
 .cards:nth-child(3) .button{
     background-color: #FF4301;
 }
