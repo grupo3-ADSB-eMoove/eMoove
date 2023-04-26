@@ -135,18 +135,12 @@ body {
 }
 
 .kpi {
-  flex: 1;
   background-color: white;
-
-  padding: 20px 10px;
+  padding: 10px 10px;
   text-align: center;
-
   border-radius: 15px;
-
   text-transform: uppercase;
-
   font-weight: 700;
-
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -172,21 +166,34 @@ body {
 }
 
 .alerta{
-  width: 48%;
-  height: 280px;
+  width: 40%;
+  height: 185px;
   background-color: #fff;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 20px;
-
+  border-radius: 5px;
+  margin-bottom: 20px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+  overflow: auto;
+  flex-wrap: wrap;
+  
 }
 
+.cardAlerta{
+  background-color: rgb(0, 167, 50);
+  padding: 20px 10px;
+  text-align: center;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 100px;
+  margin-bottom: 10px;
+}
+.cardAtual{
+  width: 100%;
+}
 .blocoGraficos {
   width: 100%;
   border-radius: 25px;
@@ -201,13 +208,14 @@ body {
   border-radius: 18px;
   flex: 1;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
 }
 
 .alerta-titulo{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 280px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -229,3 +237,33 @@ body {
 .alerta-historico{
   height: 100px;
 }
+
+.divHistorico{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #fa7d09 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 15px;
+   
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #fa7d09;
+    border-radius: 10px;
+    border: 4px solid #ffffff;
+  }
