@@ -46,8 +46,30 @@ new Chart(ctxGrafico2, {
 
 // Função para borrar o fundo do modal
 function cadastrarFuncionario(){
-  var blur = document.getElementById('blur')
-   blur.classList.toggle('active')
-  var popup = document.getElementById('popup')
-  popup.classList.toggle('active')
+  var cpf = document.querySelector('#input_cpf');
+  const spanErroCpf = document.getElementById('mensagemErroCpf')
+  
+  // Mascara do cpf
+  cpf.addEventListener('keypress', () => {
+    let cpfLength = cpf.value.length;
+    if (cpfLength == 3) {
+      cpf.value += '.';
+    } else if (cpfLength == 7){
+      cpf.value += '.';
+    } else if(cpfLength == 11){
+      cpf.value += '-';
+    }
+  })
+
+
+  // Validação de cpf
+  if (cpf.value.length != 14 && cpf.value != '') {
+    spanErroCpf.style.display = 'block'
+    } else {
+      spanErroCpf.style.display = 'none'
+      var blur = document.getElementById('blur')
+      blur.classList.toggle('active')
+      var popup = document.getElementById('popup')
+      popup.classList.toggle('active')
+  }
 }

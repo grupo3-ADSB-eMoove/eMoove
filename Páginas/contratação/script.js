@@ -130,6 +130,8 @@ if (cepLength == 5) {
 
 
 
+
+
   email.addEventListener ('keypress' ,()=>{
 
   const spanErroEmail = document.getElementById('mensagemErroEmail')
