@@ -15,19 +15,6 @@
     font-style: normal;
 }
 
-@keyframes bounce{
-    0%, 20%, 60%, 100%{
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-    40%{
-        -webkit-transform: translateY(-10px);
-        transform: translateY(-10px);
-        transform: scale(1.15);
-    }
-   
-}
-
 *{
     margin: 0px;
     padding: 0px;
@@ -212,7 +199,7 @@ header{
     transition: all 1s;
 }
 .logoButton button:hover{
-    animation: bounce 1.2s;
+    transform: scale(1.1);
 }
 .bannerImagem{
     display: flex;
