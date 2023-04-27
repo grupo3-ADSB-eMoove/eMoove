@@ -1,4 +1,5 @@
 const nomeEst = document.querySelector('#input_nome');
+const cnpj = document.querySelector('#ipt_cnpj');
 const area = document.querySelector('#input_area')
 const cep = document.querySelector('#input_CEP');
 const bairro = document.querySelector('#input_bairro');
@@ -62,7 +63,7 @@ function validarContrato() {
   if (cep.value.length != 9 && cep.value != '') {
    spanErroCep.style.display = 'block'
   } 
-  else if (cep.value == ''  || email.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '' || senha.value == '' || area.value <= 0) {
+  else if (cep.value == ''  || email.value == '' || cnpj.value == '' || nomeEst.value == '' || numero.value == '' || bairro.value == '' || endereco.value == '' || senha.value == '' || area.value <= 0) {
    alert("Os campos não podem ser vazios")}
   else if (!validacaoEmail) {
     spanErroEmail.style.display = 'block'
@@ -118,7 +119,23 @@ function mostrarEndereco(dados) {
 
 
 
+cnpj.addEventListener('keypress', (e) => {
+  var value = cnpj.value;
 
+  var numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+  if(!numeros.includes(e.key)) {
+    e.preventDefault()
+  }
+
+  if(value.length == 2 || value.length == 6) {
+    cnpj.value += '.'
+  } else if (value.length == 10) {
+    cnpj.value += '/'
+  } else if(value.length == 15) {
+    cnpj.value += '-'
+  }
+})
 
 
 cep.addEventListener('keypress', () => {

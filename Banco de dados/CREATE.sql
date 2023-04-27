@@ -1,12 +1,13 @@
 CREATE DATABASE emoove;
 USE emoove;
 
-drop database emoove;
+-- drop database emoove;
 
 -- CREATE DA TABELA DO ESTABELECIMENTO DO 
 CREATE TABLE estabelecimento(
     idEstabelecimento INT PRIMARY KEY auto_increment,
     nomeEstabelecimento VARCHAR(100),
+    cnpj VARCHAR(18),
     area FLOAT,
 	telefoneEstabelecimento VARCHAR(20) NOT NULL,
     logradouro VARCHAR(100) NOT NULL,
@@ -71,10 +72,10 @@ CREATE TABLE CapturaDados(
 -- INSERT TABELA ESTABELECIMENTO
 desc estabelecimento;
 INSERT INTO estabelecimento VALUES 
-	(null,'MacLovinPadaria',92,'119617074234' ,'Rua Irmão Deodoro', 659, 'Guaianases',  '08410-410' ),
-	(null,'MacRestaurante',52, '119617074234','Rua haddock lobo', 756, 'Paulista', '08410-410'),
-	(null,'Churrascaria do Renan',200.20, '119617074234','Rua Valdivia Jackson', 78, 'Cidade Tiradentes',  '08410-410'),
-	(null,'Bancaria de dados da vivian',172.89,'119617074234' ,'Rua banco de dados', 93, 'Av Paulista',  '08410-410');
+	(null,'MacLovinPadaria', '24.616.269/0001-65', 92,'119617074234' ,'Rua Irmão Deodoro', 659, 'Guaianases',  '08410-410' ),
+	(null,'MacRestaurante', '24.616.269/0001-65', 52, '119617074234','Rua haddock lobo', 756, 'Paulista', '08410-410'),
+	(null,'Churrascaria do Renan', '24.616.269/0001-65', 200.20, '119617074234','Rua Valdivia Jackson', 78, 'Cidade Tiradentes',  '08410-410'),
+	(null,'Bancaria de dados da vivian', '24.616.269/0001-65', 172.89,'119617074234' ,'Rua banco de dados', 93, 'Av Paulista',  '08410-410');
 
 -- INSERT TABELA USUARIO
 desc usuario;
@@ -130,9 +131,6 @@ SELECT dtHora, valor, dtHora, idSensor, localInstalado, nomeestabelecimento FROM
 SELECT nomeusuario as Contratante, nomeEstabelecimento as Estabelecimento FROM Estabelecimento 
 	JOIN Usuario ON usuario.fk_estabelecimento = estabelecimento.idEstabelecimento;
     
-    
-	
-
- 
+select * from estabelecimento;
 
 
