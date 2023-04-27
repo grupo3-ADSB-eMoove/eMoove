@@ -4,7 +4,7 @@ const dataGrafico1 = {
   labels: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'],
   datasets: [{
     axis: 'y',
-    label: 'Clientes Dentro do estabelecimento por horário',
+    label: 'Clientes Dentro do estabelecimento por horário (Área 30m²)',
     data: [20, 15, 12, 30, 39, 55, 70, 42, 35, 18, 7, 30, 5],
     pointBackgroundColor: 'rgba(255, 69, 1, 0.5)',
     borderWidth: 2,

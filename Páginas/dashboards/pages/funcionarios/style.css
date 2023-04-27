@@ -196,35 +196,7 @@
   margin-top: 69px;
 }
 
-/* Style do botão de cadastrar */
-.divBtnCadastrar{
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-}
 
-.btnCadastrar{
-  padding: 10px;
-  background-color: #fa7d09;
-  border: none;
-  border-radius: 15px;
-  font-size: 22px;
-  color: white;
-  width: 180px;
-  height: 45px;
-  font-family: 'Montserrat' sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.btnCadastrar:hover{
-background-color: #dc7424;
-}
-
-.btnCadastrar:active{
-  transform: scale(1.05);
-  transition: .05s;
-}
 
 
 /* Style do modal para cadastrar */
@@ -309,6 +281,7 @@ input{
   background-color: #dbdbdb;
 }
 
+/* Style do botão de cadastrar */
 
 .btnCadastrar{
   padding: 10px;
@@ -329,5 +302,33 @@ input{
   margin-top: 30px;
   display: flex;
   justify-content: center;
+}
+
+.divBtnCadastrar{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.btnCadastrar{
+  padding: 10px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  font-size: 22px;
+  color: #fa7d09;
+  width: 180px;
+  height: 45px;
+  font-family: 'Montserrat' sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btnCadastrar:hover{
+background-color: #f3f3f3;
+}
+
+.btnCadastrar:active{
+  transform: scale(1.02);
+  transition: .1s;
 }
 

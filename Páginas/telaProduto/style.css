@@ -8,6 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "montSerrat";
+   
 }
 
 header {
@@ -25,11 +26,14 @@ header {
 }
 
 header .container {
+    background-color: white;
     height: 100px;
     justify-content: space-between;
     align-items: center;
     border-radius: 27px;
     box-shadow: 2px 2px 2px 1.4px #c0c0c0;
+    position: fixed;
+    z-index: 1;
 }
 
 .headerLogo {
