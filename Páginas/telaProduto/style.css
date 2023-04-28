@@ -8,7 +8,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "montSerrat";
-   
+    position: relative;
+    
 }
 
 header {
@@ -17,7 +18,6 @@ header {
     height: 120px;
     align-items: center;
     margin-top: 8px;
-    position: relative;
 }
 
 .container {
@@ -32,7 +32,6 @@ header .container {
     align-items: center;
     border-radius: 27px;
     box-shadow: 2px 2px 2px 1.4px #c0c0c0;
-    position: fixed;
     z-index: 1;
 }
 
@@ -89,13 +88,12 @@ header .container {
 .sectionInicio {
     display: flex;
     justify-content: center;
-    position: relative;
 }
 
 .sectionInicio .container {
     justify-content: space-between;
     align-items: center;
-    height: 500px;
+    height: 440px;
 }
 
 .sectionInicio img {
@@ -112,7 +110,7 @@ header .container {
 }
 
 .textoInicio p {
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
     font-weight: bold;
     font-family: "montSerrat";
@@ -258,7 +256,6 @@ header .container {
     display: flex;
     justify-content: center;
     margin-top: 100px;
-    position: relative;
 }
 .sectionPlanos .container{
     display: flex;
@@ -380,10 +377,123 @@ header .container {
     background-size: cover;
 }
 
+
+.seta-baixo{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.seta-baixo img{
+    width: 30px;
+    height: 30px;
+    animation: mover 2s infinite;
+}
+
+@keyframes mover{
+    0%{
+        margin-top: 0px;
+    }
+    50%{
+        margin-top:15px;
+    }
+    100%{
+        margin-top:0px;
+    }
+}
+
+
+#sectionConteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+
+#sectionConteudo h1{
+    font-size: 34px;
+    color: #FF4301;
+}
+
+#sectionConteudo .container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sectionContexto{
+    display: flex;
+    margin-top: 70px;
+}
+
+.contexto-img{
+    flex:1;
+    display: flex;
+    justify-content: center;
+}
+
+.contexto-img img{
+    width: 400px;
+}
+
+.contexto-texto{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    color: #1d1d1d;
+    font-size: 16px;
+}
+
+.contexto-texto p{
+    display: flex;
+    flex-direction: column;
+}
+
+.contexto-texto2{
+    flex: 1;
+    padding: 40px 20px;
+    color: #1d1d1d;
+    font-size: 16px;
+}
+
+.contexto-texto2 p{
+    text-align: center;
+    margin-right: 20px;
+}
+
+.sectionContextoFinal{
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+.sectionContextoFinal p{
+    width: 800px;
+}
+
+
+footer .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    background-color: #ebebeb;
+    position: absolute;
+    box-shadow: inset 0px 0px 10px 5px rgb(207, 207, 207);
+}
+
+footer p{
+    color:#FF4301;
+    font-weight: 600;
+}
+
+
 .wrapper {
     position: fixed;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 }
 
 #stars {
@@ -571,7 +681,6 @@ header .container {
         659px 1860px #FA7D09, 388px 1412px #FA7D09, 1212px 458px #FA7D09, 755px 1468px #FA7D09,
         696px 1654px #FA7D09, 1144px 60px #FA7D09;
 }
-
 #stars::after {
     content: '';
     position: absolute;
@@ -757,7 +866,6 @@ header .container {
         659px 1860px #FA7D09, 388px 1412px #FA7D09, 1212px 458px #FA7D09, 755px 1468px #FA7D09,
         696px 1654px #FA7D09, 1144px 60px #FA7D09;
 }
-
 #stars2 {
     width: 2px;
     height: 2px;
@@ -815,7 +923,6 @@ header .container {
         156px 81px #FA7D09, 1915px 502px #FA7D09, 1076px 1846px #FA7D09, 152px 1669px #FA7D09,
         986px 1529px #FA7D09, 1667px 1137px #FA7D09;
 }
-
 #stars2::after {
     content: '';
     position: absolute;
@@ -875,7 +982,6 @@ header .container {
         156px 81px #FA7D09, 1915px 502px #FA7D09, 1076px 1846px #FA7D09, 152px 1669px #FA7D09,
         986px 1529px #FA7D09, 1667px 1137px #FA7D09;
 }
-
 #stars3 {
     width: 3px;
     height: 3px;
@@ -908,7 +1014,6 @@ header .container {
         494px 1957px #FA7D09, 1296px 431px #FA7D09, 175px 1507px #FA7D09, 831px 121px #FA7D09,
         498px 1947px #FA7D09, 617px 880px #FA7D09, 240px 403px #FA7D09;
 }
-
 #stars3::after {
     content: '';
     position: absolute;
