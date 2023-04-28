@@ -5,7 +5,7 @@ const dataGrafico1 = {
   datasets: [{
     axis: 'y',
     label: 'Clientes Dentro do estabelecimento por horário (Área 30m²)',
-    data: [20, 15, 12, 30, 39, 55, 70, 42, 35, 18, 7, 30, 5],
+    data: [15, 10, 25, 26, 55, 70, 38, 22, 14, 40, 55, 25, 5],
     pointBackgroundColor: 'rgba(255, 69, 1, 0.5)',
     borderWidth: 2,
     borderColor: '#FF4301',
@@ -31,10 +31,10 @@ new Chart(ctxGrafico1, {
 const ctxGrafico2 = document.getElementById('grafico_2')
 
 const dataGrafico2 = {
-  labels: ['12/04', '13/04', '14/04', '15/04'],
+  labels: ['25/04', '26/04', '27/04', '28/04'],
   datasets: [{
     label: 'Total de entradas por dia',
-    data: [254, 321, 218, 416],
+    data: [414, 340, 358, 400],
     backgroundColor: 'rgba(255, 69, 1, 0.7)'
   }]
 }
