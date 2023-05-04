@@ -105,7 +105,8 @@ values (
     'Guilherme',
     'Scarabelli',
     'gui@gmail.com',
-    '123' 'basico',
+    '123',
+    'basico',
     1
   ),
   (
@@ -113,7 +114,8 @@ values (
     'Vivian',
     'Silva',
     'vivian@gmail.com',
-    '123' 'basico',
+    '123',
+    'basico',
     4
   ),
   (
