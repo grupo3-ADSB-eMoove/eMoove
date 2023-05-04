@@ -23,31 +23,31 @@ CREATE TABLE usuario(
   permissao VARCHAR(25) NOT NULL CONSTRAINT chkPermissao CHECK (
     permissao in ('basico', 'intermediario', 'total')
   ),
-  fk_estabelecimento INT,
-  FOREIGN KEY (fk_estabelecimento) REFERENCES estabelecimento (idEstabelecimento),
-  CONSTRAINT pkUsuario PRIMARY KEY (idUsuario, fk_estabelecimento)
+  fkEstabelecimento INT,
+  FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento (idEstabelecimento),
+  CONSTRAINT pkUsuario PRIMARY KEY (idUsuario, fkEstabelecimento)
 );
 -- CREATE DA TABELA ONDE VAI ARMAZENAR O LOCAL QUE O SENSOR FOI INSTALADO
-CREATE TABLE LocalInstalado (
+CREATE TABLE localInstalado (
   idLocal INT PRIMARY KEY AUTO_INCREMENT,
-  LocalInstalado varchar (10),
-  fk_estabelecimento INT,
-  FOREIGN KEY (fk_estabelecimento) REFERENCES estabelecimento (idEstabelecimento)
+  localInstalado varchar (10),
+  fkEstabelecimento INT,
+  FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento (idEstabelecimento)
 );
 -- CREATE DA TABELA SENSOR ONDE GUARDA AS INFOS DO SENSOR
-CREATE TABLE Sensor(
+CREATE TABLE sensor(
   idSensor INT PRIMARY KEY AUTO_INCREMENT,
   dtInstalacao DATE not null,
   statusSensor VARCHAR(10),
-  fk_local_instalado INT,
-  FOREIGN KEY (fk_local_instalado) REFERENCES LocalInstalado(idLocal)
+  fkLocalInstalado INT,
+  FOREIGN KEY (fkLocalInstalado) REFERENCES localInstalado(idLocal)
 );
 -- CREATE DA TABELA QUE VAI ARMAZENAR OS DADOS CAPTURADOS PELO SENSOR
-CREATE TABLE CapturaDados(
+CREATE TABLE capturaDados(
   dtHora DATETIME DEFAULT current_timestamp,
-  fk_sensor INT,
-  FOREIGN KEY (fk_Sensor) REFERENCES Sensor(idSensor),
-  constraint pkComposta PRIMARY KEY (dtHora, fk_sensor),
+  fkSensor INT,
+  FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor),
+  constraint pkComposta PRIMARY KEY (dtHora, fkSensor),
   valor BOOLEAN
 );
 -- INSERT TABELA ESTABELECIMENTO
@@ -137,20 +137,20 @@ values (
     3
   );
 -- Insert do local
-INSERT INTO LocalInstalado
+INSERT INTO localInstalado
 VALUES (null, 'Entrada1', 1),
   (null, 'Corredor1', 1),
   (null, 'Entrada1', 2),
   (null, 'Corredor1', 2);
 -- insert do sensor
 desc sensor;
-INSERT INTO Sensor
+INSERT INTO sensor
 VALUES (null, '2023-07-10', 'Ativo', 1),
   (null, '2023-07-11', 'Ativo', 2),
   (null, '2023-07-12', 'Ativo', 3);
 -- insert dos dados
-DESC CAPTURADADOS;
-INSERT INTO CapturaDados
+DESC capturaDados;
+INSERT INTO capturaDados
 VALUES ('2023-10-20 11:00:00', 1, 1),
   ('2023-10-20 08:00:00', 1, 1),
   ('2023-10-20 11:00:00', 2, 1),
@@ -165,14 +165,14 @@ SELECT dtHora,
   idSensor,
   localInstalado,
   nomeestabelecimento
-FROM CapturaDados
-  JOIN Sensor ON CapturaDados.fk_sensor = Sensor.idSensor
-  JOIN LocalInstalado ON sensor.fk_local_instalado = LocalInstalado.idLocal
-  JOIN estabelecimento ON estabelecimento.idEstabelecimento = LocalInstalado.fk_estabelecimento;
+FROM capturaDados
+  JOIN sensor ON capturaDados.fkSensor = sensor.idSensor
+  JOIN localInstalado ON sensor.fkLocalInstalado = localInstalado.idLocal
+  JOIN estabelecimento ON estabelecimento.idEstabelecimento = localInstalado.fkEstabelecimento;
 -- AQUI TEMOS UM SELECT DOS USUARIOS, OS SEUS CARGOSOS E SEUS RESPECTIVOS ESTABELECIMENTOS 
 SELECT nomeusuario as Contratante,
   nomeEstabelecimento as Estabelecimento
 FROM Estabelecimento
-  JOIN Usuario ON usuario.fk_estabelecimento = estabelecimento.idEstabelecimento;
+  JOIN Usuario ON usuario.fkEstabelecimento = estabelecimento.idEstabelecimento;
 select *
 from estabelecimento;
