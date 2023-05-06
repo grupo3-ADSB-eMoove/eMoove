@@ -12,7 +12,97 @@
 </head>
 
 <body>
-  <div class="header" id="blur">
+  <header>
+    <div class="btn-voltar">
+      <img src="./assets/left-chevron.svg">
+      <span>Voltar</span>
+    </div>
+  </header>
+  <main>
+    <div class="half">
+      <h2>FAÇA SUA CONTRATAÇÃO</h2>
+      <img src="./assets/contrato.svg" height="500">
+    </div>
+    <div class="half">
+      <form action="" id="form-contrato">
+        <div>
+          <h1>Dados da Empresa</h1>
+          <div class="horizontal">
+            <div class="labeled-input" style="flex: 1;">
+              <label for="nome-fantasia">Nome fantasia</label>
+              <input name="nome-fantasia" type="text" id="ipt_nome_fantasia">
+              <span id="msg-erro-nome-fantasia" class="erro"></span>
+            </div>
+            <div class="labeled-input" style="width: 21ch">
+              <label for="cnpj">cnpj</label>
+              <input name="cnpj" type="text" id="ipt_cnpj" maxlength="18">
+              <span id="msg-erro-cnpj" class="erro"></span>
+            </div>
+            <div class="labeled-input" style="width: 8ch;">
+              <label for="area">Area(M²)</label>
+              <input name="area" type="text" id="ipt_area" maxlength="">
+              <span id="msg-erro-area" class="erro"></span>
+            </div>
+          </div>
+          <div class="horizontal">
+            <div class="labeled-input" style="width: 13ch;">
+              <label for="cep">CEP</label>
+              <input name="cep" type="text" id="ipt_cep">
+              <span id="msg-erro-cep" class="erro"></span>
+            </div>
+            <div class="labeled-input">
+              <label for="bairro">Bairro</label>
+              <input name="bairro" type="text" id="ipt_bairro" disabled>
+            </div>
+            <div class="labeled-input">
+              <label for="logradouro">Logradouro</label>
+              <input name="logradouro" type="text" id="ipt_logradouro" disabled>
+            </div>
+          </div>
+          <div class="horizontal">
+            <div class="labeled-input">
+              <label for="numero">Numero</label>
+              <input name="numero" type="text" id="ipt_numero">
+              <span id="msg-erro-numero" class="erro"></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1>Usuário</h1>
+          <div class="horizontal">
+            <div class="labeled-input">
+              <label for="nome-usuario">Nome</label>
+              <input name="nome-usuario" type="text" id="ipt_nome_usuario">
+              <span id="msg-erro-nome-usuario" class="erro"></span>
+            </div>
+            <div class="labeled-input">
+              <label for="sobrenome-usuario">Sobrenome</label>
+              <input name="sobrenome-usuario" type="text" id="ipt_sobrenome_usuario">
+              <span id="msg-erro-sobrenome-usuario" class="erro"></span>
+            </div>
+          </div>
+          <div class="labeled-input" style="margin-bottom: 10px;">
+            <label for="email">E-mail</label>
+            <input name="email" type="email" id="ipt_email">
+            <span id="msg-erro-email" class="erro"></span>
+          </div>
+          <div class="horizontal">
+            <div class="labeled-input">
+              <label for="senha">Senha</label>
+              <input name="senha" type="password" id="ipt_senha">
+            </div>
+            <div class="labeled-input">
+              <label for="confirmar-senha">Confirmar Senha</label>
+              <input name="confirmar-senha" type="password" id="ipt_confirmar_senha">
+            </div>
+          </div>
+          <span id="msg-erro-senha" class="erro"></span>
+        </div>
+        <button type="submit" class="btn-contratar" id="btn-contratar">CONTRATAR</button>
+      </form>
+    </div>
+  </main>
+  <!-- <div class="header" id="blur">
     <header>
       <a href="../telaProduto/index.html" style="text-decoration: none;">
         <div class="btnVoltar">
@@ -164,7 +254,8 @@
         </div>
     </section>
 </div>
-</div>
+</div> -->
+<script src="script.js"></script>
 </body>
 
 </html>
