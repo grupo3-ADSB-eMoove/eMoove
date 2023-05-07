@@ -101,160 +101,41 @@
         <button type="submit" class="btn-contratar" id="btn-contratar">CONTRATAR</button>
       </form>
     </div>
-  </main>
-  <!-- <div class="header" id="blur">
-    <header>
-      <a href="../telaProduto/index.html" style="text-decoration: none;">
-        <div class="btnVoltar">
-          <img class="iconVoltar" src="./assets/left-chevron.svg" alt="voltarIcon" />
-          <span class="spanVoltar">Voltar</span>
+
+    <div class="modal-plans" id="modal-plans">
+      <img src="./assets/xmark-solid.svg" id="xmark" alt="Botão fechar" width="40" height="40">
+      <div class="plan">
+        <h3>Pequeno</h3>
+        <div>
+          <h1 class="plan-price"><span>R$</span>14.99<span>/mês</span></h1>
+          <h5>Taxa de inst - R$99,99</h5>
         </div>
-      </a>
-  
-      <div class="divTitulo">
-        <h1>FAÇA SUA CONTRATAÇÃO</h1>
+        <p class="plan-description">Até <span>5</span> sensores</p>
+        <a href="../dashboards/index.html" class="plan-button">Escolher Plano</a>
       </div>
-  
-      <span class="space"></span>
-    </header>
-  
-  <div class= "container" id="blur">
-  <section class="sectionForm">
-    <div class="divForm">
-      <div class="textoEstabelecimento">
-        <h2>Estabelecimento</h2>
+      <div class="plan">
+        <h3>Médio</h3>
+        <div>
+          <h1 class="plan-price"><span>R$</span>19.99<span>/mês</span></h1>
+          <h5>Taxa de inst - R$99,99</h5>
+        </div>
+        <p class="plan-description">Até <span>10</span> sensores</p>
+        <a href="../dashboards/index.html" class="plan-button">Escolher Plano</a>
       </div>
-
-      <div class="divInputs">
-
-        <div class="inputsHorizontal" style="gap: 10px;">
-          <div class="inputNome">
-            <label for="nome">Nome do Estabelecimento</label>
-            <input type="text" name="nome" id="input_nome" />
-          </div>
-          <div class="inputArea input">
-            <label for="area">Área m²</label>
-            <input type="text" name="nome" id="input_area" />
-          </div>
+      <div class="plan">
+        <div class="highlight">
+          <h5>Melhor custo beneficio</h5>
         </div>
-        <div class="input" style="width: 100%; margin-bottom: 20px;">
-          <label for="cnpj">CNPJ</label>
-          <input type="text" name="cnpj" id="ipt_cnpj" maxlength="18">
+        <h3>Grande</h3>
+        <div>
+          <h1 class="plan-price"><span>R$</span>24.99<span>/mês</span></h1>
+          <h5>Taxa de inst - R$99,99</h5>
         </div>
-
-        <div class="inputsHorizontal">
-          <div class="input">
-            <div class="separar">
-              <label for="CEP">CEP</label>
-              <span class="erro" id="mensagemErroCEP">CEP Inválido</span>
-            </div>
-            <input type="text" name="CEP" id="input_CEP" maxlength="9" />
-          </div>
-          <div class="input">
-            <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="input_bairro" />
-          </div>
-        </div>
-        
-        <div class="inputsHorizontal">
-          <div class="input">
-            <label for="endereco">Endereço</label>
-            <input type="text" name="endereco" id="input_endereco" />
-          </div>
-          <div class="input">
-            <label for="numero">Número</label>
-            <input type="text" name="numero" id="input_numero" />
-          </div>
-        </div>
-
-        
-        <div class="textoEstabelecimento">
-          <h3>Cadastro</h3>
-        </div>
-
-        <div class="inputsHorizontal">
-          <div class="input">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="input_nomeUsuario" />
-          </div>
-
-          <div class="input">
-            <label for="senha">Sobrenome</label>
-            <input type="text" name="sobrenome" id="input_sobrenome" />
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="inputsHorizontal">
-        <div class="input">
-          <div class="separar">
-            <label for="email">Email</label>
-            <span class="erro" id="mensagemErroEmail">Email inválido</span>
-          </div>
-          <input type="text" namen="email" id="input_email" />
-        </div>
-        <div class="input">
-          <div class="separar">
-            <label for="senha">Senha</label>
-            <span class="erro" id="mensagemErroSenha">Senha inválida</span>
-          </div>
-          
-          <div class="iconSenha"> 
-            <input type="password" name="senha" id="input_senha" />
-            <div onclick="showHide()" id="icone"></div>
-          </div>
-          </div>
-      </div>
-      <div class="divBtnContratar">
-      <button class="btnContratar" onclick="validarContrato()">Contrate</button>
-     </div>
+        <p class="plan-description">Até <span>30</span> sensores</p>
+        <a href="../dashboards/index.html" class="plan-button">Escolher Plano</a>
       </div>
     </div>
-     </div>
-</section>
-<script src="./script.js"></script>
-<div id="popup">
-  <section class="sectionPlanos">
-    <div class="container">
-      <img src="../contratação/assets/img_fechar.png" alt="" id="fechar" onclick="validarContrato()">
-            <div class="planosTitulo">PLANOS</div>
-            <div class="planosDesc">Tamanho do Estabelecimento</div>
-            <div class="planosArea">
-                <div class="planosCards">
-                    <div class="cards">
-                        <h4>Pequeno</h4>
-                        <h1>
-                            <p>R$</p>14.99<br>
-                        </h1>
-                        <h5>Taxa de Inst. - R$100,00</h5>
-                        <p>Até <span> 5</span> sensores</p>
-                        <a class="button" href="">Escolher Plano</a>
-                    </div>
-                    <div class="cards">
-                        <h4>Médio</h4>
-                        <h1>
-                            <p>R$</p>19.99
-                        </h1>
-                        <h5>Taxa de Inst. - R$100,00</h5>
-                        <p>Até <span>10</span> sensores</p>
-                        <a class="button" href="">Escolher Plano</a>
-                    </div>
-                    <div class="cards">
-                        <h4>Grande</h4>
-                        <h1>
-                            <p>R$</p>24.99
-                        </h1>
-                        <h5>Taxa de Inst. - R$100,00</h5>
-                        <p>Até <span>30</span> sensores</p>
-                        <a class="button active" href="">Escolher Plano</a>
-                    </div>
-                  </div>
-            </div>
-        </div>
-    </section>
-</div>
-</div> -->
+  </main>
 <script src="script.js"></script>
 </body>
 

@@ -14,6 +14,9 @@ const iptEmail = form[9];
 const iptSenha = form[10];
 const iptConfirmaSenha = form[11];
 
+const modalPlans = document.getElementById('modal-plans')
+document.getElementById('xmark').addEventListener('click', (e) => modalPlans.classList.toggle('hidden'))
+
 document.getElementById("btn-contratar").addEventListener("click", (e) => {
   e.preventDefault();
   var nomeFantasiaValidado = validarNomeFantasia();
@@ -37,7 +40,7 @@ document.getElementById("btn-contratar").addEventListener("click", (e) => {
     sobrenomeusuarioValidado &&
     senhaValidada
   ) {
-    alert("Contrato Realizado com Sucesso");
+    modalPlans.classList.toggle('hidden')
   }
 });
 
