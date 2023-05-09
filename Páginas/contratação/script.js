@@ -18,7 +18,7 @@ const modalPlans = document.getElementById('modal-plans')
 document.getElementById('xmark').addEventListener('click', (e) => modalPlans.classList.toggle('hidden'))
 
 document.getElementById("btn-contratar").addEventListener("click", (e) => {
-  e.preventDefault();
+  // e.preventDefault();
   var nomeFantasiaValidado = validarNomeFantasia();
   var cnpjValidado = validarCNPJ();
   var areaValidada = validarArea();
