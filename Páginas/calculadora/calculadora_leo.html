@@ -53,14 +53,14 @@
           <input id="inputEntradas" class="input" type="text" placeholder="" />
           <div class="cut"></div>
           <label for="inputEntradas" class="placeholder"
-            >Quantidade de Entradas</label
+            >Quantidade de Passagens Mensais</label
           >
         </div>
         <div class="input-container ic2">
           <input id="inputVendas" class="input" type="text" placeholder="" />
           <div class="cut"></div>
           <label for="inputVendas" class="placeholder"
-            >Quantidade de Vendas</label
+            >Quantidade de Vendas Mensais</label
           >
         </div>
         <div class="input-container ic2">
@@ -70,7 +70,7 @@
             >Renda Bruta Mensal
           </label>
         </div>
-        <div class="radioGroup">
+        <div class="radioGroup">            
           <div>
             <label class="rad-label">
               <input type="radio" class="rad-input" name="rad" id="inputSP" />
@@ -146,19 +146,13 @@
       alert("Preencha os campos antes de fazer seu calculo");
     } else {
       respostaFixa.innerHTML = `
-        <span class="spanConversao">Com esses números oferecidos sua taxa de conversão é: <b style="color: red;">${taxaConversao.toFixed(
-          0
-        )}%</b></span>
-
+        
             <br> Aplicando nossa solução e utilizando nossos serviços de maneira correta suas vendas podem aumentar em
-                 <b style="color: red;">35%</b> ou mais <br><br>
-            
-                E nessa hipótese a quantidade de vendas mensais seriam de ${qtdVendasPosConversao.toFixed(
-                  0
-                )}
-                e se sua renda acompanhasse proporcionalmente seria de  <b style="color: red;">R$:${(
-                  qtdVendasPosConversao * mediaPorComprador
-                ).toFixed(0)}</b> <br>
+                 <span style="color: #ff1a10;">35%</span> ou mais <br><br>
+
+                 Possível quantidade de vendas após contratação:  <span style="color: #ff1a10;">${qtdVendasPosConversao.toFixed(0)} </span><br>
+                 Possível renda pós contratação: R$:  <span style="color: #ff1a10;">${ (qtdVendasPosConversao * mediaPorComprador).toLocaleString("pt-BR")} </span>
+                <br><br>
                 
 
         `;
@@ -183,16 +177,16 @@
         houvesse problemas com as filas seu total de vendas seria de  ${qtdVendasPosFilas.toFixed(
           0
         )} 
-        vendas e você teria arrecadado <b style="color: red">R$:${(
+        vendas e você teria arrecadado <span style="color: #ff1a10">R$:${(
           qtdVendasPosFilas * mediaPorComprador
-        ).toFixed(0)}</b><br><br>
+        ).toLocaleString("pt-BR")}</span><br><br>
 
-        E se combinassemos tudo seu estabelecimento teria <b>${qtdVendasCombinando.toFixed(
+        E se combinassemos tudo seu estabelecimento teria <span>${qtdVendasCombinando.toFixed(
           0
-        )}</b> vendas mensais e uma renda de 
-        <b style="color: red;">R$:${(
+        )}</span> vendas mensais e uma renda de 
+        <span style="color: #ff1a10;">R$:${(
           qtdVendasCombinando * mediaPorComprador
-        ).toFixed(0)}</b> 
+        ).toLocaleString("pt-BR")}</span> 
         `;
       }
       if (inpMuitosProblemas.checked) {
@@ -203,20 +197,18 @@
        50% dos seus clientes vão desistir de comprar se esperarem mais do que cinco minutos na fila segundo pesquisas<br><br>
 
 Então é possível que seus problemas com filas estejam diminuindo pela metade as suas vendas 
-e se não houvessem problemas com filas seu total de vendas seria de <b>${qtdVendasPosFilas.toFixed(
+e se não houvessem problemas com filas seu total de vendas seria de <span>${qtdVendasPosFilas.toFixed(
           0
-        )}</b> 
-e você teria arrecadado <b style="color: red">R$:${(
+        )}</span> 
+e você teria arrecadado <span style="color: #ff1a10">R$:${(
           qtdVendasPosFilas * mediaPorComprador
-        ).toFixed(0)}</b><br><br>
+        ).toLocaleString("pt-BR")}</span><br><br>
 
 
-E se combinassemos tudo seu estabelecimento teria <b>${qtdVendasCombinando.toFixed(
+E se combinassemos tudo seu estabelecimento teria <span>${qtdVendasCombinando.toFixed(
           0
-        )}</b> vendas mensais e uma renda de 
-<b style="color: red;">R$:${(qtdVendasCombinando * mediaPorComprador).toFixed(
-          0
-        )}</b> 
+        )}</span> vendas mensais e uma renda de 
+<span style="color: #ff1a10;">R$:${(qtdVendasCombinando * mediaPorComprador).toLocaleString("pt-BR")}</span> 
 `;
       }
     }
@@ -350,7 +342,7 @@ E se combinassemos tudo seu estabelecimento teria <b>${qtdVendasCombinando.toFix
   //     transform: scale(0.95);
   //   }
   //   .submit:hover {
-  //    background-color: red ;
+  //    background-color: #ff1a10 ;
   //    transition: 1s;
   //    transform: scale(1.03);
 
@@ -366,7 +358,7 @@ E se combinassemos tudo seu estabelecimento teria <b>${qtdVendasCombinando.toFix
   //     width: 14px;
   //     height: 14px;
   //     border-radius: 100px;
-  //     background: linear-gradient(to right bottom, rgba(232,255,107,1), red );
+  //     background: linear-gradient(to right bottom, rgba(232,255,107,1), #ff1a10 );
   //     position: relative;
   //   }
 

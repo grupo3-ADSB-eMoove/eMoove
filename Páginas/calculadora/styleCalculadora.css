@@ -6,6 +6,7 @@ body{
   padding: 0;
   height: 100vh;
   font-family: 'Montserrat', sans-serif;
+  
 }
   
 
@@ -15,14 +16,14 @@ body{
     justify-content: space-evenly;
     width: 80%;
     margin-left: 10%;
-    height:  80vh;
-    align-items: center;
+    height: 80vh;
+    align-items: start;
     margin-top: 2%;
 }
 
 .linha{
     border-left: 3px solid #eee;
-    height: 95vh;
+    height: 100%;
     
 }
 
@@ -39,20 +40,20 @@ body{
 }
 
 .tituloResposta{
-    text-align: center;
+    text-align: justify;
     font-size: 22px;
     color: #eee;
     
     font-weight: 600;
-    padding: 4px;
+   
 }
 .respostaFixa{  
-    margin-top: 3%;
+    
     color: #eee;
-    text-align: center;
+    text-align: justify;
 
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .spanConversao{
@@ -64,15 +65,15 @@ color: #eee;
 }
 .respostaVariavelTitulo{
     color: #eee;
-    text-align: center;
+    text-align: justify;
     font-size: 20px;
    
     font-weight: 600;
 }
 .respostaFilas{
-    margin-top: 2%;
-    font-size: 18px;
-    text-align: center;
+    margin-top: 3%;
+    font-size: 16px;
+    text-align: justify;
     
 }
 
@@ -225,9 +226,7 @@ color: #eee;
     transform: scale(0.95);
   }
   .submit:hover {
-   background-color: #FF4301 ; 
-   transition: 1s;
-   transform: scale(1.03);
+   background-color: #da6e09;
    
    }
    .rad-design {
