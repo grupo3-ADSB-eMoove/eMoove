@@ -25,16 +25,13 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var cnpj = req.body.cnpjServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
+    if (cnpj == undefined) {
+        res.status(400).send("Seu cnpj está undefined!");
     } else {
         
-        estabelecimentoModel.entrar(email, senha)
+        estabelecimentoModel.entrar(cnpj)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -44,9 +41,9 @@ function entrar(req, res) {
                         console.log(resultado);
                         res.json(resultado[0]);
                     } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        res.status(403).send("Empresa não encontrada");
                     } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        res.status(403).send("Mais de uma empresa com o mesmo CNPJ");
                     }
                 }
             ).catch(

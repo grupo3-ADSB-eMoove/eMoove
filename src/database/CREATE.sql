@@ -17,11 +17,11 @@ CREATE TABLE estabelecimento(
 -- CREATE DA TABELA DO USUARIO QUE VAI CONTRATAR
 CREATE TABLE usuario(
   idUsuario INT,
-  nomeUsuario VARCHAR(50) NOT NULL,
+  nome VARCHAR(50) NOT NULL,
   sobrenome VARCHAR(50) NOT NULL,
   email VARCHAR(100) NOT NULL,
   senha VARCHAR(50) NOT NULL,
-  permissao VARCHAR(25) NOT NULL CONSTRAINT chkPermissao CHECK (
+  permissao VARCHAR(25) CONSTRAINT chkPermissao CHECK (
     permissao in ('basico', 'intermediario', 'total')
   ),
   fkEstabelecimento INT,

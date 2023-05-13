@@ -51,7 +51,7 @@ var validacaoSenha =
         erro.innerHTML = `<p style="color:#EE0000">Senha inválida!</p>`;
     } else if (email.value == 'admin@gmail.com' && senha.value == "Admin@123") {
         setTimeout(() => {
-            window.location.href = "../dashboards/index.html"
+            window.location.href = "./dashboards/index.html"
         }, 1000)
     } else {
         erro.innerHTML = '';
