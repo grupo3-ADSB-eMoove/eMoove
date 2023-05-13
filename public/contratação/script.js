@@ -18,7 +18,7 @@ const modalPlans = document.getElementById('modal-plans')
 document.getElementById('xmark').addEventListener('click', (e) => modalPlans.classList.toggle('hidden'))
 
 document.getElementById("btn-contratar").addEventListener("click", (e) => {
-  // e.preventDefault();
+  e.preventDefault();
   var nomeFantasiaValidado = validarNomeFantasia();
   var cnpjValidado = validarCNPJ();
   var areaValidada = validarArea();
@@ -40,8 +40,60 @@ document.getElementById("btn-contratar").addEventListener("click", (e) => {
     sobrenomeusuarioValidado &&
     senhaValidada
   ) {
+  
+    var nomeFantasiaVar =  iptNomeFantasia .value
+    var cnpjVar =  iptCNPJ.value
+    var areaVar =  iptArea.value
+    var cepVar =  iptCEP.value
+    var bairroVar =  iptBairro.value
+    var logradouroVar =  iptLogradouro.value
+    var numeroVar =  iptNumero.value
+    var nomeUsuarioVar =  iptNomeUsuario.value
+    var sobrenomeUsuarioVar =  iptSobrenomeUsuario.value
+    var emailVar =  iptEmail.value
+    var senhaVar =  iptSenha.value
+
+
+    fetch("/estabelecimentos/cadastrar", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+         
+          nomeFantasiaServer        : nomeFantasiaVar,
+          cnpjServer                : cnpjVar,
+          areaServer                : areaVar,
+          cepServer                 :cepVar,
+          bairroServer              : bairroVar,
+          logradouroServer          : logradouroVar,
+          numeroServer              : numeroVar,
+      })
+    })
+
+
+
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          
+          nomeUsuarioServer         : nomeUsuarioVar,
+          sobrenomeUsuarioServer    : sobrenomeUsuarioVar,
+          emailServer               : emailVar,
+          senhaServer               : senhaVar
+      })
+    })
+
+    console.log('contratou')
     modalPlans.classList.toggle('hidden')
   }
+
 });
 
 function validarNomeFantasia() {

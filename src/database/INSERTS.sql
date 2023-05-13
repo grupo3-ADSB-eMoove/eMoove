@@ -1,55 +1,4 @@
-CREATE DATABASE emoove;
-USE emoove;
--- drop database emoove;
--- CREATE DA TABELA DO ESTABELECIMENTO DO 
-CREATE TABLE estabelecimento(
-  idEstabelecimento INT PRIMARY KEY auto_increment,
-  nomeEstabelecimento VARCHAR(100),
-  cnpj VARCHAR(18),
-  area FLOAT,
-  telefoneEstabelecimento VARCHAR(20) NOT NULL,
-  logradouro VARCHAR(100) NOT NULL,
-  numeroEndereco VARCHAR (5) NOT NULL,
-  bairroEndereco VARCHAR (200) NOT NULL,
-  cepEndereco char(9)
-);
--- CREATE DA TABELA DO USUARIO QUE VAI CONTRATAR
-CREATE TABLE usuario(
-  idUsuario INT,
-  nomeUsuario VARCHAR(50) NOT NULL,
-  sobrenome VARCHAR(50) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  senha VARCHAR(50) NOT NULL,
-  permissao VARCHAR(25) NOT NULL CONSTRAINT chkPermissao CHECK (
-    permissao in ('basico', 'intermediario', 'total')
-  ),
-  fkEstabelecimento INT,
-  FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento (idEstabelecimento),
-  CONSTRAINT pkUsuario PRIMARY KEY (idUsuario, fkEstabelecimento)
-);
--- CREATE DA TABELA ONDE VAI ARMAZENAR O LOCAL QUE O SENSOR FOI INSTALADO
-CREATE TABLE localInstalado (
-  idLocal INT PRIMARY KEY AUTO_INCREMENT,
-  localInstalado varchar (10),
-  fkEstabelecimento INT,
-  FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento (idEstabelecimento)
-);
--- CREATE DA TABELA SENSOR ONDE GUARDA AS INFOS DO SENSOR
-CREATE TABLE sensor(
-  idSensor INT PRIMARY KEY AUTO_INCREMENT,
-  dtInstalacao DATE not null,
-  statusSensor VARCHAR(10),
-  fkLocalInstalado INT,
-  FOREIGN KEY (fkLocalInstalado) REFERENCES localInstalado(idLocal)
-);
--- CREATE DA TABELA QUE VAI ARMAZENAR OS DADOS CAPTURADOS PELO SENSOR
-CREATE TABLE capturaDados(
-  dtHora DATETIME DEFAULT current_timestamp,
-  fkSensor INT,
-  FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor),
-  constraint pkComposta PRIMARY KEY (dtHora, fkSensor),
-  valor BOOLEAN
-);
+
 -- INSERT TABELA ESTABELECIMENTO
 desc estabelecimento;
 INSERT INTO estabelecimento
@@ -164,14 +113,14 @@ SELECT dtHora,
   dtHora,
   idSensor,
   localInstalado,
-  nomeestabelecimento
+  nomeFantasia
 FROM capturaDados
   JOIN sensor ON capturaDados.fkSensor = sensor.idSensor
   JOIN localInstalado ON sensor.fkLocalInstalado = localInstalado.idLocal
   JOIN estabelecimento ON estabelecimento.idEstabelecimento = localInstalado.fkEstabelecimento;
 -- AQUI TEMOS UM SELECT DOS USUARIOS, OS SEUS CARGOSOS E SEUS RESPECTIVOS ESTABELECIMENTOS 
 SELECT nomeusuario as Contratante,
-  nomeEstabelecimento as Estabelecimento
+  nomeFantasia as Estabelecimento
 FROM Estabelecimento
   JOIN Usuario ON usuario.fkEstabelecimento = estabelecimento.idEstabelecimento;
 select *
