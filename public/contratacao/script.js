@@ -69,12 +69,16 @@ document.getElementById("btn-contratar").addEventListener("click", (e) => {
           logradouroServer          : logradouroVar,
           numeroServer              : numeroVar,
       })
+    }).then((res) => {
+      if(res.ok) {
+        return res.json()
+      }
     })
+    .then(data => {
+      console.log('DADOSSS: ', data)
+    
 
-
-
-
-    fetch("/usuarios/cadastrar", {
+      fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
           "Content-Type": "application/json"
@@ -83,14 +87,18 @@ document.getElementById("btn-contratar").addEventListener("click", (e) => {
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/usuario.js
           
-          nomeUsuarioServer         : nomeUsuarioVar,
-          sobrenomeUsuarioServer    : sobrenomeUsuarioVar,
-          emailServer               : emailVar,
-          senhaServer               : senhaVar
+          nomeUsuarioServer: nomeUsuarioVar,
+          sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+          fkEstabelecimentoServer: data.insertId
       })
     })
+    })
+    .catch(err => console.log(err))
 
-    console.log('contratou')
+
+    // console.log('contratou')
     modalPlans.classList.toggle('hidden')
   }
 
