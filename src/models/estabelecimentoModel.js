@@ -31,12 +31,15 @@ function cadastrar(nomeFantasia,cnpj,area,cep,bairro,logradouro,numero) {
     return database.executar(instrucao);
 }
 
-function getId(fkEstabelecimento) {
-    var instrucao = `SELECT idEstabelecimento FROM estabelecimento `
+function qtdUsuarios(idEstabelecimento) {
+    var instrucao = `SELECT COUNT(idUsuario) as qtdUsuarios FROM estabelecimento JOIN usuario ON fkEstabelecimento = ${idEstabelecimento};`
+    console.log('\nExecutando a query:' + instrucao)
+    return database.executar(instrucao)
 }
 
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    qtdUsuarios
 };

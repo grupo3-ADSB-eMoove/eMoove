@@ -14,8 +14,10 @@ const iptEmail = form[9];
 const iptSenha = form[10];
 const iptConfirmaSenha = form[11];
 
-const modalPlans = document.getElementById('modal-plans')
-document.getElementById('xmark').addEventListener('click', (e) => modalPlans.classList.toggle('hidden'))
+const modalPlans = document.getElementById("modal-plans");
+document
+  .getElementById("xmark")
+  .addEventListener("click", (e) => modalPlans.classList.toggle("hidden"));
 
 document.getElementById("btn-contratar").addEventListener("click", (e) => {
   e.preventDefault();
@@ -40,68 +42,75 @@ document.getElementById("btn-contratar").addEventListener("click", (e) => {
     sobrenomeusuarioValidado &&
     senhaValidada
   ) {
-  
-    var nomeFantasiaVar =  iptNomeFantasia .value
-    var cnpjVar =  iptCNPJ.value
-    var areaVar =  iptArea.value
-    var cepVar =  iptCEP.value
-    var bairroVar =  iptBairro.value
-    var logradouroVar =  iptLogradouro.value
-    var numeroVar =  iptNumero.value
-    var nomeUsuarioVar =  iptNomeUsuario.value
-    var sobrenomeUsuarioVar =  iptSobrenomeUsuario.value
-    var emailVar =  iptEmail.value
-    var senhaVar =  iptSenha.value
-
+    var nomeFantasiaVar = iptNomeFantasia.value;
+    var cnpjVar = iptCNPJ.value;
+    var areaVar = iptArea.value;
+    var cepVar = iptCEP.value;
+    var bairroVar = iptBairro.value;
+    var logradouroVar = iptLogradouro.value;
+    var numeroVar = iptNumero.value;
+    var nomeUsuarioVar = iptNomeUsuario.value;
+    var sobrenomeUsuarioVar = iptSobrenomeUsuario.value;
+    var emailVar = iptEmail.value;
+    var senhaVar = iptSenha.value;
 
     fetch("/estabelecimentos/cadastrar", {
       method: "POST",
       headers: {
-          "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-         
-          nomeFantasiaServer        : nomeFantasiaVar,
-          cnpjServer                : cnpjVar,
-          areaServer                : areaVar,
-          cepServer                 :cepVar,
-          bairroServer              : bairroVar,
-          logradouroServer          : logradouroVar,
-          numeroServer              : numeroVar,
+        nomeFantasiaServer: nomeFantasiaVar,
+        cnpjServer: cnpjVar,
+        areaServer: areaVar,
+        cepServer: cepVar,
+        bairroServer: bairroVar,
+        logradouroServer: logradouroVar,
+        numeroServer: numeroVar,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        }
       })
-    }).then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-    })
-    .then(data => {
-      console.log('DADOSSS: ', data)
-    
+      .then((data) => {
+        console.log(data)
+        const idEstabelecimento = data.insertId
 
-      fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          
-          nomeUsuarioServer: nomeUsuarioVar,
-          sobrenomeUsuarioServer: sobrenomeUsuarioVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-          fkEstabelecimentoServer: data.insertId
+        fetch('/estabelecimentos/qtdUsuarios', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            idServer: idEstabelecimento
+          })
+        }).then(resultado => {
+          resultado.json().then(r => {
+            var proximoId = r.qtdUsuarios + 1
+            fetch('/usuarios/cadastrar', {
+              method: 'POST',
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                idUsuarioServer: proximoId,
+                nomeUsuarioServer: nomeFantasiaVar,
+                sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                fkEstabelecimentoServer: idEstabelecimento 
+              })
+            })
+          })
+        })
       })
-    })
-    })
-    .catch(err => console.log(err))
-
+      .catch((err) => console.log(err));
 
     // console.log('contratou')
-    modalPlans.classList.toggle('hidden')
+    modalPlans.classList.toggle("hidden");
   }
-
 });
 
 function validarNomeFantasia() {
@@ -153,13 +162,13 @@ function validarArea() {
 function validarCEP() {
   const cep = iptCEP.value;
   const msgErro = document.getElementById("msg-erro-cep");
-  
+
   if (cep.length != 9) {
     iptCEP.style.borderColor = "red";
     msgErro.innerText = "CEP inválido";
     return false;
   }
-  
+
   msgErro.innerText = "";
   iptCEP.style.borderColor = "#dc7424";
 
