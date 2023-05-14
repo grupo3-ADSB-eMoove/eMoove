@@ -42,76 +42,74 @@ document.getElementById("btn-contratar").addEventListener("click", (e) => {
     sobrenomeusuarioValidado &&
     senhaValidada
   ) {
-    var nomeFantasiaVar = iptNomeFantasia.value;
-    var cnpjVar = iptCNPJ.value;
-    var areaVar = iptArea.value;
-    var cepVar = iptCEP.value;
-    var bairroVar = iptBairro.value;
-    var logradouroVar = iptLogradouro.value;
-    var numeroVar = iptNumero.value;
-    var nomeUsuarioVar = iptNomeUsuario.value;
-    var sobrenomeUsuarioVar = iptSobrenomeUsuario.value;
-    var emailVar = iptEmail.value;
-    var senhaVar = iptSenha.value;
-
-    fetch("/estabelecimentos/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nomeFantasiaServer: nomeFantasiaVar,
-        cnpjServer: cnpjVar,
-        areaServer: areaVar,
-        cepServer: cepVar,
-        bairroServer: bairroVar,
-        logradouroServer: logradouroVar,
-        numeroServer: numeroVar,
-      }),
+    cadastrarEstabelecimentoUsuario().then((res) => {
+      if(res.ok) {
+        alert('Cadastrou')
+        modalPlans.classList.toggle("hidden");
+      }
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        }
-      })
-      .then((data) => {
-        console.log(data)
-        const idEstabelecimento = data.insertId
-
-        fetch('/estabelecimentos/qtdUsuarios', {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            idServer: idEstabelecimento
-          })
-        }).then(resultado => {
-          resultado.json().then(r => {
-            var proximoId = r.qtdUsuarios + 1
-            fetch('/usuarios/cadastrar', {
-              method: 'POST',
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                idUsuarioServer: proximoId,
-                nomeUsuarioServer: nomeFantasiaVar,
-                sobrenomeUsuarioServer: sobrenomeUsuarioVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                fkEstabelecimentoServer: idEstabelecimento 
-              })
-            })
-          })
-        })
-      })
-      .catch((err) => console.log(err));
-
-    // console.log('contratou')
-    modalPlans.classList.toggle("hidden");
   }
 });
+
+async function cadastrarEstabelecimentoUsuario() {
+  const nomeFantasiaVar = iptNomeFantasia.value;
+  const cnpjVar = iptCNPJ.value;
+  const areaVar = iptArea.value;
+  const cepVar = iptCEP.value;
+  const bairroVar = iptBairro.value;
+  const logradouroVar = iptLogradouro.value;
+  const numeroVar = iptNumero.value;
+  const nomeUsuarioVar = iptNomeUsuario.value;
+  const sobrenomeUsuarioVar = iptSobrenomeUsuario.value;
+  const emailVar = iptEmail.value;
+  const senhaVar = iptSenha.value;
+
+
+  const insertEstabelecimento = await fetch('/estabelecimentos/cadastrar', {
+    method: 'POST', 
+    headers: {
+      "Content-Type": "application/json"
+    }, 
+    body: JSON.stringify({
+      nomeFantasiaServer: nomeFantasiaVar,
+      cnpjServer: cnpjVar,
+      areaServer: areaVar,
+      cepServer: cepVar,
+      bairroServer: bairroVar,
+      logradouroServer: logradouroVar,
+      numeroServer: numeroVar,
+    })
+  }).then(res => res.json()).catch(err => console.error(err))
+
+  const idEstabelecimento = insertEstabelecimento.insertId
+
+  const selectQtdUsuarios = await fetch('/estabelecimentos/qtdUsuarios', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      idServer: idEstabelecimento
+    })
+  }).then(res => res.json()).catch(err => console.error(err))
+
+  const proximoId = selectQtdUsuarios.qtdUsuarios + 1
+
+  return await fetch('/usuarios/cadastrar', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      idUsuarioServer: proximoId,
+      nomeUsuarioServer: nomeUsuarioVar,
+      sobrenomeUsuarioServer: sobrenomeUsuarioVar,
+      emailServer: emailVar,
+      senhaServer: senhaVar,
+      fkEstabelecimentoServer: idEstabelecimento 
+    })
+  }).catch(err => console.error(err))
+}
 
 function validarNomeFantasia() {
   const nome = iptNomeFantasia.value;
