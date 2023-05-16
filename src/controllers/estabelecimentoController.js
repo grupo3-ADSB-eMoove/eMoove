@@ -93,7 +93,8 @@ function qtdUsuarios(req, res) {
     .qtdUsuarios(idEstabelecimento)
     .then(resultado => {
       if(resultado.length == 1) {
-        res.json(resultado[0])
+        if(resultado.lastId == 'NULL') req.json({lastId: 0})
+        else res.json(resultado[0])
       }
     })
     .catch(erro => {

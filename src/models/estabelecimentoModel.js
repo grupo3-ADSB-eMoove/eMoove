@@ -32,7 +32,7 @@ function cadastrar(nomeFantasia,cnpj,area,cep,bairro,logradouro,numero) {
 }
 
 function qtdUsuarios(idEstabelecimento) {
-    var instrucao = `SELECT COUNT(idUsuario) as qtdUsuarios FROM estabelecimento JOIN usuario ON fkEstabelecimento = ${idEstabelecimento};`
+    var instrucao = `SELECT MAX(idUsuario) as qtdUsuarios FROM estabelecimento JOIN usuario ON fkEstabelecimento = ${idEstabelecimento};`
     console.log('\nExecutando a query:' + instrucao)
     return database.executar(instrucao)
 }

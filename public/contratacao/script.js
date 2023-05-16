@@ -15,9 +15,7 @@ const iptSenha = form[10];
 const iptConfirmaSenha = form[11];
 
 const modalPlans = document.getElementById("modal-plans");
-document
-  .getElementById("xmark")
-  .addEventListener("click", (e) => modalPlans.classList.toggle("hidden"));
+document.getElementById("xmark").addEventListener("click", (e) => modalPlans.classList.toggle("hidden"));
 
 document.getElementById("btn-contratar").addEventListener("click", (e) => {
   e.preventDefault();
@@ -93,7 +91,7 @@ async function cadastrarEstabelecimentoUsuario() {
     })
   }).then(res => res.json()).catch(err => console.error(err))
 
-  const proximoId = selectQtdUsuarios.qtdUsuarios + 1
+  const proximoId = selectQtdUsuarios.lastId + 1
 
   return await fetch('/usuarios/cadastrar', {
     method: 'POST',
