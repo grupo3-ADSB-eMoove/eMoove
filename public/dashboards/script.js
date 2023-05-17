@@ -5,7 +5,7 @@ const dataGrafico1 = {
   datasets: [{
     axis: 'y',
     label: 'Clientes Dentro do estabelecimento por horário (Área 30m²)',
-    data: [15, 10, 25, 26, 55, 70, 38, 22, 14, 40, 55, 25, 5],
+    data: [rgs[0], 10, 25, 26, 55, 70, 38, 22, 14, 40, 55, 25, 5],
     pointBackgroundColor: 'rgba(255, 69, 1, 0.5)',
     borderWidth: 2,
     borderColor: '#FF4301',
@@ -100,5 +100,9 @@ async function select() {
 }
 
 setInterval(async () => {
-  var qtdRegistros = await select().then(res => res)
+  var registros = await select().then(res => res)
+  var rgs = registros.map(registro => registro.hora.split(':'))
+
+  console.log(rgs)
+
 }, 5000)
