@@ -84,3 +84,21 @@ function validarCadastro() {
       spanErroCpf.style.display = 'block'
   }
 }
+
+async function select() {
+  const qtd = await fetch('/medidas/select', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        idEstabelecimentoServer: 1
+    })
+  }).then(res => res.json()).then(data => data)
+
+  return qtd
+}
+
+setInterval(async () => {
+  var qtdRegistros = await select().then(res => res)
+}, 5000)

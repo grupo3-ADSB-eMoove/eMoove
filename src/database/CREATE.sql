@@ -21,9 +21,7 @@ CREATE TABLE usuario(
   sobrenome VARCHAR(50) NOT NULL,
   email VARCHAR(100) NOT NULL,
   senha VARCHAR(50) NOT NULL,
-  permissao VARCHAR(25) CONSTRAINT chkPermissao CHECK (
-    permissao in ('basico', 'intermediario', 'total')
-  ),
+  permissao VARCHAR(25),
   fkEstabelecimento INT,
   FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento (idEstabelecimento),
   CONSTRAINT pkUsuario PRIMARY KEY (idUsuario, fkEstabelecimento)
