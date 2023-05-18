@@ -99,13 +99,14 @@ VALUES (null, '2023-07-10', 'Ativo', 1),
   (null, '2023-07-12', 'Ativo', 3);
 -- insert dos dados
 DESC capturaDados;
-INSERT INTO capturaDados
-VALUES ('2023-10-20 11:00:00', 1, 1),
-  ('2023-10-20 08:00:00', 1, 1),
-  ('2023-10-20 11:00:00', 2, 1),
-  ('2023-10-20 11:30:00', 2, 1),
-  ('2023-10-20 11:00:00', 3, 1),
-  ('2023-10-20 11:10:00', 2, 1);
+-- INSERT INTO capturaDados VALUES 
+--   ('2023-10-20 11:00:00', 1, 1),
+--   ('2023-10-20 11:10:00', 1, 1),
+--   ('2023-10-20 11:20:00', 1, 1),
+--   ('2023-10-20 11:30:00', 1, 1),
+--   ('2023-10-20 11:40:00', 1, 1),
+--   ('2023-10-20 11:50:00', 1, 1),
+--   ('2023-10-20 12:00:00', 1, 1);
 -- Aqui está acontecendo um select mais "refinado", peguei para puxar apenas o id, valor da captura, o id do sensor
 -- e o local em q ele foi instalado, eu fiz um join na tabela sensor e por la, eu pego o local em que o sensor foi instalado.
 SELECT dtHora,
@@ -119,7 +120,7 @@ FROM capturaDados
   JOIN localInstalado ON sensor.fkLocalInstalado = localInstalado.idLocal
   JOIN estabelecimento ON estabelecimento.idEstabelecimento = localInstalado.fkEstabelecimento;
 -- AQUI TEMOS UM SELECT DOS USUARIOS, OS SEUS CARGOSOS E SEUS RESPECTIVOS ESTABELECIMENTOS 
-SELECT nomeusuario as Contratante,
+SELECT nome as Contratante,
   nomeFantasia as Estabelecimento
 FROM Estabelecimento
   JOIN Usuario ON usuario.fkEstabelecimento = estabelecimento.idEstabelecimento;

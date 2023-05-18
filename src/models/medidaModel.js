@@ -1,12 +1,13 @@
 var database = require('../database/config')
 
-function fazerSelect(idEstabelecimento) {
+function fazerSelect(idEstabelecimento, horario1, horario2) {
+    
     var instrucao = `
-    SELECT DATE_FORMAT(c.dtHora, '%H:%i') as hora FROM estabelecimento AS e 
-        JOIN localInstalado l ON e.idEstabelecimento = l.fkEstabelecimento
-        JOIN sensor s ON l.idLocal = s.fkLocalInstalado
-        JOIN capturaDados c ON s.idSensor = c.fkSensor
-            WHERE e.idEstabelecimento = ${idEstabelecimento} AND (SELECT TIMESTAMPDIFF(DAY, c.dtHora, now())) = 0;
+      SELECT COUNT(c.valor) AS qtdEntradas FROM estabelecimento e 
+          JOIN localInstalado l ON e.idEstabelecimento = l.fkEstabelecimento
+          JOIN sensor s ON l.idLocal = s.fkLocalInstalado
+          JOIN capturaDados c ON s.idSensor = c.fkSensor
+            WHERE e.idEstabelecimento = ${idEstabelecimento} AND (SELECT TIMESTAMPDIFF(DAY, c.dtHora, now())) = 1 AND c.dtHora BETWEEN (select concat(curdate(), ' ${horario1}')) AND (select concat(curdate(), ' ${horario2}'));
     `
     return database.executar(instrucao)
 }
