@@ -1,26 +1,12 @@
 const ctxGrafico1 = document.getElementById("grafico_1");
 
 const dataGrafico1 = {
-  labels: [
-    "08:00",
-    "09:00",
-    "10:00",
-    "11:00",
-    "12:00",
-    "13:00",
-    "14:00",
-    "15:00",
-    "16:00",
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-  ],
+  labels: [],
   datasets: [
     {
       axis: "y",
       label: "Clientes Dentro do estabelecimento por horário (Área 30m²)",
-      data: [10, 10, 25, 26, 55, 70, 38, 22, 14, 40, 55, 25, 5],
+      data: [],
       pointBackgroundColor: "rgba(255, 69, 1, 0.5)",
       borderWidth: 2,
       borderColor: "#FF4301",
@@ -38,7 +24,7 @@ const optionsGrafico1 = {
   },
 };
 
-new Chart(ctxGrafico1, {
+var chartDia = new Chart(ctxGrafico1, {
   type: "line",
   data: dataGrafico1,
   options: optionsGrafico1,
@@ -123,33 +109,60 @@ async function select(idEstabelecimento, horario1, horario2) {
 async function listarDados() {
   let hora = "08";
   let minutos = "00";
+  let segundos = "00";
   var dadosDash1 = [];
 
-  for (let i = 0; i < 16; i++) {
-    let horario1 = `${hora}:${minutos}:00`;
+  for (let i = 0; i < 8; i++) {
+    let horario1 = `11:${minutos}:${segundos}`;
 
-    if (i % 2 == 0) minutos = "30";
-    else {
-      minutos = "00";
+    var segundosInt = parseInt(segundos)
+    var minutosInt = parseInt(minutos)
+    segundosInt += 15
 
-      let horaInt = parseInt(hora);
-      horaInt++;
+    segundosInt == 60 ? minutosInt += 1 : ''
 
-      if (horaInt < 10) hora = `0${horaInt}`;
-      else hora = `${horaInt}`;
-    }
+    segundosInt == 60 ? segundosInt = 0 : ''
 
-    let horario2 = `${hora}:${minutos}:00`;
+    segundosInt < 10 ? segundos = `0${segundosInt}` : segundos = `${segundosInt}`
+    minutosInt < 10 ? minutos = `0${minutosInt}` : minutos = `${minutosInt}`
 
+    var horario2 = `11:${minutos}:${segundos}`
     const qtdEntradas = await select(1, horario1, horario2).then(res => res[0].qtdEntradas);
-
+    console.log(qtdEntradas)
     dadosDash1.push({
       qtdEntradas: qtdEntradas,
       horario: horario1,
     });
+
+    // if (i % 2 == 0) minutos = "30";
+    // else {
+    //   minutos = "00";
+
+    //   let horaInt = parseInt(hora);
+    //   horaInt++;
+
+    //   if (horaInt < 10) hora = `0${horaInt}`;
+    //   else hora = `${horaInt}`;
+    // }
+
+    // let horario2 = `${hora}:${minutos}:00`;
+
+    // const qtdEntradas = await select(1, horario1, horario2).then(res => res[0].qtdEntradas);
+
+    // dadosDash1.push({
+    //   qtdEntradas: qtdEntradas,
+    //   horario: horario1,
+    // });
   }
 
-  console.log(dadosDash1);
+  dadosDash1.forEach((dados, i) => {
+    chartDia.data.labels[i] = dados.horario
+    chartDia.data.datasets[0].data.push(parseFloat(dados.qtdEntradas));
+  })
+
+
+  chartDia.update()
+  // console.log(dadosDash1);
 }
 // setInterval(async () => {
 //   var registros = await select().then(res => res)
