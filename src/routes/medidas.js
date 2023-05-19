@@ -3,8 +3,11 @@ var router = express.Router()
 
 var medidaController = require('../controllers/medidaController');
 
-router.post('/select', function (req, res) {
-    medidaController.fazerSelect(req, res)
+router.post('/selectEntradasPorHorario', function (req, res) {
+    medidaController.selectEntradasPorHorario(req, res)
+})
+router.post('/selectEntradasUltimosQuatroDias', function (req, res) {
+    medidaController.selectUltimosQuatroDias(req, res)
 })
 
 module.exports = router

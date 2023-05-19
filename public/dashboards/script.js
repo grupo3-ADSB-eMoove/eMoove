@@ -33,17 +33,17 @@ var chartDia = new Chart(ctxGrafico1, {
 const ctxGrafico2 = document.getElementById("grafico_2");
 
 const dataGrafico2 = {
-  labels: ["25/04", "26/04", "27/04", "28/04"],
+  labels: [],
   datasets: [
     {
       label: "Total de entradas por dia",
-      data: [414, 340, 358, 400],
+      data: [],
       backgroundColor: "rgba(255, 69, 1, 0.7)",
     },
   ],
 };
 
-new Chart(ctxGrafico2, {
+var chartBarra = new Chart(ctxGrafico2, {
   type: "bar",
   data: dataGrafico2,
 });
@@ -88,8 +88,10 @@ function validarCadastro() {
   }
 }
 
-async function select(idEstabelecimento, horario1, horario2) {
-  const qtd = await fetch("/medidas/select", {
+// Seleciona a quantidade de entradas dentro de um intervalo de tempo de um estabelecimento
+async function getEntradasPorHorario(idEstabelecimento, horario1, horario2) {
+  // Requisição POST para selecionar a quantidade de entradas
+  const qtd = await fetch("/medidas/selectEntradasPorHorario", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -100,7 +102,10 @@ async function select(idEstabelecimento, horario1, horario2) {
       horario2Server: horario2,
     }),
   })
+    // Converte a resposta em json
     .then((res) => res.json())
+
+    // Retorna o json da resposta para a variavel qtd
     .then((data) => data);
 
   return qtd;
@@ -127,49 +132,69 @@ async function listarDados() {
     minutosInt < 10 ? minutos = `0${minutosInt}` : minutos = `${minutosInt}`
 
     var horario2 = `11:${minutos}:${segundos}`
-    const qtdEntradas = await select(1, horario1, horario2).then(res => res[0].qtdEntradas);
-    console.log(qtdEntradas)
+    const qtdEntradas = await getEntradasPorHorario(1, horario1, horario2).then(res => res[0].qtdEntradas);
     dadosDash1.push({
       qtdEntradas: qtdEntradas,
       horario: horario1,
     });
-
-    // if (i % 2 == 0) minutos = "30";
-    // else {
-    //   minutos = "00";
-
-    //   let horaInt = parseInt(hora);
-    //   horaInt++;
-
-    //   if (horaInt < 10) hora = `0${horaInt}`;
-    //   else hora = `${horaInt}`;
-    // }
-
-    // let horario2 = `${hora}:${minutos}:00`;
-
-    // const qtdEntradas = await select(1, horario1, horario2).then(res => res[0].qtdEntradas);
-
-    // dadosDash1.push({
-    //   qtdEntradas: qtdEntradas,
-    //   horario: horario1,
-    // });
   }
 
+  chartDia.data.datasets[0].data = []
   dadosDash1.forEach((dados, i) => {
     chartDia.data.labels[i] = dados.horario
     chartDia.data.datasets[0].data.push(parseFloat(dados.qtdEntradas));
   })
-
-
   chartDia.update()
-  // console.log(dadosDash1);
 }
-// setInterval(async () => {
-//   var registros = await select().then(res => res)
-//   var rgs = registros.map(registro => registro.hora.split(':'))
 
-//   console.log(rgs)
+async function getTotalEntradasUltimosQuatroDias() {
+  const entradas = await fetch('/medidas/selectEntradasUltimosQuatroDias', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      idEstabelecimentoServer: 1
+    })
+  })
+  .then(res => res.json())
+  .then(data => data)
 
-// }, 5000)
+  return entradas
+}
+
+async function renderChartBarra() {
+  const entradas = await getTotalEntradasUltimosQuatroDias().then(res => res)
+  var dias = []
+  for (let i = 0; i < entradas.length; i++) {
+    const entrada = entradas[i];
+    if(!dias.includes(entrada.entrada)) {
+      dias.push(entrada.entrada)
+    }
+  }
+
+  chartBarra.data.datasets[0].data = []
+  chartBarra.data.labels = []
+  dias.forEach((dia, i) => {
+    var qtdEntradasDia = entradas.filter(dt => {
+      if(dt.entrada == dia) {
+        return dt.entrada
+      }
+    })
+
+    chartBarra.data.labels.push(dia)
+    chartBarra.data.datasets[0].data.push(qtdEntradasDia.length)
+  })
+
+  chartBarra.update()
+}
+
+
+listarDados()
+renderChartBarra()
+setInterval(() => {
+  listarDados()
+  renderChartBarra()
+}, 5000)
 
 listarDados()
