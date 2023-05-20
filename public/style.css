@@ -490,6 +490,32 @@ footer p{
 }
 
 
+
+.avisosIndex{
+    position: fixed;
+    background-color: #FA7D09;
+    border-radius: 5px;
+    width: 120px;
+    height: 50px;
+    left: 50%;
+   right: 50%;
+   transform: translate(-50%);
+   display: flex;
+    z-index: 99;
+    transition: .2s;
+    opacity: 0;
+    
+  }
+
+  .avisosIndex h3{
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    color: white;
+  }
+  
+
+
 .wrapper {
     position: fixed;
     height: 100vh;

@@ -357,3 +357,48 @@ border: 4px solid #ffffff;
   justify-content: space-between;
   width: 100%;
 }
+
+
+
+.confirmacao-sair{
+    border-radius: 15px;
+     position: fixed;
+     width: 20%;
+     height: 18%;
+     top: 10%; left: 50%;
+     transform: translate(-50%, -50%);
+     background-color: #fde9cf;
+     box-shadow: 2px 2px 4px 0git  #505050;
+     z-index: 999;
+     transition: .4s;
+     opacity: 0;
+     display: none;
+}
+.confirmacao-sair h2{
+padding: 15px 0;
+width: 100%;
+text-align: center;
+}
+
+.grupo-botoes-sair{
+  width: 100%;
+  padding: 20px 50px 0px 50px;
+  display: flex;
+  justify-content: space-around;
+  
+}
+.grupo-botoes-sair button{
+  border: none;
+  border-radius: 5px;
+  width: 40%;
+  padding: 10px 0;
+  font-size: 18px;
+  background-color: #fa7d09;
+  color: white;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.grupo-botoes-sair button:hover{
+  background-color: #eb5722;
+}

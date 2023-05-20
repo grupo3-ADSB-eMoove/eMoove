@@ -26,12 +26,15 @@ const modal = document.querySelector("#modal");
 const fade = document.querySelector("#fade");
 email = document.querySelector("#ipt_loginEmail");
 senha = document.querySelector("#ipt_loginSenha");
+let idUsuario = sessionStorage.getItem('idUsuario')
 
 const toggleModal = () => {
     [modal, fade].forEach((el) => el.classList.toggle("hide"));
     email.value = "";
     senha.value = "";
 }
-[openModalButtonLogin, closeModalButton, fade].forEach((el) => {
-    el.addEventListener("click", () => toggleModal());
-});
+if(idUsuario == undefined){
+    [openModalButtonLogin, closeModalButton, fade].forEach((el) => {
+        el.addEventListener("click", () => toggleModal());
+    });
+}

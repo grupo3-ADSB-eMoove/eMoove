@@ -96,6 +96,7 @@ function doLogin(){
         
         }
     }).then((dados)=>{
+        erro.innerHTML = `<p style="color:green">Login realizado com sucesso...</p>`;
         sessionStorage.setItem('idUsuario', dados.idUsuario)
         sessionStorage.setItem('nome', dados.nome)
         sessionStorage.setItem('sobrenome', dados.sobrenome)
@@ -104,7 +105,7 @@ function doLogin(){
 
         setTimeout(()=>{
             window.location.href = '../dashboards/index.html'
-        },1000)
+        },1300)
     })
     
 }
@@ -118,3 +119,33 @@ email.addEventListener('keypress',()=>{
 senha.addEventListener('keypress',()=>{
     erro.innerHTML = ''
    })
+
+
+   const botao_login_dash = document.querySelector('#btn-log-in-dash')
+   const botao_contratar_sair = document.querySelector('#btn-cadastrar-sair')
+   const div_alerta_situacao = document.querySelector('#divAlertaSituacao')
+   const texto_alerta_situacao = document.querySelector('#textoAlertaSituacao')
+   let idUsuarioVar = sessionStorage.getItem('idUsuario')
+
+   
+
+   verificarSeLogado()
+
+   function verificarSeLogado(){
+
+       if(idUsuarioVar == undefined){
+        botao_contratar_sair.innerHTML = 'Contratar'
+        botao_contratar_sair.addEventListener('click',() =>{
+            window.location.href = './contratacao/index.html'
+        })
+        
+
+       }else{   
+            window.location.href = './dashboards/index.html'
+        }
+    
+       }
+   
+
+
+

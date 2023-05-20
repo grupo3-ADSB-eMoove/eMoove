@@ -6,29 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eMoove</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="website icon" type="png" href="">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.js"></script>
 </head>
 
-<body>
+<body onload="verificarSeLogado()">
     <div class="wrapper">
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3 "></div>
     </div>
+    
     <header>
         <div class="container">
             <div class="headerLogo">
                 <img src="./assets/imagens/eMoove.png" alt="Logo eMoove">
             </div>
             <div class="headerBotoes">
-                <a href="./contratacao/index.html"><button class="botaoRegistrar">Contratar</button></a>
-                <button class="botaoLogin">Login</button>
+                <button id="btn-cadastrar-sair" class="botaoRegistrar">Contratar</button>
+                <button id="btn-log-in-dash" class="botaoLogin">Login</button>
             </div>
         </div>
     </header>
+    
     <section class="sectionInicio">
         <div class="container">
             <img src="./assets/imagens/img_inicio.png" alt="Imagem Inicio">
