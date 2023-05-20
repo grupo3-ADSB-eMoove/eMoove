@@ -117,23 +117,29 @@ async function listarDados() {
   let segundos = "00";
   var dadosDash1 = [];
 
+<<<<<<< HEAD
   var totalEntradas = 0
 
   for (let i = 0; i < 8; i++) {
     let horario1 = `11:${minutos}:${segundos}`;
+=======
+  for (let i = 0; i < 18; i++) {
+>>>>>>> c9d4e2a28f6d125122f299e02b5427083bb06e7b
 
-    var segundosInt = parseInt(segundos)
-    var minutosInt = parseInt(minutos)
-    segundosInt += 15
+    let horario1 = `${hora}:${minutos}:00`;
 
-    segundosInt == 60 ? minutosInt += 1 : ''
+    if (i % 2 == 0) minutos = "30";
+    else {
+      minutos = "00";
 
-    segundosInt == 60 ? segundosInt = 0 : ''
+      let horaInt = parseInt(hora);
+      horaInt++;
 
-    segundosInt < 10 ? segundos = `0${segundosInt}` : segundos = `${segundosInt}`
-    minutosInt < 10 ? minutos = `0${minutosInt}` : minutos = `${minutosInt}`
+      if (horaInt < 10) hora = `0${horaInt}`;
+      else hora = `${horaInt}`;
+    }
 
-    var horario2 = `11:${minutos}:${segundos}`
+    let horario2 = `${hora}:${minutos}:00`;
     const qtdEntradas = await getEntradasPorHorario(1, horario1, horario2).then(res => res[0].qtdEntradas);
 
     totalEntradas += qtdEntradas
@@ -207,6 +213,6 @@ renderChartBarra()
 setInterval(() => {
   listarDados()
   renderChartBarra()
-}, 5000)
+}, 2000)
 
 listarDados()
