@@ -101,6 +101,11 @@ body {
 .navbarContent {
   gap: 20px;
 }
+
+#imgSair{
+  cursor: pointer;
+}
+
 .conteudoBox {
   display: flex;
   flex-direction: column;

@@ -91,6 +91,7 @@ function validarCadastro() {
 
 const imgSair = document.querySelector('#imgSair')
 
+const div_blur = document.querySelector('#blurred')
 const div_confirmacao_sair = document.querySelector('#div-confirmacao-sair')
 const btn_sair = document.querySelector('#btn-sair')
 const btn_cancelar = document.querySelector('#btn-cancelar')
@@ -99,6 +100,7 @@ imgSair.addEventListener('click',()=>{
 
   div_confirmacao_sair.style.opacity = '1'
   div_confirmacao_sair.style.display = 'block'
+  div_blur.style.filter = 'blur(5px)'
 
 })
 
@@ -108,6 +110,7 @@ btn_sair.addEventListener('click',()=>{
   div_confirmacao_sair.style.opacity = '0'
   div_confirmacao_sair.style.display = 'none'
   document.body.style.overflowY = 'auto'
+  div_blur.style.filter = ''
   
 
   sessionStorage.clear()
@@ -120,6 +123,7 @@ btn_cancelar.addEventListener('click',()=>{
   document.body.style.overflowY = 'auto'
   div_confirmacao_sair.style.opacity = '0'
   div_confirmacao_sair.style.display = 'none'
+  div_blur.style.filter = ''
   
 })
 
