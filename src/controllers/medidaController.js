@@ -17,6 +17,12 @@ function selectUltimosQuatroDias(req, res) {
     medidaModel.selectUltimosQuatroDias(idEstabelecimento).then(resultado => res.json(resultado))
 }
 
+function selectKpis(req, res) {
+    var idEstabelecimento = req.params.idEstabelecimentoServer
+
+    medidaModel.selectKpis()
+}
+
 module.exports = {
     selectEntradasPorHorario,
     selectUltimosQuatroDias

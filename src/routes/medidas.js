@@ -10,4 +10,8 @@ router.post('/selectEntradasUltimosQuatroDias', function (req, res) {
     medidaController.selectUltimosQuatroDias(req, res)
 })
 
+router.get('/selectKpis', function(req, res) {
+    medidaController.selectKpis(req, res)
+})
+
 module.exports = router

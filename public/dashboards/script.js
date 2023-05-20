@@ -117,6 +117,8 @@ async function listarDados() {
   let segundos = "00";
   var dadosDash1 = [];
 
+  var totalEntradas = 0
+
   for (let i = 0; i < 8; i++) {
     let horario1 = `11:${minutos}:${segundos}`;
 
@@ -133,11 +135,21 @@ async function listarDados() {
 
     var horario2 = `11:${minutos}:${segundos}`
     const qtdEntradas = await getEntradasPorHorario(1, horario1, horario2).then(res => res[0].qtdEntradas);
+
+    totalEntradas += qtdEntradas
+
     dadosDash1.push({
       qtdEntradas: qtdEntradas,
       horario: horario1,
     });
   }
+
+  var maxEntradas = Math.max(... dadosDash1.map(dado => dado.qtdEntradas))
+  var minEntradas = Math.min(... dadosDash1.map(dado => dado.qtdEntradas))
+  
+  document.getElementById('kpi-total').innerText = totalEntradas
+  document.getElementById('kpi-max').innerText = maxEntradas
+  document.getElementById('kpi-min').innerText = minEntradas
 
   chartDia.data.datasets[0].data = []
   dadosDash1.forEach((dados, i) => {

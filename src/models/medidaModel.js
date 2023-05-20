@@ -23,6 +23,8 @@ function selectUltimosQuatroDias(idEstabelecimento) {
 
     return database.executar(instrucao)
 }
+
+
 module.exports = {
     selectEntradasPorHorario,
     selectUltimosQuatroDias
