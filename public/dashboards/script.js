@@ -88,6 +88,41 @@ function validarCadastro() {
   }
 }
 
+
+const imgSair = document.querySelector('#imgSair')
+
+const div_confirmacao_sair = document.querySelector('#div-confirmacao-sair')
+const btn_sair = document.querySelector('#btn-sair')
+const btn_cancelar = document.querySelector('#btn-cancelar')
+
+imgSair.addEventListener('click',()=>{
+
+  div_confirmacao_sair.style.opacity = '1'
+  div_confirmacao_sair.style.display = 'block'
+
+})
+
+
+btn_sair.addEventListener('click',()=>{
+
+  div_confirmacao_sair.style.opacity = '0'
+  div_confirmacao_sair.style.display = 'none'
+  document.body.style.overflowY = 'auto'
+  
+
+  sessionStorage.clear()
+ 
+      window.location.href = '../index.html'
+  
+})
+
+btn_cancelar.addEventListener('click',()=>{
+  document.body.style.overflowY = 'auto'
+  div_confirmacao_sair.style.opacity = '0'
+  div_confirmacao_sair.style.display = 'none'
+  
+})
+
 // Seleciona a quantidade de entradas dentro de um intervalo de tempo de um estabelecimento
 async function getEntradasPorHorario(idEstabelecimento, horario1, horario2) {
   // Requisição POST para selecionar a quantidade de entradas
@@ -117,15 +152,7 @@ async function listarDados() {
   let segundos = "00";
   var dadosDash1 = [];
 
-<<<<<<< HEAD
-  var totalEntradas = 0
-
-  for (let i = 0; i < 8; i++) {
-    let horario1 = `11:${minutos}:${segundos}`;
-=======
   for (let i = 0; i < 18; i++) {
->>>>>>> c9d4e2a28f6d125122f299e02b5427083bb06e7b
-
     let horario1 = `${hora}:${minutos}:00`;
 
     if (i % 2 == 0) minutos = "30";
