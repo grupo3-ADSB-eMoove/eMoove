@@ -156,6 +156,7 @@ async function listarDados() {
   let segundos = "00";
   var dadosDash1 = [];
 
+  var totalEntradas = 0
   for (let i = 0; i < 18; i++) {
     let horario1 = `${hora}:${minutos}:00`;
 
