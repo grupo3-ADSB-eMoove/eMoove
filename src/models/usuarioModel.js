@@ -31,8 +31,16 @@ function cadastrar(id, nome,sobrenome, email, senha, fkEstabelecimento) {
     return database.executar(instrucao);
 }
 
+function cadastrarFuncionario(nome, sobrenome, email, cpf, fkEstabelecimento) {
+    var subInstrucao = `SELECT (MAX(idUsuario) + 1)`
+    var instrucao = `INSERT INTO usuario (idUsuario, nome, sobrenome, email, senha, fkEstabelecimento) ${subInstrucao}, '${nome}', '${sobrenome}', '${email}', '${cpf}', '${fkEstabelecimento}' FROM usuario;`
+
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    cadastrarFuncionario
 };

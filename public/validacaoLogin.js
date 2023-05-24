@@ -97,12 +97,13 @@ function doLogin(){
         }
     }).then((dados)=>{
         erro.innerHTML = `<p style="color:green">Login realizado com sucesso...</p>`;
+
         sessionStorage.setItem('idUsuario', dados.idUsuario)
         sessionStorage.setItem('nome', dados.nome)
         sessionStorage.setItem('sobrenome', dados.sobrenome)
         sessionStorage.setItem('email', dados.email)
         sessionStorage.setItem('fkEstabelecimento', dados.fkEstabelecimento)
-
+        
         setTimeout(()=>{
             window.location.href = '../dashboards/index.html'
         },1300)

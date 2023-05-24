@@ -49,44 +49,41 @@ var chartBarra = new Chart(ctxGrafico2, {
 });
 
 // Função para borrar o fundo do modal
-function cadastrarFuncionario() {
-  var cpf = document.querySelector("#input_cpf");
-  const spanErroCpf = document.getElementById("mensagemErroCpf");
-
-  // Mascara do cpf
-  cpf.addEventListener("keypress", () => {
-    let cpfLength = cpf.value.length;
-    if (cpfLength == 3) {
-      cpf.value += ".";
-    } else if (cpfLength == 7) {
-      cpf.value += ".";
-    } else if (cpfLength == 11) {
-      cpf.value += "-";
-    }
-  });
-
-  // Validação de cpf
-  spanErroCpf.style.display = "none";
+function abrirCadastrarFuncionario() {
+  
   var blur = document.getElementById("blur");
   blur.classList.toggle("active");
   var popup = document.getElementById("popup");
   popup.classList.toggle("active");
+
 }
 
-function validarCadastro() {
-  var cpf = document.querySelector("#input_cpf");
+ function validarCadastro() {
+  var nomeCadastro = document.querySelector("#input_nomeUsuario");
+  var sobrenomeCadastro = document.querySelector("#input_sobrenome");
+  var emailCadastro = document.querySelector("#input_email");
+  var cpfCadastro = document.querySelector("#input_cpf");
+  var fkEstabelecimentoCadastro = sessionStorage.getItem('fkEstabelecimento');
   const spanErroCpf = document.getElementById("mensagemErroCpf");
-  if ((cpf.value.length = 14)) {
-    spanErroCpf.style.display = "none";
-    var blur = document.getElementById("blur");
-    blur.classList.toggle("active");
-    var popup = document.getElementById("popup");
-    popup.classList.toggle("active");
-    alert("foi");
+  
+  if (cpfCadastro.value.length == 11) {
+     fetch("/usuarios/cadastrarFuncionario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nomeServer: nomeCadastro.value,
+        sobrenomeServer: sobrenomeCadastro.value,
+        emailServer: emailCadastro.value,
+        cpfServer: cpfCadastro.value,
+        fkEstabelecimentoServer: fkEstabelecimentoCadastro
+      })
+    }).catch(err => console.error(err))
   } else {
     spanErroCpf.style.display = "block";
   }
-}
+ }
 
 
 const imgSair = document.querySelector('#btn-sair-nav')
