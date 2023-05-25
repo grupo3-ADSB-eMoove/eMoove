@@ -37,9 +37,9 @@
       </div>
       <div class="icones">
         <div class="nav-row">
-          <a href="#">
-            <img src="../../assets/img_config.png" alt="Imagem config">
-            <span class="nav-row-text hidden">Configurações</span>
+          <a href="https://emoove.freshdesk.com/support/home" target="_blank">
+            <img src="../../assets/img_suporte.png" alt="Imagem suporte">
+            <span class="nav-row-text hidden">Suporte</span>
           </a>
         </div>
         <div class="nav-row">
@@ -107,7 +107,7 @@
         </div>
       </div>
       <div class="divBtnCadastrar">
-        <button class="btnCadastrar" onclick="cadastrarFuncionario()">Cadastrar</button>
+        <button class="btnCadastrar" onclick="abrirCadastrarFuncionario()">Cadastrar</button>
        </div>
     </div>
   </div>
@@ -115,7 +115,7 @@
     <section class="sectionForm">
         <div class="divForm">
           <div class="texto">
-            <img src="../../assets/img_fechar.png" alt="" id="fechar" onclick="cadastrarFuncionario()">
+            <img src="../../assets/img_fechar.png" alt="" id="fechar" onclick="abrirCadastrarFuncionario()">
             <h2>Cadastro funcionario</h2>
           </div>
     
@@ -137,14 +137,14 @@
           <div class="inputsHorizontal">
             <div class="input">
               <label for="email">Email</label>
-              <input type="text" namen="email" id="input_email"/>
+              <input type="email" name="email" id="input_email"/>
             </div>
             <div class="input">
               <div class="separar">
               <label for="cpf">CPF</label>
               <span class="erro" id="mensagemErroCpf">CPF inválido</span>
             </div>  
-              <input type="text" name="cpf" id="input_cpf" maxlength="14"/>
+              <input type="text" name="cpf" id="input_cpf" maxlength="11"/>
               </div>
           </div>
           <div class="divBtnCadastrar">
@@ -158,4 +158,5 @@
 </body>
 <script src="../../scripts/navbar.js"></script>
 <script src="../../script.js"></script>
+<script src="../../../validacaoLogin.js"></script>
 </html>
