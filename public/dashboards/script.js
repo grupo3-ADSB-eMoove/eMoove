@@ -151,7 +151,7 @@ async function listarDados() {
   var totalEntradas = 0
   for (let i = 0; i < 18; i++) {
     let horario1 = `${hora}:${minutos}:00`;
-
+    
     if (i % 2 == 0) minutos = "30";
     else {
       minutos = "00";

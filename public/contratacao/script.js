@@ -17,7 +17,7 @@ const iptConfirmaSenha = form[11];
 const modalPlans = document.getElementById("modal-plans");
 document.getElementById("xmark").addEventListener("click", (e) => modalPlans.classList.toggle("hidden"));
 
-document.getElementById("btn-contratar").addEventListener("click", (e) => {
+document.getElementById("btn-contratar").addEventListener('click', (e) => {
   e.preventDefault();
   var nomeFantasiaValidado = validarNomeFantasia();
   var cnpjValidado = validarCNPJ();
@@ -40,14 +40,58 @@ document.getElementById("btn-contratar").addEventListener("click", (e) => {
     sobrenomeusuarioValidado &&
     senhaValidada
   ) {
-    cadastrarEstabelecimentoUsuario().then((res) => {
+    modalPlans.classList.toggle("hidden");
+  }
+})
+
+var btnsPlano = [
+  document.getElementById('btn-plano1'),
+  document.getElementById('btn-plano2'),
+  document.getElementById('btn-plano3')
+]
+btnsPlano.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    cadastrarEstabelecimentoUsuario()
+    .then((res) => {
       if(res.ok) {
         alert('Cadastrou')
-        modalPlans.classList.toggle("hidden");
+        setTimeout(() => window.location.href = '/', 1000)
       }
     })
-  }
-});
+  })
+})
+
+// document.getElementById("btn-contratar").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   var nomeFantasiaValidado = validarNomeFantasia();
+//   var cnpjValidado = validarCNPJ();
+//   var areaValidada = validarArea();
+//   var cepValidado = validarCEP();
+//   var numeroValidado = validarNumero();
+
+//   var nomeUsuarioValidado = validarNomeUsuario();
+//   var sobrenomeusuarioValidado = validarSobrenomeUsuario();
+
+//   var senhaValidada = validarSenha();
+
+//   if (
+//     nomeFantasiaValidado &&
+//     cnpjValidado &&
+//     areaValidada &&
+//     cepValidado &&
+//     numeroValidado &&
+//     nomeUsuarioValidado &&
+//     sobrenomeusuarioValidado &&
+//     senhaValidada
+//   ) {
+//     cadastrarEstabelecimentoUsuario().then((res) => {
+//       if(res.ok) {
+//         alert('Cadastrou')
+//         modalPlans.classList.toggle("hidden");
+//       }
+//     })
+//   }
+// });
 
 async function cadastrarEstabelecimentoUsuario() {
   const nomeFantasiaVar = iptNomeFantasia.value;
