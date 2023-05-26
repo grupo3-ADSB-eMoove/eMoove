@@ -138,3 +138,68 @@
 .inativo {
     color: red;
 }
+
+
+
+.wrapper-confirmacao {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+}
+
+.confirmacao-sair{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    background: #fefefe;
+    border-radius: 15px;
+
+    padding: 2rem;
+
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
+}
+.confirmacao-sair h2{
+padding: 15px 0;
+width: 100%;
+text-align: center;
+}
+
+.grupo-botoes-sair{
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.grupo-botoes-sair > button{
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+  padding: 10px 0;
+  font-size: 18px;
+  
+  transition: .2s;
+  cursor: pointer;
+}
+
+.grupo-botoes-sair > #btn-cancelar {
+  background-color: #fa7d09;
+  color: white;
+}
+.grupo-botoes-sair > #btn-sair {
+  background-color: #fefefe;
+  color: #fa7d09;
+  border: 2px solid #fa7d09;
+}
+
+.grupo-botoes-sair > #btn-sair:hover,
+.grupo-botoes-sair > #btn-cancelar:hover {
+  transform: scale(1.1);
+}
