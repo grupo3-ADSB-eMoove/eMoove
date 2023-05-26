@@ -14,6 +14,17 @@ CREATE TABLE estabelecimento(
   bairro VARCHAR (200) NOT NULL,
   cep char(9)
 );
+
+-- CREATE DA TABLE DOS ALERTAS
+CREATE TABLE alerta (
+  dtAlerta DATETIME DEFAULT current_timestamp,
+  qtdPessoas INT NOT NULL,
+  -- faixa VARCHAR(45) CONSTRAINT chkFaixa CHECK (faixa IN ('muito baixa', 'baixa', 'ideal', 'alta', 'muito alta')),
+  fkEstabelecimento INT,
+  FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento(idEstabelecimento),
+  CONSTRAINT pkAlerta PRIMARY KEY (dtAlerta, fkEstabelecimento)
+);
+
 -- CREATE DA TABELA DO USUARIO QUE VAI CONTRATAR
 CREATE TABLE usuario(
   idUsuario INT,

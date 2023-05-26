@@ -161,7 +161,7 @@ async function listarDados() {
     }
 
     let horario2 = `${hora}:${minutos}:00`;
-    const qtdEntradas = await getEntradasPorHorario(1, horario1, horario2).then(res => res[0].qtdEntradas);
+    const qtdEntradas = await getEntradasPorHorario(sessionStorage.getItem('fkEstabelecimento'), horario1, horario2).then(res => res[0].qtdEntradas);
 
     totalEntradas += qtdEntradas
 
@@ -193,7 +193,7 @@ async function getTotalEntradasUltimosQuatroDias() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      idEstabelecimentoServer: 1
+      idEstabelecimentoServer: sessionStorage.getItem('fkEstabelecimento')
     })
   })
   .then(res => res.json())
@@ -228,9 +228,74 @@ async function renderChartBarra() {
   chartBarra.update()
 }
 
+async function getAlertas() {
+  var alertas = await fetch(`/medidas/alertas/${sessionStorage.getItem('fkEstabelecimento')}`)
+  .then(res => res.json())
+  .then(data => data)
+
+  alertas.forEach(alerta => {
+    var capMax = alerta.area * 3
+    var lotacao = (alerta.qtdPessoas * 100) / capMax
+
+    const divAlerta = document.createElement('div')
+    divAlerta.classList.add('cardAlerta')
+
+    var cor
+    var faixa
+    if(lotacao < 10) {
+      // Muito Baixa
+      cor = 'vermelho'
+      faixa = 'Muito Baixa'
+    } else if(lotacao < 26) {
+      // Baixa
+      cor = 'amarelo'
+      faixa = 'Baixa'
+    } else if(lotacao < 51) {
+      // Ideal
+      cor = 'verde'
+      faixa = 'Ideal'
+    } else if(lotacao < 76) {
+      // Alta
+      cor = 'amarelo'
+      faixa = 'Alta'
+    } else {
+      // Muito Alta
+      cor = 'vermelho'
+      faixa = 'Muito Alta'
+    }
+
+    divAlerta.classList.add(cor)
+
+    const spanAlerta = document.createElement('span')
+    const h2Alerta = document.createElement('h2')
+    h2Alerta.innerText = `Lotação: ${lotacao.toFixed(2)}%`
+    spanAlerta.appendChild(h2Alerta)
+
+    const bAlerta = document.createElement('b')
+    bAlerta.innerText = `Pessoas na loja: ${alerta.qtdPessoas}`
+    spanAlerta.appendChild(bAlerta)
+    divAlerta.appendChild(spanAlerta)
+
+    const divConteudo = document.createElement('div')
+    divConteudo.classList.add('conteudoCard')
+
+    const h1Alerta = document.createElement('h1')
+    h1Alerta.innerText = `${faixa}`
+    divConteudo.appendChild(h1Alerta)
+
+    const pAlerta = document.createElement('p')
+    pAlerta.innerText = `Hora: ${alerta.hora}`
+    divConteudo.appendChild(pAlerta)
+    divAlerta.appendChild(divConteudo)
+
+    div_historico.appendChild(divAlerta)
+
+  })
+}
 
 listarDados()
 renderChartBarra()
+getAlertas()
 setInterval(() => {
   listarDados()
   renderChartBarra()

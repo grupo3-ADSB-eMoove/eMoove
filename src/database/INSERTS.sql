@@ -46,6 +46,13 @@ VALUES (
     'Av Paulista',
     '08410-410'
   );
+
+INSERT iNTO alerta VALUES 
+  ('2023-05-25 08:00:00', 24, 3),
+  ('2023-05-25 09:00:00', 12, 3),
+  ('2023-05-25 10:00:00', 6, 3),
+  ('2023-05-25 11:00:00', 48, 3),
+  ('2023-05-25 12:00:00', 96, 3);
 -- INSERT TABELA USUARIO
 desc usuario;
 INSERT INTO usuario
@@ -79,7 +86,7 @@ values (
   (
     1,
     'Renan',
-    'Santos',
+    'Silva',
     'renan@gmail.com',
     '123',
     'basico',

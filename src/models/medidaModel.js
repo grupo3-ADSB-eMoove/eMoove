@@ -24,8 +24,13 @@ function selectUltimosQuatroDias(idEstabelecimento) {
     return database.executar(instrucao)
 }
 
+function alertas(id) {
+  var instrucao = `SELECT e.area, DATE_FORMAT(a.dtAlerta, '%H:%i') as hora, a.qtdPessoas FROM estabelecimento e JOIN alerta a ON e.idEstabelecimento = a.fkEstabelecimento WHERE e.idEstabelecimento = ${id}`
+  return database.executar(instrucao)
+}
 
 module.exports = {
     selectEntradasPorHorario,
-    selectUltimosQuatroDias
+    selectUltimosQuatroDias,
+    alertas
 }

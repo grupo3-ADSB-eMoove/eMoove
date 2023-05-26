@@ -23,7 +23,16 @@ function selectKpis(req, res) {
     medidaModel.selectKpis()
 }
 
+function alertas(req, res) {
+  var id = req.params.idEstabelecimento
+
+  medidaModel.alertas(id).then(result => {
+    res.json(result)
+  })
+}
+
 module.exports = {
     selectEntradasPorHorario,
-    selectUltimosQuatroDias
+    selectUltimosQuatroDias,
+    alertas
 }

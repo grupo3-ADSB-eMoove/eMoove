@@ -1,5 +1,5 @@
 async function fetchSensores() {
-  var sensores = await fetch(`/sensores/${1}`, {cache: 'no-store'}).then((res) => res.json());
+  var sensores = await fetch(`/sensores/${sessionStorage.getItem('fkEstabelecimento')}`, {cache: 'no-store'}).then((res) => res.json());
   return sensores
 }
 
@@ -70,7 +70,6 @@ function renderSensores() {
     sensores.forEach((sensor, i) => {
       sensor.number = i + 1
       divSensores.appendChild(renderSensor(sensor))
-      // divSensores.innerHTML += renderSensor(sensor)
     })
   })
 

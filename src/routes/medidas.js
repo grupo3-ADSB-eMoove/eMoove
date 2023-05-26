@@ -14,4 +14,8 @@ router.get('/selectKpis', function(req, res) {
     medidaController.selectKpis(req, res)
 })
 
+router.get('/alertas/:idEstabelecimento', function(req, res) {
+  medidaController.alertas(req, res)
+})
+
 module.exports = router
