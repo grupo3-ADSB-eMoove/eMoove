@@ -199,7 +199,7 @@ body {
   align-items: center;
   overflow: auto;
   flex-wrap: wrap;
-  overflow-x: hidden;
+  padding: 1rem;
 }
 
 .alerta-titulo{
@@ -258,6 +258,11 @@ body {
 .alerta {
   scrollbar-width: auto;
   scrollbar-color: #fa7d09 #ffffff;
+  
+}
+
+.alerta h1 {
+  color: black;
 }
 
 .alerta::-webkit-scrollbar {
@@ -274,6 +279,42 @@ background-color: #fa7d09;
 border-radius: 10px;
 border: 4px solid #ffffff;
 }
+
+.alerta-atual {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-alerta {
+  text-align: center;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.info-alerta > h1 {
+  font-size: 56px;
+}
+
+.info-alerta > .faixa-mb,
+.info-alerta > .faixa-ma {
+  color: #c20000;
+}
+.info-alerta > .faixa-b,
+.info-alerta > .faixa-a {
+  color:#e7aa00
+}
+.info-alerta > .faixa-id {
+  color: #00bb10;
+}
+
 
 
 .verde{

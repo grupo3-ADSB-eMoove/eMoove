@@ -233,64 +233,87 @@ async function getAlertas() {
   .then(res => res.json())
   .then(data => data)
 
-  alertas.forEach(alerta => {
-    var capMax = alerta.area * 3
-    var lotacao = (alerta.qtdPessoas * 100) / capMax
+  console.log(alertas)
+  if(alertas.length == 0) lotacao_atual.innerText = 'Sem Alertas'
 
-    const divAlerta = document.createElement('div')
-    divAlerta.classList.add('cardAlerta')
+  if(alertas.length > 0) {
+    h3Situacao.innerText = 'Situação Atual'
+    if(alertas.length > 1) div_historico.innerHTML = '<h3>Alertas passados:</h3>'
+    alertas.forEach((alerta, i) => {
+      var capMax = alerta.area * 3
+      var lotacao = (alerta.qtdPessoas * 100) / capMax
+  
+      const divAlerta = document.createElement('div')
+      divAlerta.classList.add('cardAlerta')
+  
+      var cor
+      var faixa
 
-    var cor
-    var faixa
-    if(lotacao < 10) {
-      // Muito Baixa
-      cor = 'vermelho'
-      faixa = 'Muito Baixa'
-    } else if(lotacao < 26) {
-      // Baixa
-      cor = 'amarelo'
-      faixa = 'Baixa'
-    } else if(lotacao < 51) {
-      // Ideal
-      cor = 'verde'
-      faixa = 'Ideal'
-    } else if(lotacao < 76) {
-      // Alta
-      cor = 'amarelo'
-      faixa = 'Alta'
-    } else {
-      // Muito Alta
-      cor = 'vermelho'
-      faixa = 'Muito Alta'
-    }
+      if(lotacao < 10 || lotacao > 75) {
+        img_alerta.style.display = 'block'
+      }
 
-    divAlerta.classList.add(cor)
-
-    const spanAlerta = document.createElement('span')
-    const h2Alerta = document.createElement('h2')
-    h2Alerta.innerText = `Lotação: ${lotacao.toFixed(2)}%`
-    spanAlerta.appendChild(h2Alerta)
-
-    const bAlerta = document.createElement('b')
-    bAlerta.innerText = `Pessoas na loja: ${alerta.qtdPessoas}`
-    spanAlerta.appendChild(bAlerta)
-    divAlerta.appendChild(spanAlerta)
-
-    const divConteudo = document.createElement('div')
-    divConteudo.classList.add('conteudoCard')
-
-    const h1Alerta = document.createElement('h1')
-    h1Alerta.innerText = `${faixa}`
-    divConteudo.appendChild(h1Alerta)
-
-    const pAlerta = document.createElement('p')
-    pAlerta.innerText = `Hora: ${alerta.hora}`
-    divConteudo.appendChild(pAlerta)
-    divAlerta.appendChild(divConteudo)
-
-    div_historico.appendChild(divAlerta)
-
-  })
+      if(lotacao < 10) {
+        // Muito Baixa
+        cor = 'vermelho'
+        faixa = 'Muito Baixa'
+        classFaixa = 'faixa-mb'
+      } else if(lotacao < 26) {
+        // Baixa
+        cor = 'amarelo'
+        faixa = 'Baixa'
+        classFaixa = 'faixa-b'
+      } else if(lotacao < 51) {
+        // Ideal
+        cor = 'verde'
+        faixa = 'Ideal'
+        classFaixa = 'faixa-id'
+      } else if(lotacao < 76) {
+        // Alta
+        cor = 'amarelo'
+        faixa = 'Alta'
+        classFaixa = 'faixa-a'
+      } else {
+        // Muito Alta
+        cor = 'vermelho'
+        faixa = 'Muito Alta'
+        classFaixa = 'faixa-ma'
+      }
+  
+      if(i == 0) {
+        lotacao_atual.innerText = `Lotação: ${lotacao.toFixed(2)}%`
+        faixa_atual.innerText = `${faixa.toUpperCase()}`
+        faixa_atual.classList.add(classFaixa)
+      } else if(alertas.length >= 1 && i > 0) {
+        seta_alerta.style.display = 'block'
+        divAlerta.classList.add(cor)
+  
+        const spanAlerta = document.createElement('span')
+        const h2Alerta = document.createElement('h2')
+        h2Alerta.innerText = `Lotação: ${lotacao.toFixed(2)}%`
+        spanAlerta.appendChild(h2Alerta)
+    
+        const bAlerta = document.createElement('b')
+        bAlerta.innerText = `Pessoas na loja: ${alerta.qtdPessoas}`
+        spanAlerta.appendChild(bAlerta)
+        divAlerta.appendChild(spanAlerta)
+    
+        const divConteudo = document.createElement('div')
+        divConteudo.classList.add('conteudoCard')
+    
+        const h1Alerta = document.createElement('h1')
+        h1Alerta.innerText = `${faixa}`
+        divConteudo.appendChild(h1Alerta)
+    
+        const pAlerta = document.createElement('p')
+        pAlerta.innerText = `Hora: ${alerta.hora}`
+        divConteudo.appendChild(pAlerta)
+        divAlerta.appendChild(divConteudo)
+    
+        div_historico.appendChild(divAlerta)
+      }
+    })
+  }
 }
 
 listarDados()
@@ -299,6 +322,7 @@ getAlertas()
 setInterval(() => {
   listarDados()
   renderChartBarra()
+  getAlertas()
 }, 2000)
 
 listarDados()
