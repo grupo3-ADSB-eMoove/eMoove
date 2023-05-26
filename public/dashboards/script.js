@@ -86,36 +86,6 @@ function abrirCadastrarFuncionario() {
  }
 
 
-const imgSair = document.querySelector('#btn-sair-nav')
-
-const div_confirmacao_sair = document.querySelector('.wrapper-confirmacao')
-const btn_sair = document.querySelector('#btn-sair')
-const btn_cancelar = document.querySelector('#btn-cancelar')
-
-imgSair.addEventListener('click',()=>{
-
-  div_confirmacao_sair.style.opacity = '1'
-  div_confirmacao_sair.style.display = 'block'
-
-})
-
-
-btn_sair.addEventListener('click',()=>{
-
-  div_confirmacao_sair.style.display = 'none'
-  
-
-  sessionStorage.clear()
- 
-      window.location.href = '../index.html'
-  
-})
-
-btn_cancelar.addEventListener('click',()=>{
-  div_confirmacao_sair.style.display = 'none'
-  
-})
-
 // Seleciona a quantidade de entradas dentro de um intervalo de tempo de um estabelecimento
 async function getEntradasPorHorario(idEstabelecimento, horario1, horario2) {
   // Requisição POST para selecionar a quantidade de entradas

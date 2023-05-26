@@ -10,7 +10,17 @@
 </head>
 
 <body>
+  <div class="wrapper-confirmacao">
+    <div id="div-confirmacao-sair" class="confirmacao-sair">
+      <h2>Deseja realmente sair?</h2>
+      <div class="grupo-botoes-sair">
+        <button id="btn-sair">Sair</button>
+        <button id="btn-cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
   <div class="tela"  id="blur">
+
     <div class="navbar" id="navbar">
       <div class="icones">
         <div class="nav-row" style="align-items: flex-start;">
@@ -23,13 +33,13 @@
           </a>
         </div>
         <div class="nav-row">
-          <a href="../sensores/index.html">
+          <a href="../../pages/sensores/index.html">
             <img src="../../assets/img_dashboard.png" alt="Im-agem dashboard">
             <span class="nav-row-text hidden">Sensores</span>
           </a>
         </div>
         <div class="nav-row">
-          <a href="#">
+          <a href="../funcionarios/index.html">
             <img src="../../assets/img_usuario.png" alt="Imagem clientes">
             <span class="nav-row-text hidden">Funcionarios</span>
           </a>
@@ -38,15 +48,15 @@
       <div class="icones">
         <div class="nav-row">
           <a href="https://emoove.freshdesk.com/support/home" target="_blank">
-            <img src="../../assets/img_suporte.png" alt="Imagem suporte">
+            <img src="../../assets/question-circle.svg" alt="Imagem suporte">
             <span class="nav-row-text hidden">Suporte</span>
           </a>
         </div>
         <div class="nav-row">
-          <a href="../../../telaProduto/index.html">
-            <img src="../../assets/img_sair.png" alt="Imagem sair">
-            <span class="nav-row-text hidden">Sair</span>
-          </a>
+          <a id="btn-sair-nav">
+            <img id="imgSair" src="../../assets/img_sair.png" alt="Imagem sair">
+            <span class="nav-row-text hidden">Sair</span>         
+          </a>  
         </div>
       </div>
     </div>
