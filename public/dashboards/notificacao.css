@@ -1,0 +1,48 @@
+.wrapper-notificacao {
+  position: absolute;
+  
+  top: 1rem;
+  right: -10rem;
+
+  transition: right 300ms ease;
+}
+
+.show {
+  right: 1rem;
+}
+
+.notificacao {
+  position: relative;
+
+  background-color: #fefefe;
+
+  padding: .5rem;
+}
+
+.notificacao::after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  background: orangered;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  animation-fill-mode: forwards;
+}
+
+.show > .notificacao::after {
+  animation: timeout 2s linear forwards;
+}
+
+@keyframes timeout {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}

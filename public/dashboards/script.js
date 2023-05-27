@@ -203,7 +203,6 @@ async function getAlertas() {
   .then(res => res.json())
   .then(data => data)
 
-  console.log(alertas)
   if(alertas.length == 0) lotacao_atual.innerText = 'Sem Alertas'
 
   if(alertas.length > 0) {
@@ -293,6 +292,7 @@ setInterval(() => {
   listarDados()
   renderChartBarra()
   getAlertas()
+  // fetchAlertaRecente()
 }, 2000)
 
 listarDados()

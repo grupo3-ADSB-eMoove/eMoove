@@ -18,4 +18,8 @@ router.get('/alertas/:idEstabelecimento', function(req, res) {
   medidaController.alertas(req, res)
 })
 
+router.get('/ultimo-alerta/:idEstabelecimento', function(req, res) {
+  medidaController.ultimoAlerta(req, res)
+})
+
 module.exports = router
