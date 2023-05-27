@@ -13,6 +13,6 @@ async function fetchAlertaRecente() {
     sessionStorage.setItem('ultimoAlerta', JSON.stringify(alerta[0]))
     wrapper.classList.add('show')
 
-    setTimeout(() => wrapper.classList.remove('show'), 2000)
+    setTimeout(() => wrapper.classList.remove('show'), 3000)
   }
 }

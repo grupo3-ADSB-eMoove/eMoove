@@ -35,7 +35,7 @@
 }
 
 .show > .notificacao::after {
-  animation: timeout 2s linear forwards;
+  animation: timeout 3s linear forwards;
 }
 
 @keyframes timeout {

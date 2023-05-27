@@ -21,8 +21,8 @@ var sqlServerConfig = {
 var mySqlConfig = {
     host: "localhost",
     database: "emoove",
-    user: "emoove",
-    password: "emoove_db",
+    user: "root",
+    password: "",
 };
 
 function executar(instrucao) {

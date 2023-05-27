@@ -5,7 +5,7 @@ const dataGrafico1 = {
   datasets: [
     {
       axis: "y",
-      label: "Clientes Dentro do estabelecimento por horário (Área 30m²)",
+      label: "Passagens registradas por horário",
       data: [],
       pointBackgroundColor: "rgba(255, 69, 1, 0.5)",
       borderWidth: 2,
@@ -36,7 +36,7 @@ const dataGrafico2 = {
   labels: [],
   datasets: [
     {
-      label: "Total de entradas por dia",
+      label: "Total de Passagens por dia",
       data: [],
       backgroundColor: "rgba(255, 69, 1, 0.7)",
     },
