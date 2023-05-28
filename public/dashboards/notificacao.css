@@ -2,7 +2,7 @@
   position: absolute;
   
   top: 1rem;
-  right: -10rem;
+  right: -100%;
 
   transition: right 300ms ease;
 }
@@ -17,6 +17,14 @@
   background-color: #fefefe;
 
   padding: .5rem;
+}
+
+.notificacao > img {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  cursor: pointer;
 }
 
 .notificacao::after {
@@ -35,7 +43,7 @@
 }
 
 .show > .notificacao::after {
-  animation: timeout 2s linear forwards;
+  animation: timeout 3s linear forwards;
 }
 
 @keyframes timeout {

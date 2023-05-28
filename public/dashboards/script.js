@@ -249,9 +249,11 @@ async function getAlertas() {
         classFaixa = 'faixa-ma'
       }
   
+      
       if(i == 0) {
         lotacao_atual.innerText = `Lotação: ${lotacao.toFixed(2)}%`
         faixa_atual.innerText = `${faixa.toUpperCase()}`
+        faixa_atual.classList.remove('faixa-mb', 'faixa-b', 'faixa-id', 'faixa-a', 'faixa-ma')
         faixa_atual.classList.add(classFaixa)
       } else if(alertas.length >= 1 && i > 0) {
         seta_alerta.style.display = 'block'

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - sensores</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../notificacao.css">
 </head>
 
 <body>
@@ -72,7 +73,15 @@
     </div>
   </div>
   </div>
+  <div class="wrapper-notificacao">
+    <div class="notificacao">
+      <h1 style="line-height: 1;">Alerta!</h1>
+      <span id="msg-alerta"></span>
+      <img src="../../assets/x.svg" width="50" id="fechar-alerta">
+    </div>
+  </div>
 </body>
+<script src="../../scripts/alerta.js"></script>
 <script src="./script.js"></script>
 <script src="../../scripts/navbar.js"></script>
 </html>
