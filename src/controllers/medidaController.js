@@ -38,9 +38,18 @@ function ultimoAlerta(req, res) {
   })
 }
 
+function inserirAlerta(req, res) {
+  var id = req.body.idEstabelecimento
+
+  medidaModel.inserirAlerta(id).then(result => {
+    res.json(result)
+  })
+}
+
 module.exports = {
     selectEntradasPorHorario,
     selectUltimosQuatroDias,
     alertas,
-    ultimoAlerta
+    ultimoAlerta,
+    inserirAlerta
 }

@@ -25,12 +25,22 @@ function selectUltimosQuatroDias(idEstabelecimento) {
 }
 
 function alertas(id) {
-  var instrucao = `SELECT e.area, DATE_FORMAT(a.dtAlerta, '%H:%i') as hora, a.qtdPessoas FROM estabelecimento e JOIN alerta a ON e.idEstabelecimento = a.fkEstabelecimento WHERE e.idEstabelecimento = ${id} ORDER BY a.dtAlerta DESC;`
+  var instrucao = `SELECT e.area, DATE_FORMAT(a.dtAlerta, '%H:%i:%s') as hora, a.qtdPessoas, TIMESTAMPDIFF(SECOND, a.dtAlerta, now()) as tempo FROM estabelecimento e JOIN alerta a ON e.idEstabelecimento = a.fkEstabelecimento WHERE e.idEstabelecimento = ${id} ORDER BY a.dtAlerta DESC;`
   return database.executar(instrucao)
 }
 
 function ultimoAlerta(id) {
-  var instrucao = `SELECT e.area, DATE_FORMAT(a.dtAlerta, '%H:%i') as hora, a.qtdPessoas FROM estabelecimento e JOIN alerta a ON e.idEstabelecimento = a.fkEstabelecimento WHERE e.idEstabelecimento = ${id} AND a.dtAlerta = (SELECT MAX(dtAlerta) FROM alerta);`
+  var instrucao = `SELECT e.area, DATE_FORMAT(a.dtAlerta, '%H:%i:%s') as hora, a.qtdPessoas, TIMESTAMPDIFF(SECOND, a.dtAlerta, now()) as tempo FROM estabelecimento e JOIN alerta a ON e.idEstabelecimento = a.fkEstabelecimento WHERE e.idEstabelecimento = ${id} AND a.dtAlerta = (SELECT MAX(dtAlerta) FROM alerta);`
+  return database.executar(instrucao)
+}
+
+function inserirAlerta(id) {
+  var subQuery = `SELECT COUNT(c.valor) FROM capturaDados c 
+                    JOIN sensor s ON s.idSensor = c.fkSensor 
+                    JOIN localInstalado l ON l.idLocal = s.fkLocalInstalado 
+                      WHERE l.fkEstabelecimento = ${id} AND TIMESTAMPDIFF(SECOND, c.dtHora, now()) < 30`
+
+  var instrucao = `INSERT INTO alerta VALUES (default, (${subQuery}), ${id});`
   return database.executar(instrucao)
 }
 
@@ -38,5 +48,6 @@ module.exports = {
     selectEntradasPorHorario,
     selectUltimosQuatroDias,
     alertas,
-    ultimoAlerta
+    ultimoAlerta,
+    inserirAlerta
 }

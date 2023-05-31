@@ -22,4 +22,8 @@ router.get('/ultimo-alerta/:idEstabelecimento', function(req, res) {
   medidaController.ultimoAlerta(req, res)
 })
 
+router.post('/inserir-alerta', function(req, res) {
+  medidaController.inserirAlerta(req, res)
+})
+
 module.exports = router
