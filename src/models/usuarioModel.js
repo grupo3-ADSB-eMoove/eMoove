@@ -38,9 +38,15 @@ function cadastrarFuncionario(nome, sobrenome, email, cpf, fkEstabelecimento) {
     return database.executar(instrucao);
 }
 
+function selecionarFuncionarios(fkEstabelecimento){
+    var instrucao = `select * from usuario where fkEstabelecimento = ${fkEstabelecimento};`
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    cadastrarFuncionario
+    cadastrarFuncionario,
+    selecionarFuncionarios
 };

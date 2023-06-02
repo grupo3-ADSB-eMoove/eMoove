@@ -7,13 +7,14 @@
 }
 
 body {
-  overflow: hidden;
+overflow-x: hidden;
+overflow-y: auto;
 }
 
 
 .tela {
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
     display: flex;
     background-color: #fa7d09;
     padding: 20px;
@@ -40,7 +41,7 @@ body {
   border-radius: 25px;
 
   width: fit-content;
-
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -122,6 +123,7 @@ body {
     justify-content: space-around;
     margin-top: 30px;
     height: 100%;
+    flex-wrap: wrap;
 }
 
 .disposicaoCard {
@@ -133,9 +135,11 @@ body {
 
 .card {
     min-width: 350px;
-    padding: 25px;
+    height: fit-content;
+    padding: 35px;
     background-color: white; 
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .card .tituloCard {
@@ -161,7 +165,7 @@ body {
     background-color: #fa7d09;
     border: none;
     border-radius: 10px;
-    padding: 7px 10px;
+    padding: .4rem .6rem;
     color: white;
     cursor: pointer;
 }
@@ -201,8 +205,36 @@ body {
   margin-top: 69px;
 }
 
+.div-edicao{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: fit-content;
+  padding: 40px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  gap: 1rem;
+}
 
+.div-edicao button{
+  background-color: #fa7d09;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    color: white;
+    cursor: pointer;
+}
 
+.imgFecharEditar{
+  width: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 10px 0 0;
+}
 
 /* Style do modal para cadastrar */
 .sectionForm{

@@ -116,10 +116,26 @@ function cadastrar(req, res) {
         )
 }
 
+function selecionarFuncionarios(req,res) {
+    var fkEstabelecimento = req.params.fkEstabelecimento
+
+    usuarioModel.selecionarFuncionarios(fkEstabelecimento).then((resultado)=>{
+        res.json(resultado)
+    }).catch((erro)=>{
+        console.log(erro)
+        console.log(
+            "\nHouve um erro ao realizar o cadastro! Erro: ",
+            erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     testar,
-    cadastrarFuncionario
+    cadastrarFuncionario,
+    selecionarFuncionarios
 }
