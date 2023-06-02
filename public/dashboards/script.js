@@ -48,43 +48,6 @@ var chartBarra = new Chart(ctxGrafico2, {
   data: dataGrafico2,
 });
 
-// Função para borrar o fundo do modal
-function abrirCadastrarFuncionario() {
-  
-  var blur = document.getElementById("blur");
-  blur.classList.toggle("active");
-  var popup = document.getElementById("popup");
-  popup.classList.toggle("active");
-
-}
-
- function validarCadastro() {
-  var nomeCadastro = document.querySelector("#input_nomeUsuario");
-  var sobrenomeCadastro = document.querySelector("#input_sobrenome");
-  var emailCadastro = document.querySelector("#input_email");
-  var cpfCadastro = document.querySelector("#input_cpf");
-  var fkEstabelecimentoCadastro = sessionStorage.getItem('fkEstabelecimento');
-  const spanErroCpf = document.getElementById("mensagemErroCpf");
-  
-  if (cpfCadastro.value.length == 11) {
-     fetch("/usuarios/cadastrarFuncionario", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        nomeServer: nomeCadastro.value,
-        sobrenomeServer: sobrenomeCadastro.value,
-        emailServer: emailCadastro.value,
-        cpfServer: cpfCadastro.value,
-        fkEstabelecimentoServer: fkEstabelecimentoCadastro
-      })
-    }).catch(err => console.error(err))
-  } else {
-    spanErroCpf.style.display = "block";
-  }
- }
-
 
 // Seleciona a quantidade de entradas dentro de um intervalo de tempo de um estabelecimento
 async function getEntradasPorHorario(idEstabelecimento, horario1, horario2) {

@@ -7,7 +7,7 @@ async function fetchAlertaRecente() {
   var idEst = sessionStorage.getItem("fkEstabelecimento");
   var alerta = await fetch(`/medidas/ultimo-alerta/${idEst}`).then(res => res.json())
 
-  console.log(alerta[0], alertaPassado)
+  // console.log(alerta[0], alertaPassado)
 
   if(alerta.length > 0) {
     var {lotacao, msg} = calcularLotacao(alerta[0].area, alerta[0].qtdPessoas)

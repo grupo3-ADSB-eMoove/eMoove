@@ -33,7 +33,7 @@ btn_sair.addEventListener('click',()=>{
 
   sessionStorage.clear()
  
-      window.location.href = '../index.html'
+      window.location.href = '/'
   
 })
 
