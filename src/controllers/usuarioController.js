@@ -131,11 +131,28 @@ function selecionarFuncionarios(req,res) {
     })
 }
 
+function excluirFuncionarios(req,res){
+    var idUsuario = req.params.idUsuario
+
+    usuarioModel.excluirFuncionarios(idUsuario).then((resultado)=>{
+        res.json(resultado)
+    }).catch((erro)=>{
+        console.log(erro)
+        console.log(
+            "\nHouve um erro ao realizar o cadastro! Erro: ",
+            erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+    })
+
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     testar,
     cadastrarFuncionario,
-    selecionarFuncionarios
+    selecionarFuncionarios,
+    excluirFuncionarios
 }

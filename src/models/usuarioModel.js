@@ -43,10 +43,19 @@ function selecionarFuncionarios(fkEstabelecimento){
     return database.executar(instrucao)
 }
 
+
+function excluirFuncionarios(idUsuario){
+    var instrucao = `delete from usuario where idUsuario = ${idUsuario}`
+    return database.executar(instrucao)
+}
+
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     cadastrarFuncionario,
-    selecionarFuncionarios
+    selecionarFuncionarios,
+    excluirFuncionarios
+    
 };

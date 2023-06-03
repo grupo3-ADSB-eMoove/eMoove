@@ -28,4 +28,7 @@ router.get("/selecionarFuncionarios/:fkEstabelecimento", (req,res)=>{
     usuarioController.selecionarFuncionarios(req,res)
 })
 
+router.delete("/excluirFuncionarios/:idUsuario",(req,res)=>{
+    usuarioController.excluirFuncionarios(req,res)
+})
 module.exports = router;

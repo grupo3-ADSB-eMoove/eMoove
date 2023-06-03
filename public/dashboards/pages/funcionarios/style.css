@@ -142,6 +142,7 @@ overflow-y: auto;
     margin-bottom: 20px;
 }
 
+
 .card .tituloCard {
     display: flex;
     justify-content: space-between;
@@ -183,7 +184,7 @@ overflow-y: auto;
 } */
 
 .tela#blur.active {
-  filter: blur(10px);
+  filter: blur(5px);
 }
 
 #popup {
@@ -209,7 +210,7 @@ overflow-y: auto;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%);
   width: fit-content;
   height: fit-content;
   padding: 40px;
@@ -217,7 +218,17 @@ overflow-y: auto;
   background-color: white;
   display: flex;
   gap: 1rem;
+  transition: all ease-in .3s;
+  z-index: 999;
+  opacity: 0;
 }
+
+.div-edicaoAtiva{
+  transform: translate(-50%,-50%);
+  opacity: 1;
+}
+
+
 
 .div-edicao button{
   background-color: #fa7d09;
