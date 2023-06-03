@@ -27,13 +27,13 @@ function selecionarFuncionarios(fkEstabelecimento){
 }
 
 selecionarFuncionarios(fkEstabelecimentoCadastro)
-
+var idUsuarioSelecionado;
 
 
 function listarFuncionarios(){
   let cards =[]
   const div_edicao = document.querySelector('#div-edicao')
-  for(var i = 0; i<funcionariosLista.length; i++){
+  for(var i = 0; i <= (funcionariosLista.length - 1); i++){
 
 
             let card = document.createElement('div')
@@ -78,6 +78,8 @@ function listarFuncionarios(){
             btnEditar.addEventListener('click',()=>{
                 div_edicao.classList.add('div-edicaoAtiva')
                 blur.style.filter = 'blur(4px)'
+                console.log(funcionariosLista[i])
+                idUsuarioSelecionado = funcionariosLista[i].idUsuario
                 // console.log(card.classList.contains(2))
               
             })
@@ -93,23 +95,23 @@ function listarFuncionarios(){
             
            
 
+             let btnExcluirFuncionario = document.querySelector('#btn-excluir-funcionario')
+             btnExcluirFuncionario.addEventListener('click',()=>{
+               
+                 console.log('Removi o funcionario de id: ' )
+                 excluirFuncionarios(idUsuarioSelecionado)
+                 
+               
+             })
 
   }
 
-    let btnExcluirFuncionario = document.querySelector('#btn-excluir-funcionario')
-    btnExcluirFuncionario.addEventListener('click',()=>{
-      
-        console.log('Removi o funcionario de id: ' )
-        // excluirFuncionarios(idUsuarioLocal)
-        
-      
-    })
             
 }
 
-async function excluirFuncionarios(idUsuario){
+async function excluirFuncionarios(){
  
-  let fetchExluir =  await fetch(`/usuarios/excluirFuncionarios/${idUsuario}`, {
+  let fetchExluir =  await fetch(`/usuarios/excluirFuncionarios/${idUsuarioSelecionado}`, {
     cache: 'no-store',
     method: 'DELETE'
   }).then((res)=>{
