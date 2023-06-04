@@ -21,13 +21,13 @@
     </div>
   </div>
 
-  <div id="div-edicao" class="div-edicao">
+  <div id="div_edicao" class="div-edicao">
     <img id="fechar-div-edicao" class="imgFecharEditar" src="../../assets/img_fechar.png" alt="">
       <button id="btn-excluir-funcionario">Excluir Funcionario</button>
-      <select name="" id="selectCargo">
-        <option value="1">Administrador</option>
-        <option value="2">Gerente</option>
-        <option value="3">Funcionário</option>
+      <select name="" id="selectCargo" onchange="atualizarCargo()">
+        <option value="administrador">Administrador</option>
+        <option value="gerente">Gerente</option>
+        <option value="funcionario">Funcionário</option>
       </select>
   </div>
 

@@ -2,171 +2,159 @@ var nomeCadastro = document.querySelector("#input_nomeUsuario");
 var sobrenomeCadastro = document.querySelector("#input_sobrenome");
 var emailCadastro = document.querySelector("#input_email");
 var cpfCadastro = document.querySelector("#input_cpf");
-var fkEstabelecimentoCadastro = sessionStorage.getItem('fkEstabelecimento');
+var fkEstabelecimentoCadastro = sessionStorage.getItem("fkEstabelecimento");
 const spanErroCpf = document.getElementById("mensagemErroCpf");
 var blur = document.getElementById("blur");
-const divCards = document.getElementById("divCardSensores")
+const divCards = document.getElementById("divCardSensores");
 
-let funcionariosLista = []
-function selecionarFuncionarios(fkEstabelecimento){
-    fetch(`/usuarios/selecionarFuncionarios/${fkEstabelecimento}`,{
-        cache: 'no-store'
-    }).then((res)=>{
-        if(res.ok){
-            return res.json()
-        }
-    }).then((data)=>{
-      
-        for(var i = 0; i< data.length; i++){
-          funcionariosLista.push(data[i])
-        }
-        listarFuncionarios()
-    }).catch((erro)=>{
-        console.log('Catch do fetch: \n '+ erro)
+document.getElementById('fechar-div-edicao').addEventListener('click', () => {
+  blur.style.filter = ''
+  div_edicao.classList.remove('div-edicaoAtiva')
+})
+
+document.getElementById('btn-excluir-funcionario').addEventListener('click', () => {
+  excluirFuncionario().then(result => {
+    console.log(result)
+    if(result.affectedRows == 1) {
+      alert('Usuario deletado com sucesso')
+    }
+  })
+})
+
+var listaFuncionarios = [];
+
+function selecionarFuncionarios(fkEstabelecimento) {
+  fetch(`/usuarios/selecionarFuncionarios/${fkEstabelecimento}`, {
+    cache: "no-store",
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
     })
+    .then((data) => {
+      listaFuncionarios = data
+      listarFuncionarios(listaFuncionarios);
+    })
+    .catch((erro) => {
+      console.log("Catch do fetch: \n " + erro);
+    });
 }
 
-selecionarFuncionarios(fkEstabelecimentoCadastro)
+selecionarFuncionarios(fkEstabelecimentoCadastro);
 var idUsuarioSelecionado;
 
+function listarFuncionarios(lista = []) {
 
-function listarFuncionarios(){
-  let cards =[]
-  const div_edicao = document.querySelector('#div-edicao')
-  for(var i = 0; i <= (funcionariosLista.length - 1); i++){
+  document.getElementById('divCardSensores').innerHTML = ''
+  lista.forEach((item, i) => {
+    console.log(item)
 
+    var html = `
+    <div class="card">
+      <span class="tituloCard">
+        <h3>${item.nome}</h3>
+        <button id="btn${item.idUsuario}">Editar</button>
+      </span> <br>
+      <p>Cargo: <span>${item.cargo}</span></p>
+    </div>
+    `
+    document.getElementById('divCardSensores').innerHTML += html
+  })
 
-            let card = document.createElement('div')
-            cards.push(card)
-            console.log(cards)
-            var idUsuarioLocal = funcionariosLista[i].idUsuario
-           
-      
-            card.classList.add('card')
-            
-            card.classList.add(`${funcionariosLista[i].idUsuario}`)
-            divCards.append(card)
-
-            let spanTitulo = document.createElement('span')
-            spanTitulo.classList.add('tituloCard')
-
-            card.appendChild(spanTitulo)
-
-            let nomeFuncionario = document.createElement('h3')
-            let btnEditar = document.createElement('button')
-            
-            spanTitulo.appendChild(nomeFuncionario)
-            spanTitulo.appendChild(btnEditar)
-
-            nomeFuncionario.innerHTML = `${funcionariosLista[i].nome}`
-            btnEditar.innerHTML = `Editar`
-
-
-
-            
-            let cargoTitulo = document.createElement('p')
-        
-            card.appendChild(cargoTitulo)
-            cargoTitulo.innerHTML = `Cargo: `
-
-            let cargo = document.createElement('span')
-            cargoTitulo.appendChild(cargo)
-            
-            cargo.innerHTML = `Administrador #`
-
-            // BOTÃO DE EDITAR FUNCIONÁRIO, PRESENTE EM TODOS OS CARDS
-            btnEditar.addEventListener('click',()=>{
-                div_edicao.classList.add('div-edicaoAtiva')
-                blur.style.filter = 'blur(4px)'
-                console.log(funcionariosLista[i])
-                idUsuarioSelecionado = funcionariosLista[i].idUsuario
-                // console.log(card.classList.contains(2))
-              
-            })
-
-            // BOTÃO DE FECHAR A DIV DA EDIÇÃO
-            let btnFecharEdicao = document.querySelector('#fechar-div-edicao')
-            btnFecharEdicao.addEventListener('click',()=>{
-             blur.style.filter = ''
-               div_edicao.classList.remove('div-edicaoAtiva')
-
-               
-             })
-            
-           
-
-             let btnExcluirFuncionario = document.querySelector('#btn-excluir-funcionario')
-             btnExcluirFuncionario.addEventListener('click',()=>{
-               
-                 console.log('Removi o funcionario de id: ' )
-                 excluirFuncionarios(idUsuarioSelecionado)
-                 
-               
-             })
-
-  }
-
-            
+  addEventListeners()
 }
 
-async function excluirFuncionarios(){
- 
-  let fetchExluir =  await fetch(`/usuarios/excluirFuncionarios/${idUsuarioSelecionado}`, {
-    cache: 'no-store',
-    method: 'DELETE'
-  }).then((res)=>{
-    if(res.ok){
-      return res.json()
-    }
-  }).catch((error)=>{
-    console.log(error)
+function addEventListeners() {
+  var buttons = document.querySelectorAll('.tituloCard > button')
+
+  buttons.forEach((button, i) => {
+    button.addEventListener('click', () => {
+      div_edicao.classList.add('div-edicaoAtiva')
+      blur.style.filter = 'blur(4px)'
+      console.log(listaFuncionarios[i])
+      idUsuarioSelecionado = listaFuncionarios[i].idUsuario
+      selectCargo.value = listaFuncionarios[i].cargo
+    })
   })
-  console.log(fetchExluir)
+}
+
+async function atualizarCargo() {
+  var resultUpdate = await fetch('/usuarios/atualizarCargo', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      fkEstabelecimento: fkEstabelecimentoCadastro,
+      idUsuario: idUsuarioSelecionado,
+      cargo: selectCargo.value
+    })
+  }).then((res) => {
+    if(res.ok) {
+      selecionarFuncionarios(fkEstabelecimentoCadastro)
+      return res.json
+    }
+  }).catch(e => console.error(e))
+}
+
+async function excluirFuncionario() {
+
+  let fetchExluir = await fetch(
+    `/usuarios/excluirFuncionarios/${idUsuarioSelecionado}`,
+    {
+      cache: "no-store",
+      method: "DELETE",
+    }
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return fetchExluir
 }
 
 function validarCadastro() {
-    console.log("clicou")
-    
-    if (cpfCadastro.value.length == 11) {
-       fetch("/usuarios/cadastrarFuncionario", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          nomeServer: nomeCadastro.value,
-          sobrenomeServer: sobrenomeCadastro.value,
-          emailServer: emailCadastro.value,
-          cpfServer: cpfCadastro.value,
-          fkEstabelecimentoServer: fkEstabelecimentoCadastro
-        })
-      }).then((resposta)=>{
-            if(resposta.ok){
-                alert("Funcionário cadastrado, lembre-se, CPF entra como senha.")
-                window.location.reload()
-            }
-      }).catch(err => console.error(err))
-    } else {
-      spanErroCpf.style.display = "block";
-    }
-   }
+  console.log("clicou");
 
-
-
-
-
-   // Função para borrar o fundo do modal
-function abrirCadastrarFuncionario() {
-  
-    
-    blur.classList.toggle("active");
-    var popup = document.getElementById("popup");
-    popup.classList.toggle("active");
-  
+  if (cpfCadastro.value.length == 11) {
+    fetch("/usuarios/cadastrarFuncionario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeServer: nomeCadastro.value,
+        sobrenomeServer: sobrenomeCadastro.value,
+        emailServer: emailCadastro.value,
+        cpfServer: cpfCadastro.value,
+        fkEstabelecimentoServer: fkEstabelecimentoCadastro,
+      }),
+    })
+      .then((resposta) => {
+        if (resposta.ok) {
+          alert("Funcionário cadastrado, lembre-se, CPF entra como senha.");
+          window.location.reload();
+        }
+      })
+      .catch((err) => console.error(err));
+  } else {
+    spanErroCpf.style.display = "block";
   }
+}
 
+// Função para borrar o fundo do modal
+function abrirCadastrarFuncionario() {
+  blur.classList.toggle("active");
+  var popup = document.getElementById("popup");
+  popup.classList.toggle("active");
+}
 
-  cpfCadastro.addEventListener('focus',()=>{
-        spanErroCpf.style.display = 'none'
-        spanErroCpf.style.displa = 'none'
-  })
+cpfCadastro.addEventListener("focus", () => {
+  spanErroCpf.style.display = "none";
+  spanErroCpf.style.displa = "none";
+});

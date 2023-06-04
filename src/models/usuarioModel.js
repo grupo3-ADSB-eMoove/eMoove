@@ -49,6 +49,10 @@ function excluirFuncionarios(idUsuario){
     return database.executar(instrucao)
 }
 
+function atualizarCargo(fkEst, idUser, cargo) {
+  var instrucao = `update usuario set cargo = '${cargo}' where idUsuario = ${idUser} and fkEstabelecimento = ${fkEst}`
+  return database.executar(instrucao)
+}
 
 module.exports = {
     entrar,
@@ -56,6 +60,6 @@ module.exports = {
     listar,
     cadastrarFuncionario,
     selecionarFuncionarios,
-    excluirFuncionarios
-    
+    excluirFuncionarios,
+    atualizarCargo
 };

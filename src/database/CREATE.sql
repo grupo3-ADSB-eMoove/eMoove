@@ -32,7 +32,7 @@ CREATE TABLE usuario(
   sobrenome VARCHAR(50) NOT NULL,
   email VARCHAR(100) NOT NULL,
   senha VARCHAR(50) NOT NULL,
-  permissao VARCHAR(25),
+  cargo VARCHAR(25) CONSTRAINT chkCargo CHECK (cargo in ('administrador', 'gerente', 'funcionario')) DEFAULT 'funcionario',
   fkEstabelecimento INT,
   FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento (idEstabelecimento),
   CONSTRAINT pkUsuario PRIMARY KEY (idUsuario, fkEstabelecimento)

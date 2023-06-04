@@ -116,6 +116,14 @@ function cadastrar(req, res) {
         )
 }
 
+function atualizarCargo(req, res) {
+  var fkEst = req.body.fkEstabelecimento
+  var idUser = req.body.idUsuario
+  var cargo = req.body.cargo
+
+  usuarioModel.atualizarCargo(fkEst, idUser, cargo).then(result => res.json(result))
+}
+
 function selecionarFuncionarios(req,res) {
     var fkEstabelecimento = req.params.fkEstabelecimento
 
@@ -154,5 +162,6 @@ module.exports = {
     testar,
     cadastrarFuncionario,
     selecionarFuncionarios,
-    excluirFuncionarios
+    excluirFuncionarios,
+    atualizarCargo
 }

@@ -24,6 +24,10 @@ router.post("/cadastrarFuncionario", function(req, res) {
     usuarioController.cadastrarFuncionario(req, res);
 });
 
+router.put('/atualizarCargo', function(req, res) {
+  usuarioController.atualizarCargo(req, res)
+})
+
 router.get("/selecionarFuncionarios/:fkEstabelecimento", (req,res)=>{
     usuarioController.selecionarFuncionarios(req,res)
 })

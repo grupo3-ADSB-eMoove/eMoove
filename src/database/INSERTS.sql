@@ -62,7 +62,7 @@ values (
     'Scarabelli',
     'gui@gmail.com',
     '123',
-    'basico',
+    default,
     1
   ),
   (
@@ -71,7 +71,7 @@ values (
     'Silva',
     'vivian@gmail.com',
     '123',
-    'basico',
+    default,
     4
   ),
   (
@@ -80,7 +80,7 @@ values (
     'Bento',
     'leo@gmail.com',
     '123',
-    'basico',
+    default,
     2
   ),
   (
@@ -89,7 +89,7 @@ values (
     'Silva',
     'renan@gmail.com',
     '123',
-    'basico',
+    default,
     3
   );
 -- Insert do local
