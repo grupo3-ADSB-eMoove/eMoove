@@ -10,6 +10,16 @@ async function fetchAlertaRecente() {
   console.log(alerta[0])
   console.log(alertaPassado)
 
+  if(alerta[0] == undefined) {
+    await insertAlerta(idEst)
+    return
+  }
+
+  if(alertaPassado == undefined) {
+    sessionStorage.setItem('ultimoAlerta', JSON.stringify(alerta[0]))
+    return
+  }
+
   var {lotacao, msg} = calcularLotacao(alerta[0].area, alerta[0].qtdPessoas)
 
   if(alerta[0].tempo > 30) {
