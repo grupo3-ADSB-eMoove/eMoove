@@ -221,11 +221,13 @@ overflow-y: auto;
   transition: all ease-in .3s;
   z-index: 999;
   opacity: 0;
+  pointer-events: none;
 }
 
 .div-edicaoAtiva{
   transform: translate(-50%,-50%);
   opacity: 1;
+  pointer-events: all;
 }
 
 

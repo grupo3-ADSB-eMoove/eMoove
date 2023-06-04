@@ -103,6 +103,7 @@ function doLogin(){
         sessionStorage.setItem('sobrenome', dados.sobrenome)
         sessionStorage.setItem('email', dados.email)
         sessionStorage.setItem('fkEstabelecimento', dados.fkEstabelecimento)
+        sessionStorage.setItem('cargo', dados.cargo)
         
         setTimeout(()=>{
             window.location.href = '../dashboards/index.html'

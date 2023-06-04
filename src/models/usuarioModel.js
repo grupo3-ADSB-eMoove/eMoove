@@ -33,7 +33,7 @@ function cadastrar(id, nome,sobrenome, email, senha, fkEstabelecimento) {
 
 function cadastrarFuncionario(nome, sobrenome, email, cpf, fkEstabelecimento) {
     var subInstrucao = `SELECT (MAX(idUsuario) + 1)`
-    var instrucao = `INSERT INTO usuario (idUsuario, nome, sobrenome, email, senha, fkEstabelecimento) ${subInstrucao}, '${nome}', '${sobrenome}', '${email}', '${cpf}', '${fkEstabelecimento}' FROM usuario;`
+    var instrucao = `INSERT INTO usuario (idUsuario, nome, sobrenome, email, senha,cargo, fkEstabelecimento) ${subInstrucao}, '${nome}', '${sobrenome}', '${email}', '${cpf}', 'funcionario' , '${fkEstabelecimento}' FROM usuario;`
 
     return database.executar(instrucao);
 }

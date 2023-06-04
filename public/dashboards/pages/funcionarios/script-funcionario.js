@@ -3,23 +3,27 @@ var sobrenomeCadastro = document.querySelector("#input_sobrenome");
 var emailCadastro = document.querySelector("#input_email");
 var cpfCadastro = document.querySelector("#input_cpf");
 var fkEstabelecimentoCadastro = sessionStorage.getItem("fkEstabelecimento");
+var cargoUsuarioAtual = sessionStorage.getItem("cargo");
 const spanErroCpf = document.getElementById("mensagemErroCpf");
 var blur = document.getElementById("blur");
 const divCards = document.getElementById("divCardSensores");
+var cargoUsuarioSelecionado;
+document.getElementById("fechar-div-edicao").addEventListener("click", () => {
+  blur.style.filter = "";
+  div_edicao.classList.remove("div-edicaoAtiva");
+});
 
-document.getElementById('fechar-div-edicao').addEventListener('click', () => {
-  blur.style.filter = ''
-  div_edicao.classList.remove('div-edicaoAtiva')
-})
-
-document.getElementById('btn-excluir-funcionario').addEventListener('click', () => {
-  excluirFuncionario().then(result => {
-    console.log(result)
-    if(result.affectedRows == 1) {
-      alert('Usuario deletado com sucesso')
-    }
-  })
-})
+document
+  .getElementById("btn-excluir-funcionario")
+  .addEventListener("click", () => {
+    excluirFuncionario().then((result) => {
+      console.log(result);
+      if (result.affectedRows == 1) {
+        alert("Usuario deletado com sucesso");
+        selecionarFuncionarios(fkEstabelecimentoCadastro);
+      }
+    });
+  });
 
 var listaFuncionarios = [];
 
@@ -33,7 +37,7 @@ function selecionarFuncionarios(fkEstabelecimento) {
       }
     })
     .then((data) => {
-      listaFuncionarios = data
+      listaFuncionarios = data;
       listarFuncionarios(listaFuncionarios);
     })
     .catch((erro) => {
@@ -43,79 +47,101 @@ function selecionarFuncionarios(fkEstabelecimento) {
 
 selecionarFuncionarios(fkEstabelecimentoCadastro);
 var idUsuarioSelecionado;
-
+const divBtnCadastro = document.querySelector('#divBtnCadastrar')
 function listarFuncionarios(lista = []) {
-
-  document.getElementById('divCardSensores').innerHTML = ''
+  document.getElementById("divCardSensores").innerHTML = "";
   lista.forEach((item, i) => {
-    console.log(item)
+    console.log(item);
+    if (cargoUsuarioAtual == "funcionario") {
+      divBtnCadastro.style.display = 'none'
+      var html = `
+           <div class="card">
+              <span class="tituloCard">
+              <h3>${item.nome}</h3>
+              </span> <br>
+            <p>Cargo: <span>${item.cargo}</span></p>
+          </div>
+        `;
+    }else{
+      var html = `
+      <div class="card">
+        <span class="tituloCard">
+          <h3>${item.nome}</h3>
+          <button id="btn${item.idUsuario}">Editar</button>
+        </span> <br>
+        <p>Cargo: <span>${item.cargo}</span></p>
+      </div>
+      `;
+    }
+    
+    document.getElementById("divCardSensores").innerHTML += html;
+  });
 
-    var html = `
-    <div class="card">
-      <span class="tituloCard">
-        <h3>${item.nome}</h3>
-        <button id="btn${item.idUsuario}">Editar</button>
-      </span> <br>
-      <p>Cargo: <span>${item.cargo}</span></p>
-    </div>
-    `
-    document.getElementById('divCardSensores').innerHTML += html
-  })
-
-  addEventListeners()
+  addEventListeners();
 }
 
 function addEventListeners() {
-  var buttons = document.querySelectorAll('.tituloCard > button')
+  var buttons = document.querySelectorAll(".tituloCard > button");
 
   buttons.forEach((button, i) => {
-    button.addEventListener('click', () => {
-      div_edicao.classList.add('div-edicaoAtiva')
-      blur.style.filter = 'blur(4px)'
-      console.log(listaFuncionarios[i])
-      idUsuarioSelecionado = listaFuncionarios[i].idUsuario
-      selectCargo.value = listaFuncionarios[i].cargo
-    })
-  })
+    button.addEventListener("click", () => {
+      div_edicao.classList.add("div-edicaoAtiva");
+      blur.style.filter = "blur(4px)";
+      console.log(listaFuncionarios[i]);
+      idUsuarioSelecionado = listaFuncionarios[i].idUsuario;
+      cargoUsuarioSelecionado = listaFuncionarios[i].cargo
+      selectCargo.value = listaFuncionarios[i].cargo;
+    });
+  });
 }
 
 async function atualizarCargo() {
-  var resultUpdate = await fetch('/usuarios/atualizarCargo', {
-    method: 'PUT',
+  if(cargoUsuarioAtual != 'administrador'){return alert('Apenas administradores podem gerenciar cargos.')}
+  if(sessionStorage.getItem("idUsuario") == idUsuarioSelecionado){return alert('Você não pode atualizar seu cargo.')}
+  var resultUpdate = await fetch("/usuarios/atualizarCargo", {
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       fkEstabelecimento: fkEstabelecimentoCadastro,
       idUsuario: idUsuarioSelecionado,
-      cargo: selectCargo.value
+      cargo: selectCargo.value,
+    }),
+  })
+    .then((res) => {
+      if (res.ok) {
+        selecionarFuncionarios(fkEstabelecimentoCadastro);
+        return res.json;
+      }
     })
-  }).then((res) => {
-    if(res.ok) {
-      selecionarFuncionarios(fkEstabelecimentoCadastro)
-      return res.json
-    }
-  }).catch(e => console.error(e))
+    .catch((e) => console.error(e));
 }
 
 async function excluirFuncionario() {
-
-  let fetchExluir = await fetch(
-    `/usuarios/excluirFuncionarios/${idUsuarioSelecionado}`,
-    {
-      cache: "no-store",
-      method: "DELETE",
-    }
-  )
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
+  if (idUsuarioSelecionado == sessionStorage.getItem("idUsuario")) {
+    alert("Você não pode se apagar");
+    return;
+  }else if (cargoUsuarioAtual == 'gerente' && cargoUsuarioSelecionado != 'funcionario' ){
+    alert('Você como gerente pode excluir apenas funcionários')
+  } else {
+    let fetchExluir = await fetch(
+      `/usuarios/excluirFuncionarios/${idUsuarioSelecionado}`,
+      {
+        cache: "no-store",
+        method: "DELETE",
       }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  return fetchExluir
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return fetchExluir;
+  }
 }
 
 function validarCadastro() {
