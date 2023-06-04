@@ -7,20 +7,26 @@ async function fetchAlertaRecente() {
   
   var qtdPessoas = await fetch(`/medidas/qtd-pessoas/${idEst}`).then(res => res.json())
 
-  console.log(alerta[0])
-
   if(alerta[0] == undefined) {
     await insertAlerta(idEst, qtdPessoas)
     return
   }
   
-  
+  // Caso o alerta esteja desatualizado
   if(alerta[0].qtdPessoas != qtdPessoas) {
+
+    // Insert de um alerta atualizado
     await insertAlerta(idEst, qtdPessoas)
+
+    // Select do alerta inserido
     var alerta = await fetch(`/medidas/ultimo-alerta/${idEst}`).then(res => res.json())
+
     var {lotacao, msg} = calcularLotacao(alerta[0].area, alerta[0].qtdPessoas)
+
+    // Verifica se o alerta está atualizado
     if(alerta[0].qtdPessoas == qtdPessoas) {
-  
+      
+      // Dispara do alerta
       if(msg) wrapper.classList.add('show')
       spanMsg.innerHTML = `
         <span>Lotação: ${lotacao.toFixed(2)}%</span></br>
