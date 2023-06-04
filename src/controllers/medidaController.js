@@ -38,10 +38,16 @@ function ultimoAlerta(req, res) {
   })
 }
 
+function qtdPessoasUltimos30Min(req, res) {
+  var id = req.params.idEst
+  medidaModel.qtdPessoasUltimos30Min(id).then(result => res.json(result[0].qtdPessoas))
+}
+
 function inserirAlerta(req, res) {
   var id = req.body.idEstabelecimento
+  var qtdPessoas = req.body.qtdPessoas
 
-  medidaModel.inserirAlerta(id).then(result => {
+  medidaModel.inserirAlerta(id, qtdPessoas).then(result => {
     res.json(result)
   })
 }
@@ -51,5 +57,6 @@ module.exports = {
     selectUltimosQuatroDias,
     alertas,
     ultimoAlerta,
-    inserirAlerta
+    inserirAlerta,
+    qtdPessoasUltimos30Min
 }

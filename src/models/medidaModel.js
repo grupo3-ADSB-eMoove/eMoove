@@ -34,13 +34,18 @@ function ultimoAlerta(id) {
   return database.executar(instrucao)
 }
 
-function inserirAlerta(id) {
-  var subQuery = `SELECT COUNT(c.valor) FROM capturaDados c 
-                    JOIN sensor s ON s.idSensor = c.fkSensor 
-                    JOIN localInstalado l ON l.idLocal = s.fkLocalInstalado 
-                      WHERE l.fkEstabelecimento = ${id} AND TIMESTAMPDIFF(SECOND, c.dtHora, now()) < 30`
+function qtdPessoasUltimos30Min(id) {
+  var instrucao = `
+    SELECT COUNT(c.valor) as qtdPessoas FROM capturaDados c 
+      JOIN sensor s ON s.idSensor = c.fkSensor 
+      JOIN localInstalado l ON l.idLocal = s.fkLocalInstalado 
+        WHERE l.fkEstabelecimento = ${id} AND TIMESTAMPDIFF(MINUTE, c.dtHora, now()) < 30`
 
-  var instrucao = `INSERT INTO alerta VALUES (default, (${subQuery}), ${id});`
+  return database.executar(instrucao)
+}
+
+function inserirAlerta(id, qtdPessoas) {
+  var instrucao = `INSERT INTO alerta VALUES (default, ${qtdPessoas}, ${id});`
   return database.executar(instrucao)
 }
 
@@ -49,5 +54,6 @@ module.exports = {
     selectUltimosQuatroDias,
     alertas,
     ultimoAlerta,
-    inserirAlerta
+    inserirAlerta,
+    qtdPessoasUltimos30Min
 }

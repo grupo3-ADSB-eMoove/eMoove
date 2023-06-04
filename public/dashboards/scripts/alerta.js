@@ -2,42 +2,35 @@ const wrapper = document.querySelector('.wrapper-notificacao')
 async function fetchAlertaRecente() {
   var spanMsg = document.getElementById('msg-alerta')
 
-  var alertaPassado = JSON.parse(sessionStorage.getItem('ultimoAlerta'))
-
   var idEst = sessionStorage.getItem("fkEstabelecimento");
   var alerta = await fetch(`/medidas/ultimo-alerta/${idEst}`).then(res => res.json())
+  
+  var qtdPessoas = await fetch(`/medidas/qtd-pessoas/${idEst}`).then(res => res.json())
 
   console.log(alerta[0])
-  console.log(alertaPassado)
 
   if(alerta[0] == undefined) {
-    await insertAlerta(idEst)
+    await insertAlerta(idEst, qtdPessoas)
     return
   }
-
-  if(alertaPassado == undefined) {
-    sessionStorage.setItem('ultimoAlerta', JSON.stringify(alerta[0]))
-    return
+  
+  
+  if(alerta[0].qtdPessoas != qtdPessoas) {
+    await insertAlerta(idEst, qtdPessoas)
+    var alerta = await fetch(`/medidas/ultimo-alerta/${idEst}`).then(res => res.json())
+    var {lotacao, msg} = calcularLotacao(alerta[0].area, alerta[0].qtdPessoas)
+    if(alerta[0].qtdPessoas == qtdPessoas) {
+  
+      if(msg) wrapper.classList.add('show')
+      spanMsg.innerHTML = `
+        <span>Lotação: ${lotacao.toFixed(2)}%</span></br>
+        <span>${msg}</span>
+      `
+  
+      setTimeout(() => wrapper.classList.remove('show'), 3000)
+    }
   }
 
-  var {lotacao, msg} = calcularLotacao(alerta[0].area, alerta[0].qtdPessoas)
-
-  if(alerta[0].tempo > 30) {
-    var qtdPessoas = 100
-    await insertAlerta(idEst)
-  }
-  if((alerta[0].hora != alertaPassado.hora || alerta[0].qtdPessoas != alertaPassado.qtdPessoas) || alertaPassado == undefined) {
-    
-    sessionStorage.setItem('ultimoAlerta', JSON.stringify(alerta[0]))
-
-    if(msg) wrapper.classList.add('show')
-    spanMsg.innerHTML = `
-      <span>Lotação: ${lotacao.toFixed(2)}%</span></br>
-      <span>${msg}</span>
-    `
-
-    setTimeout(() => wrapper.classList.remove('show'), 3000)
-  }
 }
 
 function calcularLotacao(area, qtdPessoas) {
@@ -63,7 +56,7 @@ function calcularLotacao(area, qtdPessoas) {
 
 }
 
-async function insertAlerta(idEst) {
+async function insertAlerta(idEst, qtdPessoas) {
 
   var response = await fetch(`/medidas/inserir-alerta`, {
     method: 'POST',
@@ -71,7 +64,8 @@ async function insertAlerta(idEst) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      idEstabelecimento: idEst
+      idEstabelecimento: idEst,
+      qtdPessoas: qtdPessoas
     })
   }).catch(e => console.error(e))
 }
