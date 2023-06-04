@@ -107,9 +107,17 @@ async function listarDados() {
   var maxEntradas = Math.max(... dadosDash1.map(dado => dado.qtdEntradas))
   var minEntradas = Math.min(... dadosDash1.map(dado => dado.qtdEntradas))
   
+  var horarioMaxEntradas = dadosDash1.filter((val) => val.qtdEntradas == maxEntradas)
+  var horarioMinEntradas = dadosDash1.filter((val) => val.qtdEntradas == minEntradas)
+
   document.getElementById('kpi-total').innerText = totalEntradas
+  document.getElementById('kpi-media').innerText = (totalEntradas / dadosDash1.length).toFixed(2)
+  
   document.getElementById('kpi-max').innerText = maxEntradas
+  document.getElementById('horario-max').innerText = horarioMaxEntradas[0].horario
+  
   document.getElementById('kpi-min').innerText = minEntradas
+  document.getElementById('horario-min').innerText = horarioMinEntradas[0].horario
 
   chartDia.data.datasets[0].data = []
   dadosDash1.forEach((dados, i) => {
@@ -214,7 +222,7 @@ async function getAlertas() {
   
       
       if(i == 0) {
-        lotacao_atual.innerText = `Lotação: ${lotacao.toFixed(2)}%`
+        lotacao_atual.innerText = `Lotação estimada: ${lotacao.toFixed(2)}%`
         faixa_atual.innerText = `${faixa.toUpperCase()}`
         faixa_atual.classList.remove('faixa-mb', 'faixa-b', 'faixa-id', 'faixa-a', 'faixa-ma')
         faixa_atual.classList.add(classFaixa)

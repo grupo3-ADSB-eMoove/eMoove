@@ -68,23 +68,37 @@
           <div class="flex">
             <div class="horizontal" style="gap: 20px;">
             <div class="kpi">
-              <h4 style="font-size: 16px;">Total de Passagens no dia</h4>
+              <h3>
+                Total de Passagens <br>
+                <span style="font-size: 16px; font-weight: 400;">no dia</span>
+              </h3>
               <h2 id="kpi-total">0</h2>
             </div>
             <div class="kpi">
-              <h4>Média fluxo por período</h4>
-                <h2 id="kpi-max">0</h2>
+              <h3>
+                Média fluxo <br>
+                <span style="font-size: 16px; font-weight: 400;">por período</span>
+              </h3>
+              <h2 id="kpi-media">0</h2>
             </div>
             </div>
             <div class="horizontal" style="gap: 20px;">
               <div class="kpi">
-                <h3>Menor fluxo por período</h4>
-                  <h2 id="kpi-min">0</h2>
+                <h3>
+                  Menor fluxo <br>
+                  <span style="font-size: 16px; font-weight: 400;">por período</span>
+                </h3>
+                <h2 id="kpi-min">0</h2>
+                <span id="horario-min" style="font-size: 14px; font-weight: 400; position: absolute; right: 1rem; bottom: 1rem;"></span>
               </div>
 
               <div class="kpi">
-                <h3>Maior fluxo por período</h4>
-                  <h2 id="kpi-max">0</h2>
+                <h3>
+                  Maior fluxo <br>
+                  <span style="font-size: 16px; font-weight: 400;">por período</span>
+                </h3>
+                <h2 id="kpi-max">0</h2>
+                <span id="horario-max" style="font-size: 14px; font-weight: 400; position: absolute; right: 1rem; bottom: 1rem;"></span>
               </div>
             </div>
           </div>
@@ -93,7 +107,7 @@
             <div class="alerta-atual" id="alerta_atual">
               <h3 id="h3Situacao"></h3>
               <div class="info-alerta">
-                
+
                 <h2 id="lotacao_atual"></h2>
                 <h1 id="faixa_atual"></h1>
                 <img src="./assets/alert.svg" alt="" width="50" id="img_alerta" style="display: none;">
