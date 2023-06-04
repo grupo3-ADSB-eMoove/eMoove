@@ -2,28 +2,31 @@ const wrapper = document.querySelector('.wrapper-notificacao')
 async function fetchAlertaRecente() {
   var spanMsg = document.getElementById('msg-alerta')
 
-  var alertaPassado = JSON.parse(localStorage.ultimoAlerta)
+  var alertaPassado = JSON.parse(sessionStorage.getItem('ultimoAlerta'))
 
   var idEst = sessionStorage.getItem("fkEstabelecimento");
   var alerta = await fetch(`/medidas/ultimo-alerta/${idEst}`).then(res => res.json())
 
-  // console.log(alerta[0], alertaPassado)
+  console.log(alerta[0])
+  console.log(alertaPassado)
 
-  if(alerta.length > 0) {
-    var {lotacao, msg} = calcularLotacao(alerta[0].area, alerta[0].qtdPessoas)
+  var {lotacao, msg} = calcularLotacao(alerta[0].area, alerta[0].qtdPessoas)
+
+  if(alerta[0].tempo > 30) {
+    var qtdPessoas = 100
+    await insertAlerta(idEst)
+  }
+  if((alerta[0].hora != alertaPassado.hora || alerta[0].qtdPessoas != alertaPassado.qtdPessoas) || alertaPassado == undefined) {
     
-    if(alertaPassado == null) {
-      localStorage.ultimoAlerta = JSON.stringify(alerta[0])
-    }else if(alerta[0].tempo - alertaPassado.tempo > 0) {
-      localStorage.ultimoAlerta = JSON.stringify(alerta[0])
-      spanMsg.innerHTML = `
-        <span>Lotação: ${lotacao.toFixed(2)}%</span></br>
-        <span>${msg}</span>
-      `
-      if(msg) wrapper.classList.add('show')
-  
-      setTimeout(() => wrapper.classList.remove('show'), 3000)
-    }
+    sessionStorage.setItem('ultimoAlerta', JSON.stringify(alerta[0]))
+
+    if(msg) wrapper.classList.add('show')
+    spanMsg.innerHTML = `
+      <span>Lotação: ${lotacao.toFixed(2)}%</span></br>
+      <span>${msg}</span>
+    `
+
+    setTimeout(() => wrapper.classList.remove('show'), 3000)
   }
 }
 
@@ -50,20 +53,17 @@ function calcularLotacao(area, qtdPessoas) {
 
 }
 
-async function insertAlerta() {
-  var alerta = JSON.parse(localStorage.getItem('ultimoAlerta'))
+async function insertAlerta(idEst) {
 
-  if(alerta.tempo > 30) {
-    var response = await fetch(`/medidas/inserir-alerta`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        idEstabelecimento: sessionStorage.getItem('fkEstabelecimento')
-      })
+  var response = await fetch(`/medidas/inserir-alerta`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      idEstabelecimento: idEst
     })
-  }
+  }).catch(e => console.error(e))
 }
 
 
@@ -72,4 +72,3 @@ document.getElementById('fechar-alerta').addEventListener('click', () => {
 })
 
 setInterval(fetchAlertaRecente, 1000)
-setInterval(insertAlerta, 30000)
