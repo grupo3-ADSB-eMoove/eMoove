@@ -258,6 +258,27 @@ async function getAlertas() {
   }
 }
 
+document.getElementById('btn_metricas').addEventListener('click', () => {
+  var fechar = () => {
+    div_metricas.style.opacity = '0'
+    div_metricas.style.transform = 'translate(-50%, -80%)'
+    setTimeout(() => {
+      wrapper_metricas.style.display = 'none'
+    }, 100)
+  }
+
+  wrapper_metricas.style.display = 'block'
+  wrapper_metricas.addEventListener('click', fechar)
+  btn_fechar_metricas.addEventListener('click', fechar)
+
+
+  setTimeout(() => {
+    div_metricas.style.opacity = '1'
+    div_metricas.style.transform = 'translate(-50%, -50%)'
+  }, 100)
+})
+
+
 listarDados()
 renderChartBarra()
 getAlertas()
