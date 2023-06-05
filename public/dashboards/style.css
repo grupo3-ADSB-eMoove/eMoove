@@ -1,5 +1,59 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
 
+.btn-metricas {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+
+  cursor: pointer;
+}
+
+.btn-metricas > img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.wrapper-metricas {
+  display: none;
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  z-index: 2;
+
+  backdrop-filter: blur(4px);
+}
+
+.metricas {
+  display: block;
+  transition: 400ms;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -100%);
+
+  background-color: #fefefe;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  border-radius: .5rem;
+
+  z-index: -9999;
+  opacity: 0;
+
+}
+
+.metricas-show {
+  opacity: 1;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+}
+
+.metricas > img {
+  max-width: 80vmax;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -191,6 +245,7 @@ body {
 }
 
 .alerta{
+  position: relative;
   width: 48%;
   height: 280px;
   background-color: #fff;
