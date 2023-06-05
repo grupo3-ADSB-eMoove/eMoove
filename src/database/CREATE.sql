@@ -24,7 +24,11 @@ CREATE TABLE alerta (
   FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento(idEstabelecimento),
   CONSTRAINT pkAlerta PRIMARY KEY (dtAlerta, fkEstabelecimento)
 );
-
+-- CREATE DA TABELA DE PERMISSÕES DO USUÁRIO
+CREATE TABLE permissao(
+  idPermissao INT PRIMARY KEY AUTO_INCREMENT,
+  cargo VARCHAR(50) DEFAULT 'administrador' NOT NULL
+);
 -- CREATE DA TABELA DO USUARIO QUE VAI CONTRATAR
 CREATE TABLE usuario(
   idUsuario INT,
@@ -32,9 +36,12 @@ CREATE TABLE usuario(
   sobrenome VARCHAR(50) NOT NULL,
   email VARCHAR(100) NOT NULL,
   senha VARCHAR(50) NOT NULL,
-  cargo VARCHAR(25) CONSTRAINT chkCargo CHECK (cargo in ('administrador', 'gerente', 'funcionario')) DEFAULT 'administrador',
+  cargo VARCHAR(25) DEFAULT 'administrador',
+  CONSTRAINT chkCargo CHECK (cargo in ('administrador', 'gerente', 'funcionario')),
   fkEstabelecimento INT,
-  FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento (idEstabelecimento),
+  fkPermissao INT,
+  FOREIGN KEY (fkEstabelecimento) REFERENCES estabelecimento(idEstabelecimento),
+  FOREIGN KEY (fkPermissao) REFERENCES permissao(idPermissao),
   CONSTRAINT pkUsuario PRIMARY KEY (idUsuario, fkEstabelecimento)
 );
 -- CREATE DA TABELA ONDE VAI ARMAZENAR O LOCAL QUE O SENSOR FOI INSTALADO
