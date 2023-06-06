@@ -5,12 +5,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Dashboard - sensores</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../../notificacao.css">
 </head>
 
 <body>
+  <div class="wrapper-detalhes-sensor" id="wrapper_detalhes_sensor">
+    <div class="detalhes-sensor" id="div_detalhes_sensor">
+      <h1>Detalhes do sensor</h1>
+      <div class="graficos">
+        <div class="grafico">
+          <h3>Entradas no dia</h3>
+          <canvas id="grafico_1"></canvas>
+        </div>
+        <div class="grafico">
+          <h3>Entradas por dia</h3>
+          <canvas id="grafico_2"></canvas>
+        </div>
+      </div>
+      <img src="../../assets/x.svg" alt="" style="position: absolute; top: 1rem; right: 1rem; width: 2rem; height: 2rem; cursor: pointer;" id="btn_fechar_detalhes_sensor">
+    </div>
+  </div>
   <div class="wrapper-confirmacao">
     <div id="div-confirmacao-sair" class="confirmacao-sair">
       <h2>Deseja realmente sair?</h2>
@@ -48,7 +65,7 @@
       </div>
       <div class="icones">
         <div class="nav-row">
-          <a href="https://emoove.freshdesk.com/support/home" target="_blank">
+          <a href="https://projetoemoove.freshdesk.com/support/home" target="_blank">
             <img src="../../assets/question-circle.svg" alt="Imagem suporte">
             <span class="nav-row-text hidden">Suporte</span>
           </a>
