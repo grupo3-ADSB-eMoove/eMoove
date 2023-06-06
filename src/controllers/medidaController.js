@@ -16,6 +16,12 @@ function selectUltimosQuatroDias(req, res) {
 
     medidaModel.selectUltimosQuatroDias(idEstabelecimento).then(resultado => res.json(resultado))
 }
+function selectUltimosQuatroDiasPorSensor(req, res) {
+    var idEstabelecimento = req.body.idEstabelecimentoServer
+    var idSensor = req.body.idSensor
+
+    medidaModel.selectUltimosQuatroDiasPorSensor(idEstabelecimento, idSensor).then(resultado => res.json(resultado))
+}
 
 function selectKpis(req, res) {
     var idEstabelecimento = req.params.idEstabelecimentoServer
@@ -52,11 +58,25 @@ function inserirAlerta(req, res) {
   })
 }
 
+function selectEntradasPorHorarioPorSensor(req, res) {
+  var idEstabelecimento = req.body.idEstabelecimentoServer
+  var horario1 = req.body.horario1Server
+  var horario2 = req.body.horario2Server
+  var idSensor = req.body.idSensor
+
+  medidaModel.selectEntradasPorHorarioPorSensor(idEstabelecimento, horario1, horario2, idSensor)
+    .then(resultado => {
+        res.json(resultado)
+    })
+}
+
 module.exports = {
     selectEntradasPorHorario,
     selectUltimosQuatroDias,
     alertas,
     ultimoAlerta,
     inserirAlerta,
-    qtdPessoasUltimos30Min
+    qtdPessoasUltimos30Min,
+    selectEntradasPorHorarioPorSensor,
+    selectUltimosQuatroDiasPorSensor
 }
