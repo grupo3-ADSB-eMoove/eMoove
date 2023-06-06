@@ -39,7 +39,7 @@ function qtdPessoasUltimos30Min(id) {
     SELECT COUNT(c.valor) as qtdPessoas FROM capturaDados c 
       JOIN sensor s ON s.idSensor = c.fkSensor 
       JOIN localInstalado l ON l.idLocal = s.fkLocalInstalado 
-        WHERE l.fkEstabelecimento = ${id} AND TIMESTAMPDIFF(MINUTE, c.dtHora, now()) < 30`
+        WHERE l.fkEstabelecimento = ${id} AND TIMESTAMPDIFF(SECOND, c.dtHora, now()) < 15`
 
   return database.executar(instrucao)
 }
