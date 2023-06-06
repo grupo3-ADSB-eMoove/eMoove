@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "emoove",
     user: "root",
-    password: "",
+    password: "emoove_db",
 };
 
 function executar(instrucao) {

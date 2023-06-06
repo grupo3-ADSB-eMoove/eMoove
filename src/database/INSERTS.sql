@@ -63,7 +63,8 @@ values (
     'gui@gmail.com',
     '123',
     default,
-    1
+    1,
+    null
   ),
   (
     1,
@@ -72,7 +73,8 @@ values (
     'vivian@gmail.com',
     '123',
     default,
-    4
+    4,
+    null
   ),
   (
     1,
@@ -81,7 +83,8 @@ values (
     'leo@gmail.com',
     '123',
     default,
-    2
+    2,
+    null
   ),
   (
     1,
@@ -90,7 +93,8 @@ values (
     'renan@gmail.com',
     '123',
     default,
-    3
+    3,
+    null
   );
 -- Insert do local
 INSERT INTO localInstalado
